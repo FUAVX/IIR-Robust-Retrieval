@@ -1,0 +1,40 @@
+# Keep datasets and prepared supervision outside Git.
+# The upstream get_data_root() uses the repository's data/ directory.
+data/
+datasets/
+
+# Checkpoints and model weights, including common upstream .pth.tar files.
+checkpoints/
+weights/
+model_weights/
+*.pth
+*.pth.tar
+*.pt
+*.ckpt
+*.safetensors
+*.onnx
+*.h5
+*.hdf5
+*.caffemodel
+
+# Descriptor dumps and serialized experiment arrays/data.
+descriptors/
+descriptor_dumps/
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.mat
+*.fvecs
+*.bvecs
+
+# All generated outputs are local artifacts, not experiment records.
+outputs/
+
+# Python and notebook caches.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/

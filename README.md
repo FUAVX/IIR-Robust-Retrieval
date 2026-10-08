@@ -1,348 +1,183 @@
-## CNN Image Retrieval in PyTorch: Training and evaluating CNNs for Image Retrieval in PyTorch
+# IIR-Robust-Retrieval
 
-This is a Python toolbox that implements the training and testing of the approach described in our papers:
+**Instance-Level Image Retrieval — GeM Baseline Reproduction & Robustness Research**
 
+Dự án nghiên cứu của nhóm **FUAVX** nhằm xây dựng và đánh giá một hệ thống *instance-level image retrieval* (IIR), bắt đầu từ baseline **VGG16 + Generalized Mean (GeM) Pooling**, sau đó nghiên cứu cách cải thiện **general robustness** mà vẫn giữ khả năng phân biệt giữa các instance.
 
-**Fine-tuning CNN Image Retrieval with No Human Annotation**,  
-Radenović F., Tolias G., Chum O., 
-TPAMI 2018 [[arXiv](https://arxiv.org/abs/1711.02512)]
+> **Trạng thái:** Đang chuẩn bị baseline **B0**. Chưa có kết quả training/mAP được nhóm xác nhận và **chưa chốt phương pháp B1**. Đây là repository nghiên cứu đang phát triển, **không phải** bản implementation mới do nhóm viết từ đầu.
 
-**CNN Image Retrieval Learns from BoW: Unsupervised Fine-Tuning with Hard Examples**,  
-Radenović F., Tolias G., Chum O., 
-ECCV 2016 [[arXiv](http://arxiv.org/abs/1604.02426)]
+## 1. Bài toán và mục tiêu
 
+**Instance-level image retrieval** là bài toán tìm trong một gallery những ảnh chứa **cùng một đối tượng hoặc địa điểm cụ thể** với ảnh truy vấn (*query*), dù các ảnh có thể khác góc chụp, ánh sáng, độ phân giải, vật che khuất hoặc bối cảnh.
 
-<img src="http://cmp.felk.cvut.cz/cnnimageretrieval/img/cnnimageretrieval_network_medium.png" width=\textwidth/>
+Ví dụ: với một ảnh query chụp một tòa nhà, mô hình cần xếp ảnh chụp **chính tòa nhà đó** ở những góc nhìn khác lên trên ảnh của các tòa nhà khác.
 
----
+Nhóm theo đuổi hai mục tiêu nối tiếp:
 
-### What is it?
+1. **B0 — Reproduction:** Thiết lập, huấn luyện và đánh giá baseline GeM một cách có thể kiểm chứng, dựa trên paper và source code gốc.
+2. **B1 — Robustness improvement:** Sau khi phân tích B0, đề xuất **một thay đổi có cơ sở** để giảm suy giảm hiệu năng retrieval dưới nhiều dạng biến thiên của ảnh, đồng thời giữ *instance discriminability* và chi phí tính toán hợp lý.
 
-This code implements:
+**General robustness** ở đây không đồng nghĩa với chỉ tăng mAP trên ảnh sạch. Nhóm dự định đo cả hiệu năng retrieval thông thường lẫn mức suy giảm dưới những phép biến đổi có kiểm soát; giao thức chi tiết sẽ được chốt sau khi B0 hoạt động ổn định. B1 hiện **chưa phải** một kiến trúc hoặc loss cụ thể.
 
-1. Training (fine-tuning) CNN for image retrieval
-1. Learning supervised whitening, as post-processing, for global image descriptors
-1. Testing CNN image retrieval on Oxford and Paris datasets
+## 2. Phương pháp baseline B0
 
----
+```text
+Query / Gallery image
+        |
+      VGG16                  (CNN feature extractor)
+        |
+    Feature maps
+        |
+    GeM Pooling              (global aggregation)
+        |
+ L2 normalization
+        |
+  512-D descriptor
+        |
+Similarity ranking -> retrieval results -> AP / mAP
+```
 
-### Prerequisites
+- **Backbone:** VGG16; sử dụng nguồn khởi tạo **Caffe-converted VGG16 feature weights** theo source GeM gốc, không tự thay bằng torchvision classification weights.
+- **Pooling:** GeM với tham số `p` học được (giá trị khởi tạo dự kiến `p = 3`).
+- **Training data:** `retrieval-SfM-120k`, với các cặp query/positive và hard negatives được xác định từ metadata SfM; dùng *contrastive loss* và hard-negative mining.
+- **Evaluation data:** Oxford5k và Paris6k với ground truth retrieval và phép đo **mean Average Precision (mAP)** theo giao thức legacy tương ứng.
+- **Cấu hình B0 dự kiến:** Adam, contrastive margin `0.75`, `5` negatives, training image size `362`; evaluation image size `1024`, single-scale, không whitening và query expansion ở lần chạy cơ sở. **Những giá trị này phải được rà soát/chốt thành config trước khi train; chưa phải kết quả thực nghiệm.**
+- **Ngân sách:** Ưu tiên Kaggle GPU; có thể cần thiết lập subset theo **SfM clusters** và checkpoint/resume. Không tự lấy random subset từng ảnh vì dễ phá quan hệ sampling của SfM.
 
-In order to run this toolbox you will need:
+B0 của nhóm là **reproduction có ràng buộc tài nguyên**, không mặc định tương đương toàn bộ thiết lập và kết quả công bố trong paper. Mọi khác biệt với paper hoặc upstream phải được ghi trong báo cáo.
 
-1. Python3 (tested with Python 3.7.0 on Debian 8.1)
-1. PyTorch deep learning framework (tested with version 1.0.0)
-1. All the rest (data + networks) is automatically downloaded with our scripts
+## 3. Tiến độ hiện tại
 
----
+| Hạng mục | Trạng thái xác nhận | Bước tiếp theo |
+| --- | --- | --- |
+| Import source gốc | Hoàn thành trên `main` (`886c117`) | Giữ `main` làm mốc tham chiếu |
+| Khởi tạo cấu trúc nghiên cứu | Hoàn thành trên `B0` (`f00e6b2`) | Tiếp tục tài liệu và config B0 |
+| **C0 — Modern API compatibility** | Đã commit (`4245b79`); **chưa test Kaggle runtime** | Kiểm tra môi trường thực tế |
+| GitHub `origin` | Đã cấu hình tới `FUAVX/IIR-Robust-Retrieval` | Xác nhận các branch đã push thành công |
+| **C1–C4** | Chưa hoàn tất | Triển khai theo thứ tự và kiểm thử |
+| SfM/Oxford/Paris datasets | Chưa xác nhận đủ dữ liệu và Kaggle paths | Hoàng kiểm tra, lập dataset manifest |
+| B0 training và mAP | **Chưa có kết quả được xác nhận** | Chỉ chạy sau các smoke test |
+| B1 | **Chưa lựa chọn phương pháp** | Phân tích robustness/failure của B0 trước |
 
-### Usage
+### C0–C4 nghĩa là gì?
 
-Navigate (```cd```) to the root of the toolbox ```[YOUR_CIRTORCH_ROOT]```. 
-You can install package with `pip3 install .` if you need. 
-Make sure to have desired PyTorch and torchvision packages installed.  
+Đây là **các mốc kỹ thuật do nhóm tự đặt**, không phải tên các phase trong paper GeM:
 
-<details>
-  <summary><b>Training</b></summary><br/>
-  
-  Example training script is located in ```YOUR_CIRTORCH_ROOT/cirtorch/examples/train.py```
-  ```
-  python3 -m cirtorch.examples.train [-h] [--training-dataset DATASET] [--no-val]
-                  [--test-datasets DATASETS] [--test-whiten DATASET]
-                  [--test-freq N] [--arch ARCH] [--pool POOL]
-                  [--local-whitening] [--regional] [--whitening]
-                  [--not-pretrained] [--loss LOSS] [--loss-margin LM]
-                  [--image-size N] [--neg-num N] [--query-size N]
-                  [--pool-size N] [--gpu-id N] [--workers N] [--epochs N]
-                  [--batch-size N] [--optimizer OPTIMIZER] [--lr LR]
-                  [--momentum M] [--weight-decay W] [--print-freq N]
-                  [--resume FILENAME]
-                  EXPORT_DIR
-  ```
+| Mốc | Ý nghĩa | Cần đạt trước khi chuyển bước |
+| --- | --- | --- |
+| **C0 — API compatibility** | Thay API không còn hỗ trợ: `Image.ANTIALIAS` → `Image.Resampling.LANCZOS`, `np.in1d` → `np.isin`. | Diff và cú pháp hợp lệ; **runtime Kaggle vẫn cần test**. |
+| **C1 — Environment / Paths / Device** | Kiểm tra thư viện Kaggle; đọc dataset/weights từ đường dẫn thực tế; không tự download khi dữ liệu đã có; dùng đúng CPU/GPU và thư mục ghi output. | Load được metadata, ảnh, weights và model trên thiết bị đã chọn. |
+| **C2 — Checkpoint / Resume** | Lưu và khôi phục model, optimizer, scheduler, epoch, config và các trạng thái cần thiết; kiểm tra không làm lệch lịch learning rate. | Chạy thử ngắt rồi resume, đối chiếu loss/LR/epoch. |
+| **C3 — Training stability** | Kiểm tra sampling query-positive-negatives, mining, batch, loss, gradient, cập nhật optimizer và các trường hợp lỗi. | Smoke test vài batch/epoch nhỏ, không lỗi và không có loss bất thường. |
+| **C4 — Evaluation validation** | Kiểm tra query crop, preprocessing, ranking, positive/junk ground truth, AP/mAP và cấu hình evaluation. | mAP được tính đúng và có thể chạy lại trên cùng checkpoint/protocol. |
 
-  For detailed explanation of the options run:
-  ```
-  python3 -m cirtorch.examples.train -h
-  ```
+> Hoàn thành C0–C4 **không có nghĩa** là đã reproduce thành công B0. Sau đó nhóm còn phải training, đánh giá, phân tích sự khác biệt với paper và lưu kết quả thực nghiệm.
 
-  > **Note**: Data and networks used for training and testing are automatically downloaded when using the example script.
-  
-</details>
+## 4. Thành viên và trách nhiệm
 
-<details>
-  <summary><b>Testing</b></summary><br/>
+| Thành viên | Phụ trách chính | Deliverable giai đoạn đầu |
+| --- | --- | --- |
+| **Phương** | Training & integration | Kaggle environment preflight; C1–C4 integration; checkpoint/resume; cấu hình và run log B0 |
+| **Nguyên** | Model / methodology analysis | Đối chiếu paper–source về VGG16, GeM, loss, mining và scheduler; kiểm tra tính đúng đắn training/evaluation |
+| **Hoàng** | Data & evaluation | Dataset manifest cho SfM-120k, Oxford5k, Paris6k; xác minh image/metadata/ground truth, Kaggle mount paths |
 
-  Example testing script is located in ```YOUR_CIRTORCH_ROOT/cirtorch/examples/test.py```
-  ```
-  python3 -m cirtorch.examples.test [-h] (--network-path NETWORK | --network-offtheshelf NETWORK)
-                 [--datasets DATASETS] [--image-size N]
-                 [--multiscale MULTISCALE] [--whitening WHITENING] [--gpu-id N]
-  ```
+**Nguyên tắc:** chia *trách nhiệm triển khai*, **không chia kiến thức**. Cả ba đều cần hiểu pipeline và tham gia review. Phân công trên là kế hoạch đang đề xuất để team thống nhất.
 
-  For detailed explanation of the options run:
-  ```
-  python3 -m cirtorch.examples.test -h
-  ```
+## 5. Dữ liệu và môi trường
 
-  > **Note**: Data used for testing are automatically downloaded when using the example script.
+### Dữ liệu cần thiết
 
-</details>
+| Dataset | Mục đích | Lưu ý |
+| --- | --- | --- |
+| `retrieval-SfM-120k` | Training/validation, tuple supervision, SfM clusters | Cần đúng image IDs, cluster IDs, query/positive indices và quy trình mining |
+| `oxford5k` | Benchmark retrieval | Có query bounding boxes, relevance/junk labels |
+| `paris6k` | Benchmark retrieval | Có ground truth và quy trình AP/mAP tương ứng |
 
----
+Tên các Kaggle mount path **chưa được xác nhận**. Không commit dữ liệu, pretrained weights hoặc checkpoints lớn vào Git.
 
-###  Papers implementation
+### Môi trường hiện đại
 
-<details>
-  <summary><b>Training</b></summary><br/>
+Source gốc khai báo các dependency PyTorch rất cũ. Với Kaggle hiện đại, **không chạy** `pip install -r requirements.txt` hay `pip install .` một cách máy móc. Sử dụng cặp PyTorch/torchvision tương thích đã có trên Kaggle, kiểm tra phiên bản và đường dẫn `cirtorch` trước khi chạy.
 
-  For example, to train our best network described in the TPAMI 2018 paper run the following command. 
-  After each epoch, the fine-tuned network will be tested on the revisited Oxford and Paris benchmarks:
-  ```
-  python3 -m cirtorch.examples.train YOUR_EXPORT_DIR --gpu-id '0' --training-dataset 'retrieval-SfM-120k' 
-              --test-datasets 'roxford5k,rparis6k' --arch 'resnet101' --pool 'gem' --loss 'contrastive' 
-              --loss-margin 0.85 --optimizer 'adam' --lr 5e-7 --neg-num 5 --query-size=2000 
-              --pool-size=22000 --batch-size 5 --image-size 362
-  ```
+Từ thư mục gốc repo (trong môi trường có các packages cần thiết):
 
-  Networks can be evaluated with learned whitening after each epoch (whitening is estimated at the end of the epoch). To achieve this run the following command. 
-  Note that this will significantly slow down the entire training procedure, and you can evaluate networks with learned whitening later on using the example test script.
+```bash
+python -B - <<'PY'
+import sys, torch, torchvision, numpy as np, PIL
+from PIL import Image
+import cirtorch
+print('Python:', sys.version)
+print('PyTorch:', torch.__version__)
+print('torchvision:', torchvision.__version__)
+print('NumPy:', np.__version__)
+print('Pillow:', PIL.__version__)
+print('CUDA:', torch.version.cuda, 'available:', torch.cuda.is_available())
+print('cirtorch:', cirtorch.__file__)
+assert hasattr(Image.Resampling, 'LANCZOS')
+assert callable(np.isin)
+PY
+```
 
-  ```
-  python3 -m cirtorch.examples.train YOUR_EXPORT_DIR --gpu-id '0' --training-dataset 'retrieval-SfM-120k' 
-              --test-datasets 'roxford5k,rparis6k' --test-whiten 'retrieval-SfM-30k' 
-              --arch 'resnet101' --pool 'gem' --loss 'contrastive' --loss-margin 0.85 
-              --optimizer 'adam' --lr 5e-7 --neg-num 5 --query-size=2000 --pool-size=22000 
-              --batch-size 5 --image-size 362
-  ```
+Đây là **preflight**, chưa phải lệnh train. Trên Kaggle, dữ liệu thường được mount dưới `/kaggle/input/` (read-only) và output nằm dưới `/kaggle/working/`; đường dẫn cụ thể chỉ được chốt sau khi Hoàng xác nhận dataset layout.
 
-  > **Note**: Adjusted (lower) learning rate is set to achieve similar performance as with [MatConvNet](https://github.com/filipradenovic/cnnimageretrieval) and [PyTorch-0.3.0](https://github.com/filipradenovic/cnnimageretrieval-pytorch/tree/v1.0) implementation of the training.
+Xem thêm [`configs/B0/README.md`](configs/B0/README.md) và [`report/B0/`](report/B0/) để biết tình trạng cấu hình, kết quả và quyết định thực nghiệm.
 
-</details>
+## 6. Cách cộng tác trên GitHub
 
-<details>
-  <summary><b>Testing our pretrained networks</b></summary><br/>
+Repository dự kiến: **[FUAVX/IIR-Robust-Retrieval](https://github.com/FUAVX/IIR-Robust-Retrieval)**.
 
-  Pretrained networks trained using the same parameters as in our TPAMI 2018 paper are provided, with precomputed post-processing whitening step. 
-  To evaluate them run:
-  ```
-  python3 -m cirtorch.examples.test --gpu-id '0' --network-path 'retrievalSfM120k-resnet101-gem' 
-                  --datasets 'oxford5k,paris6k,roxford5k,rparis6k' 
-                  --whitening 'retrieval-SfM-120k'
-                  --multiscale '[1, 1/2**(1/2), 1/2]'
-  ```
-  or
-  ```
-  python3 -m cirtorch.examples.test --gpu-id '0' --network-path 'retrievalSfM120k-vgg16-gem' 
-                  --datasets 'oxford5k,paris6k,roxford5k,rparis6k' 
-                  --whitening 'retrieval-SfM-120k'
-                  --multiscale '[1, 1/2**(1/2), 1/2]'
-  ```
-  The table below shows the performance comparison of networks trained with this framework and the networks used in the paper which were trained with our [CNN Image Retrieval in MatConvNet](https://github.com/filipradenovic/cnnimageretrieval):
+| Branch | Vai trò |
+| --- | --- |
+| `main` | Source GeM tham chiếu được import; không sửa trực tiếp cho các thử nghiệm B0/B1 |
+| `B0` | Branch tích hợp baseline và tài liệu/compatibility patches |
+| `B0/kaggle-runtime` | Công việc Phương: Kaggle compatibility, checkpoint, training pipeline |
+| `B0/methodology-audit` | Công việc Nguyên: audit và tài liệu phương pháp |
+| `B0/data-preparation` | Công việc Hoàng: metadata, data preparation và evaluation |
 
-  | Model | Oxford | Paris | ROxf (M) | RPar (M) | ROxf (H) | RPar (H) |
-  |:------|:------:|:------:|:------:|:------:|:------:|:------:|
-  | VGG16-GeM (MatConvNet) | 87.9 | 87.7 | 61.9 | 69.3 | 33.7 | 44.3 |
-  | VGG16-GeM (PyTorch) | 87.3 | 87.8 | 60.9 | 69.3 | 32.9 | 44.2 |
-  | ResNet101-GeM (MatConvNet) | 87.8 | 92.7 | 64.7 | 77.2 | 38.5 | 56.3 |
-  | ResNet101-GeM (PyTorch) | 88.2 | 92.5 | 65.4 | 76.7 | 40.1 | 55.2 |
-  
-  > **Note** (June 2022): We updated download files for [Oxford 5k](https://www.robots.ox.ac.uk/~vgg/data/oxbuildings/) and [Paris 6k](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/) images to use images with blurred faces as suggested by the original dataset owners. Bear in mind, "experiments have shown that one can use the face-blurred version for benchmarking image retrieval with negligible loss of accuracy".
+Các branch theo người ở bảng trên là **tên đề xuất**, không khẳng định đã được tạo.
 
-</details>
+**Quy trình thực hiện một task:**
 
-<details>
-  <summary><b>Testing your trained networks</b></summary><br/>
+```bash
+# Cập nhật baseline sau khi remote B0 đã được push
+ git fetch origin
+ git switch B0
+ git pull --ff-only origin B0
 
-  To evaluate your trained network using single scale and without learning whitening:
-  ```
-  python3 -m cirtorch.examples.test --gpu-id '0' --network-path YOUR_NETWORK_PATH 
-                  --datasets 'oxford5k,paris6k,roxford5k,rparis6k'
-  ```
+# Ví dụ: tạo nhánh của riêng mình
+ git switch -c B0/my-task
 
-  To evaluate trained network using multi scale evaluation and with learned whitening as post-processing:
-  ```
-  python3 -m cirtorch.examples.test --gpu-id '0' --network-path YOUR_NETWORK_PATH 
-                  --datasets 'oxford5k,paris6k,roxford5k,rparis6k'
-                  --whitening 'retrieval-SfM-120k' 
-                  --multiscale '[1, 1/2**(1/2), 1/2]'
-  ```
+# Sau khi sửa và kiểm tra
+ git status
+ git add <files-related-to-your-task>
+ git commit -m "docs: describe my task"
+ git push -u origin B0/my-task
+```
 
-</details>
+Sau đó mở **pull request: `B0/my-task` → `B0`** để thành viên khác review trước khi merge. Tránh sửa cùng một file trên nhiều branch không phối hợp; không force-push `main`/`B0` và không commit dữ liệu, secrets hoặc checkpoint. Đề xuất đặt `main` làm default branch và bật branch protection khi repository đã sẵn sàng.
 
-<details>
-  <summary><b>Testing off-the-shelf networks</b></summary><br/>
+## 7. Lộ trình tiếp theo: từ B0 đến B1
 
-  Off-the-shelf networks can be evaluated as well, for example:
-  ```
-  python3 -m cirtorch.examples.test --gpu-id '0' --network-offtheshelf 'resnet101-gem'
-                  --datasets 'oxford5k,paris6k,roxford5k,rparis6k'
-                  --whitening 'retrieval-SfM-120k' 
-                  --multiscale '[1, 1/2**(1/2), 1/2]'
-  ```
-  
-</details>
+1. **Chốt dữ liệu và environment:** Hoàng lập manifest; Phương xác nhận Kaggle packages và GPU.
+2. **Hoàn thành C1–C4:** Mọi thay đổi cần có lý do, diff và smoke test; Nguyên kiểm tra phương pháp không bị thay đổi âm thầm.
+3. **Chốt B0 configuration:** ghi rõ architecture, pretrained weights, sampling, loss, optimizer, LR schedule, train/eval image sizes, số epoch và budget.
+4. **Huấn luyện và đánh giá B0:** lưu run config, seed, commit SHA, checkpoint, log, mAP, phần cứng và các khác biệt với paper.
+5. **Xây robustness evaluation:** giữ một giao thức clean và các stress tests theo blur/noise/illumination/compression/occlusion/scale; viewpoint thực cần dữ liệu ảnh đa góc phù hợp. Không diễn giải augmentation nhân tạo thành viewpoint 3D thật.
+6. **Phân tích failure modes, chọn B1:** đề xuất thay đổi có giả thuyết rõ ràng, so sánh công bằng với B0 và làm ablation.
+
+**Không có mAP hay mức cải thiện robustness nào được tuyên bố khi nhóm chưa hoàn thành thí nghiệm.**
+
+## 8. Source gốc, paper và ghi nhận tác giả
+
+Phần core `cirtorch/` được **import và kế thừa** từ repository gốc:
+
+- **Original source:** [filipradenovic/cnnimageretrieval-pytorch](https://github.com/filipradenovic/cnnimageretrieval-pytorch)
+- **Primary paper:** Radenović, Tolias, Chum, *Fine-tuning CNN Image Retrieval with No Human Annotation*, TPAMI 2018 — [arXiv:1711.02512](https://arxiv.org/abs/1711.02512)
+- **Related paper:** Radenović, Tolias, Chum, *CNN Image Retrieval Learns from BoW: Unsupervised Fine-Tuning with Hard Examples*, ECCV 2016 — [arXiv:1604.02426](https://arxiv.org/abs/1604.02426)
+- **Oxford/Paris benchmark reference:** Radenović et al., *Revisiting Oxford and Paris: Large-Scale Image Retrieval Benchmarking*, CVPR 2018 — [arXiv:1803.11285](https://arxiv.org/abs/1803.11285)
+
+Upstream source sử dụng giấy phép **MIT** (xem [`LICENSE`](LICENSE)); nhóm giữ lại copyright/license notice của upstream. Các thay đổi trong repository này được phân biệt với phần code gốc qua Git history và báo cáo thực nghiệm. Tài liệu gốc chi tiết về các lệnh train/test, optional whitening và các pretrained networks nằm tại link upstream ở trên.
 
 ---
 
-### Networks with projection (FC) layer after global pooling
-
-<details>
-  <summary><b>Training</b></summary><br/>
-  
-  An alternative architecture includes a learnable FC (projection) layer after the global pooling. It is important to initialize the parameters of this layer with the result of learned whitening. 
-  To train such a setup you should run the following commands (the performance will be evaluated every 5 epochs on `roxford5k` and `rparis6k`):
-  ```
-  python3 -m cirtorch.examples.train YOUR_EXPORT_DIR --gpu-id '0' --training-dataset 'retrieval-SfM-120k' 
-              --loss 'triplet' --loss-margin 0.5 --optimizer 'adam' --lr 1e-6 
-              --arch 'resnet50' --pool 'gem' --whitening 
-              --neg-num 5 --query-size=2000 --pool-size=20000 
-              --batch-size 5 --image-size 1024 --epochs 100 
-              --test-datasets 'roxford5k,rparis6k' --test-freq 5 
-  ```
-  or
-  ```
-  python3 -m cirtorch.examples.train YOUR_EXPORT_DIR --gpu-id '0' --training-dataset 'retrieval-SfM-120k' 
-              --loss 'triplet' --loss-margin 0.5 --optimizer 'adam' --lr 5e-7 
-              --arch 'resnet101' --pool 'gem' --whitening 
-              --neg-num 4 --query-size=2000 --pool-size=20000 
-              --batch-size 5 --image-size 1024 --epochs 100 
-              --test-datasets 'roxford5k,rparis6k' --test-freq 5 
-  ```
-  or
-  ```
-  python3 -m cirtorch.examples.train YOUR_EXPORT_DIR --gpu-id '0' --training-dataset 'retrieval-SfM-120k' 
-              --loss 'triplet' --loss-margin 0.5 --optimizer 'adam' --lr 5e-7 
-              --arch 'resnet152' --pool 'gem' --whitening 
-              --neg-num 3 --query-size=2000 --pool-size=20000 
-              --batch-size 5 --image-size 900 --epochs 100 
-              --test-datasets 'roxford5k,rparis6k' --test-freq 5 
-  ```
-  for `ResNet50`, `ResNet101`, or `ResNet152`, respectively. 
-  
-  Implementation details:
-  
-  - The FC layer is initialized with the result of whitening learned in a supervised manner using our training data and off-the-shelf features.
-  - The whitening for this FC layer is precomputed for popular architectures and pooling methods, see [imageretrievalnet.py#L50](https://github.com/filipradenovic/cnnimageretrieval-pytorch/blob/474b1fe61ff0e8a6f076ef58f7334cf33d7a3773/cirtorch/networks/imageretrievalnet.py#L50) for the full list of precomputed FC layers.
-  - When this FC layer is added in the fine-tuning procedure, the performance is highest if the images are with a similar high-resolution at train and test time. 
-  - When this FC layer is added, the distribution of pairwise distances changes significantly, so roughly twice larger margin should be used for contrastive loss. In this scenario, triplet loss performs slightly better. 
-  - Additional tunning of hyper-parameters can be performed to achieve higher performance or faster training. Note that, in this example, `--neg-num` and `--image-size` hyper-parameters are chosen such that the training can be performed on a single GPU with `16 GB` of memory. 
-    
-</details>
-
-<details>
-  <summary><b>Testing our pretrained networks with projection layer</b></summary><br/>
-
-  Pretrained networks with projection layer are provided, trained both on `retrieval-SfM-120k (rSfM120k)` and [`google-landmarks-2018 (gl18)`](https://www.kaggle.com/google/google-landmarks-dataset) train datasets.
-  For this architecture, there is no need to compute whitening as post-processing step (typically the performance boost is insignificant), although one can do that, as well.
-  For example, multi-scale evaluation of ResNet101 with GeM with projection layer trained on `google-landmarks-2018 (gl18)` dataset using high-resolution images and a triplet loss, is performed with the following script:
-  ```
-  python3 -m cirtorch.examples.test_e2e --gpu-id '0' --network 'gl18-tl-resnet101-gem-w' 
-              --datasets 'roxford5k,rparis6k' --multiscale '[1, 2**(1/2), 1/2**(1/2)]'
-  ```
-
-  Multi-scale performance of all available pre-trained networks is given in the following table:
-
-  | Model | ROxf (M) | RPar (M) | ROxf (H) | RPar (H) |
-  |:------|:------:|:------:|:------:|:------:|
-  | [rSfM120k-tl-resnet50-gem-w](http://cmp.felk.cvut.cz/cnnimageretrieval/data/networks/retrieval-SfM-120k/rSfM120k-tl-resnet50-gem-w-97bf910.pth)  | 64.7 | 76.3 | 39.0 | 54.9 |
-  | [rSfM120k-tl-resnet101-gem-w](http://cmp.felk.cvut.cz/cnnimageretrieval/data/networks/retrieval-SfM-120k/rSfM120k-tl-resnet101-gem-w-a155e54.pth) | 67.8 | 77.6 | 41.7 | 56.3 |
-  | [rSfM120k-tl-resnet152-gem-w](http://cmp.felk.cvut.cz/cnnimageretrieval/data/networks/retrieval-SfM-120k/rSfM120k-tl-resnet152-gem-w-f39cada.pth) | 68.8 | 78.0 | 41.3 | 57.2 |
-  | [gl18-tl-resnet50-gem-w](http://cmp.felk.cvut.cz/cnnimageretrieval/data/networks/gl18/gl18-tl-resnet50-gem-w-83fdc30.pth)  | 63.6 | 78.0 | 40.9 | 57.5 |
-  | [gl18-tl-resnet101-gem-w](http://cmp.felk.cvut.cz/cnnimageretrieval/data/networks/gl18/gl18-tl-resnet101-gem-w-a4d43db.pth) | 67.3 | 80.6 | 44.3 | 61.5 |
-  | [gl18-tl-resnet152-gem-w](http://cmp.felk.cvut.cz/cnnimageretrieval/data/networks/gl18/gl18-tl-resnet152-gem-w-21278d5.pth) | 68.7 | 79.7 | 44.2 | 60.3 |
-  
-  > **Note** (June 2022): We updated download files for [Oxford 5k](https://www.robots.ox.ac.uk/~vgg/data/oxbuildings/) and [Paris 6k](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/) images to use images with blurred faces as suggested by the original dataset owners. Bear in mind, "experiments have shown that one can use the face-blurred version for benchmarking image retrieval with negligible loss of accuracy".
-  
-</details>
-
----
-
-### Related publications
-
-<details>
-  <summary><b>Training (fine-tuning) convolutional neural networks</b></summary><br/>
-
-  ```
-  @article{RTC18,
-   title = {Fine-tuning {CNN} Image Retrieval with No Human Annotation},
-   author = {Radenovi{\'c}, F. and Tolias, G. and Chum, O.}
-   journal = {TPAMI},
-   year = {2018}
-  }
-  ```
-  ```
-  @inproceedings{RTC16,
-   title = {{CNN} Image Retrieval Learns from {BoW}: Unsupervised Fine-Tuning with Hard Examples},
-   author = {Radenovi{\'c}, F. and Tolias, G. and Chum, O.},
-   booktitle = {ECCV},
-   year = {2016}
-  }
-  ```
-
-</details>
-
-<details>
-  <summary><b>Revisited benchmarks for Oxford and Paris ('roxford5k' and 'rparis6k')</b></summary><br/>
-
-  ```
-  @inproceedings{RITAC18,
-   author = {Radenovi{\'c}, F. and Iscen, A. and Tolias, G. and Avrithis, Y. and Chum, O.},
-   title = {Revisiting Oxford and Paris: Large-Scale Image Retrieval Benchmarking},
-   booktitle = {CVPR},
-   year = {2018}
-  }
-  ```
-  
-</details>
-
----
-
-### Versions
-
-<details>
-  <summary><b>master (devolopment)</b></summary>
-  
-  #### [master](https://github.com/filipradenovic/cnnimageretrieval-pytorch/tree/master) (development)
-  
-  - Merged pull request [#78](https://github.com/filipradenovic/cnnimageretrieval-pytorch/pull/78) that fixes broken download links
-  - Merged pull request [#56](https://github.com/filipradenovic/cnnimageretrieval-pytorch/pull/56) that adds setup file
-</details>
-  
-<details>
-  <summary><b>v1.2 (07 Dec 2020)</b></summary>
-  
-  #### [v1.2](https://github.com/filipradenovic/cnnimageretrieval-pytorch/tree/v1.2) (07 Dec 2020)
-  
-  - Added example script for descriptor extraction with different publicly available models
-  - Added the [MIT license](https://github.com/filipradenovic/cnnimageretrieval-pytorch/blob/master/LICENSE)
-  - Added mutli-scale performance on `roxford5k` and `rparis6k` for new pre-trained networks with projection, trained on both `retrieval-SfM-120` and `google-landmarks-2018` train datasets
-  - Added a new example test script without post-processing, for networks that include projection layer
-  - Added few things in train example: GeMmp pooling, triplet loss, small trick to handle really large batches
-  - Added more pre-computed whitening options in imageretrievalnet
-  - Added triplet loss 
-  - Added GeM pooling with multiple parameters (one p per channel/dimensionality)
-  - Added script to enable download on Windows 10 as explained in Issue [#39](https://github.com/filipradenovic/cnnimageretrieval-pytorch/issues/39), courtesy of [SongZRui](https://github.com/SongZRui)
-  - Fixed cropping of down-sampled query image
-</details>
-
-<details>
-  <summary><b>v1.1 (12 Jun 2019)</b></summary>
-  
-  #### [v1.1](https://github.com/filipradenovic/cnnimageretrieval-pytorch/tree/v1.1) (12 Jun 2019)
-  
-  - Migrated code to PyTorch 1.0.0, removed Variable, added torch.no_grad for more speed and less memory at evaluation
-  - Added rigid grid regional pooling that can be combined with any global pooling method (R-MAC, R-SPoC, R-GeM)
-  - Added PowerLaw normalization layer
-  - Added multi-scale testing with any given set of scales, in example test script
-  - Fix related to precision errors of covariance matrix estimation during whitening learning
-  - Fixed minor bugs
-</details>
-
-<details>
-  <summary><b>v1.0 (09 Jul 2018)</b></summary>
-  
-  #### [v1.0](https://github.com/filipradenovic/cnnimageretrieval-pytorch/tree/v1.0) (09 Jul 2018)
-  
-  - First public version
-  - Compatible with PyTorch 0.3.0
-</details>
+**Last updated:** 2026-10-08 · **Project phase:** B0 preparation · **Organization:** FUAVX

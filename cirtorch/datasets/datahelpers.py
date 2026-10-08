@@ -40,7 +40,7 @@ def default_loader(path):
         return pil_loader(path)
 
 def imresize(img, imsize):
-    img.thumbnail((imsize, imsize), Image.ANTIALIAS)
+    img.thumbnail((imsize, imsize), Image.Resampling.LANCZOS)
     return img
 
 def flip(x, dim):

@@ -77,8 +77,8 @@ def compute_map(ranks, gnd, kappas=[]):
             qgndj = np.empty(0)
 
         # sorted positions of positive and junk images (0 based)
-        pos  = np.arange(ranks.shape[0])[np.in1d(ranks[:,i], qgnd)]
-        junk = np.arange(ranks.shape[0])[np.in1d(ranks[:,i], qgndj)]
+        pos  = np.arange(ranks.shape[0])[np.isin(ranks[:,i], qgnd)]
+        junk = np.arange(ranks.shape[0])[np.isin(ranks[:,i], qgndj)]
 
         k = 0;
         ij = 0;

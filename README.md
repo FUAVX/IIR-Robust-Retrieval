@@ -45,7 +45,6 @@ For implementation details and reproducibility notes, see the documentation in [
 This project uses and adapts the open-source implementation associated with:
 
 - Radenović, F., Tolias, G., & Chum, O. **Fine-tuning CNN Image Retrieval with No Human Annotation.** *IEEE Transactions on Pattern Analysis and Machine Intelligence*, 2018. [Paper](https://arxiv.org/abs/1711.02512)
-- Radenović, F., Tolias, G., & Chum, O. **CNN Image Retrieval Learns from BoW: Unsupervised Fine-Tuning with Hard Examples.** *ECCV*, 2016. [Paper](https://arxiv.org/abs/1604.02426)
 
 **Original source:** https://github.com/filipradenovic/cnnimageretrieval-pytorch
 

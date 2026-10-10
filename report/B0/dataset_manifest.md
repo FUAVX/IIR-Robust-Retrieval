@@ -159,9 +159,9 @@ For C1, Phuong should introduce:
 
 A dedicated verification script is located at [`scripts/verify_datasets.py`](../../scripts/verify_datasets.py).
 
-### Verification Checklist:
-- [ ] **SfM-120k Metadata:** `retrieval-SfM-120k.pkl` loadable with pickle; keys `'train'` and `'val'` present.
-- [ ] **SfM-120k Images:** Image paths resolved by `cid2filename` exist and sample images can be read by PIL without decompression errors.
-- [ ] **Oxford5k:** 5,063 JPEG images present in `jpg/`; 55 queries in `gnd_oxford5k.pkl`; all `bbx` have positive area; positive images exist in `imlist`.
-- [ ] **Paris6k:** 6,412 JPEG images present in `jpg/`; 55 queries in `gnd_paris6k.pkl`; all `bbx` have positive area; positive images exist in `imlist`.
-- [ ] **Pretrained Weights:** `imagenet-caffe-vgg16-features-d369c8e.pth` present and non-empty.
+### Verification Checklist (verified 2026-10-10, exp01 — all PASS, see `experiments/B0/exp01-hoang-full-data.md`):
+- [x] **SfM-120k Metadata:** `retrieval-SfM-120k.pkl` loadable with pickle; keys `'train'` and `'val'` present.
+- [x] **SfM-120k Images:** Image paths resolved by `cid2filename` exist and sample images can be read by PIL without decompression errors.
+- [x] **Oxford5k:** 5,063 JPEG images present in `jpg/`; 55 queries in `gnd_oxford5k.pkl`; all `bbx` have positive area; positive images exist in `imlist`.
+- [x] **Paris6k:** 6,412 JPEG images present in `jpg/`; 55 queries in `gnd_paris6k.pkl`; all `bbx` have positive area; positive images exist in `imlist`.
+- [x] **Pretrained Weights:** `imagenet-caffe-vgg16-features-d369c8e.pth` present and non-empty.

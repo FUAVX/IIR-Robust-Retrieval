@@ -1,0 +1,7 @@
+/downloads/
+/publish-files/
+/__pycache__/
+/handoff-public-check/
+/*.log
+/live-log-snapshot.*
+/kernel-retrieval-diagnostic.json

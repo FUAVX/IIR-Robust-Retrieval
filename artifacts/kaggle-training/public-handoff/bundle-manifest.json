@@ -1,0 +1,62 @@
+{
+  "01_prepare_sfm100_cpu.ipynb": {
+    "bytes": 77100,
+    "sha256": "e40d3863ceeff1c7a83dddcec269d79d8c4385790834589472551675b144316d"
+  },
+  "02_train_fresh.ipynb": {
+    "bytes": 135263,
+    "sha256": "ecfd8e94d9eca1248a933487c913b36c50f78237df1f053750f0ed3d119acf66"
+  },
+  "02_train_sfm100_pipeline.ipynb": {
+    "bytes": 137781,
+    "sha256": "da56c5e46ec9db5866a463ee29e1a24e89b024df9a0692fd528852f58b10786f"
+  },
+  "HANDOFF.md": {
+    "bytes": 10815,
+    "sha256": "2b9e7de587763c1c905c2a50fa7279862ee1bbb2b620d68694925c22c4ef04e2"
+  },
+  "LICENSE": {
+    "bytes": 1077,
+    "sha256": "c31c66c3945689e8876c9bbdb360228d13e4a15d84a77452dbe2db0ab67558e7"
+  },
+  "build_pipeline_notebooks.py": {
+    "bytes": 13963,
+    "sha256": "2e8dc442682fab294122f774b53466f3109043c6b4e72d16cdee318118242904"
+  },
+  "kernel-metadata.template.json": {
+    "bytes": 504,
+    "sha256": "5b8a0fbb05d4c8087215b72e3eca0d43ab559321729c69399a975c0113fedcb9"
+  },
+  "notebook-compatibility.json": {
+    "bytes": 3360,
+    "sha256": "1bda1f89c7733bb4850506ad425d56fee62d64cda9e37089ac39f57a66e48103"
+  },
+  "notebookc025fac755_optimized.ipynb": {
+    "bytes": 140638,
+    "sha256": "55c84b8e753f63e4104e3b42bef52c7b797470ef0bcb080beb7e30ac4eab3276"
+  },
+  "pipeline_runtime.py": {
+    "bytes": 10383,
+    "sha256": "7d3f111599eca592d01d4ba3b05f10ebc3b1bdede4240f32570756906ebe3a09"
+  },
+  "portable-dependencies.json": {
+    "bytes": 636,
+    "sha256": "23e1c9b88afef5a0aa7810cba7f436233cb832da8ad92be62f23b1c820e6d391"
+  },
+  "public-verification.json": {
+    "bytes": 294,
+    "sha256": "9fb54c65b14154834ad89c607dc22bf5e067e3536d300975acf127a32bd326b5"
+  },
+  "validation-report.json": {
+    "bytes": 2604,
+    "sha256": "588935aa04f35bc7d53892e0bc47a64192c3cfe69df7f6b4bb3ca05b34e21d10"
+  },
+  "verify_bundle.py": {
+    "bytes": 545,
+    "sha256": "452b4ed8f55171b92d80bc6b7be1c319f09826ef41835957f32e63dcdbb0fe8d"
+  },
+  "verify_pipeline.py": {
+    "bytes": 12532,
+    "sha256": "b2b7c1020b5ab5b0b83ed7d0345e8c8ce8dcd1fb25eae24fa63cd567f6d9fb50"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "retrieved_date": "2026-11-03",
+  "official_author_center": "https://conferences.ieeeauthorcenter.ieee.org/write-your-paper/authoring-tools-and-templates/",
+  "official_template_page": "https://www.ieee.org/conferences/publishing/templates.html",
+  "download_url": "https://www.icpea.org/files/conference-latex-template_10-17-19.zip",
+  "download_note": "Official IEEE direct ZIP URLs returned empty responses in this environment. Downloaded the IEEE conference template distribution mirrored by the ICPEA conference. Original ZIP and original source preserved.",
+  "zip_sha256": "f247cb6665907793d1949110f24b8a1cb262073c09b5f0026aa8d1d658cb6c1d",
+  "class_version": "IEEEtran 2015/08/26 V1.8b",
+  "class_unmodified": true,
+  "class_sha256": "c972aca108fda004c3514d63658e02816da2e54d9a1451e870b9bd970e003f55",
+  "format": "conference; two columns; default US Letter; default IEEEtran margins and fonts; T1 encoding to preserve Times under XeTeX"
+}

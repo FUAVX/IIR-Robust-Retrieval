@@ -1,0 +1,28 @@
+{
+  "opencv": "4.14.0",
+  "pillow": "13.0.0",
+  "lossless_native_sift": true,
+  "detector": {
+    "k": 50,
+    "eta": 0.5,
+    "features": 2000,
+    "ratio": 0.75,
+    "threshold": 3.0,
+    "confidence": 0.995,
+    "max_iterations": 2000,
+    "minimum_inliers": 8
+  },
+  "storage_bytes": 2557046784,
+  "offline": [
+    {
+      "dataset": "oxford5k",
+      "feature_build_seconds": 2464.22624904,
+      "images": 6768
+    },
+    {
+      "dataset": "paris6k",
+      "feature_build_seconds": 3049.121685106,
+      "images": 8097
+    }
+  ]
+}

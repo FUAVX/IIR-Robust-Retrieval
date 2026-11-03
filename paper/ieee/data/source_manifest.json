@@ -1,0 +1,61 @@
+{
+  "b0_checkpoint_hash_verified": true,
+  "b0_history_hash_verified": true,
+  "b0_evaluation_hash_verified": true,
+  "shared_sfm_metadata": true,
+  "shared_ground_truth": true,
+  "b0_best_epoch": 12,
+  "post_main_cells": 68200,
+  "post_rows": 73700,
+  "direct_latency_samples": 1120,
+  "clean_rows": 12,
+  "post_summary_rows": 40,
+  "training_rows": 214,
+  "inputs": [
+    {
+      "id": "B0",
+      "archive": "B0_VGG16_GeM_baseline_reproduction_evaluation_artifacts.zip",
+      "archive_sha256": "d58bcaa735f2dde7eac132e38c8726882166ea00589f1fa45581469ee8fa2f73",
+      "best_epoch": 12,
+      "best_checkpoint_sha256": "8a56bad2e1d585c68de42ff841f061e5469f76792750d8b4993e500294f19f27",
+      "metadata_sha256": "caf44c8c57fe1615eef9661f49f529e70d8bab097b18d085cea2b90ca4490309",
+      "source_commit": "747166e627e514842f5c5be531f4e0f73612cc90",
+      "training_precision": "FP32",
+      "completed_epochs": 14,
+      "planned_epochs": 100,
+      "has_corruption": false,
+      "has_posttraining": false
+    },
+    {
+      "id": "run1",
+      "archive": "run1_vgg16_gem_augmentation_v2-20261030T082558Z-1-002.zip",
+      "archive_sha256": "76c52b0d73eaa2e87df97f3b3fadfe9ad7726a93031c9eb75a81ad8abac760a8",
+      "latest_checkpoint_sha256": "f47ab857d4c98b134bcb55c2b83c78eb701e87a6dbf7a7be65b1ca306c4184b0",
+      "best_epoch": 27,
+      "metadata_sha256": "caf44c8c57fe1615eef9661f49f529e70d8bab097b18d085cea2b90ca4490309",
+      "runtime_sha256": "9724c31d9f48d5be27192aa5761006e28b3977caa71c76b69ec899d3ae821ccc",
+      "training_precision": "BF16",
+      "completed_epochs": 100,
+      "planned_epochs": 100,
+      "has_corruption": true,
+      "has_posttraining": true
+    },
+    {
+      "id": "run2",
+      "archive": "run2_attention_bf16_100ep_v1-20261030T082559Z-1-001.zip",
+      "archive_sha256": "1b89fb9dcdff9caa9b589e069e497602d55fe39f1d435b0ec911791bd74321fb",
+      "latest_checkpoint_sha256": "50072cecfcda32f800d65057b6684ab02c64d8b736334a2b5ac7b87799da785f",
+      "best_epoch": 28,
+      "metadata_sha256": "caf44c8c57fe1615eef9661f49f529e70d8bab097b18d085cea2b90ca4490309",
+      "runtime_sha256": "9724c31d9f48d5be27192aa5761006e28b3977caa71c76b69ec899d3ae821ccc",
+      "training_precision": "BF16",
+      "completed_epochs": 100,
+      "planned_epochs": 100,
+      "has_corruption": true,
+      "has_posttraining": true
+    }
+  ],
+  "generated_without_inference": true,
+  "sensitivity_groups": 100,
+  "sensitivity_AP_rows": 5500
+}

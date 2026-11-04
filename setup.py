@@ -12,12 +12,15 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     version="0.0.1",
-    url="https://github.com/filipradenovic/cnnimageretrieval-pytorch",
-    download_url="https://github.com/filipradenovic/cnnimageretrieval-pytorch",
+    url="https://github.com/FUAVX/IIR-Robust-Retrieval",
     packages=find_packages(),
+    license="MIT",
     keywords=["machine learning", "cnn", "computer vision"],
     install_requires=[
-        "torch>=1.0.0,<1.4.0",
+        "numpy",
+        "Pillow",
+        "scipy",
+        "torch",
         "torchvision",
     ],
     classifiers=[
@@ -26,7 +29,6 @@ setup(
         "Intended Audience :: Developers",
         "Intended Audience :: Science/Research",
         "Operating System :: POSIX",
-        "Programming Language :: Python :: 3.7",
-        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
     ],
 )

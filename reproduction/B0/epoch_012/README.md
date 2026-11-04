@@ -10,6 +10,9 @@ This folder preserves the team's historical analysis of a VGG16-GeM run trained 
 
 The original inputs remain outside Git. The local ZIP `B0_VGG16_GeM_baseline_reproduction_evaluation_artifacts.zip` contains the run history, evaluation JSON, dataset provenance and `best.pt`; its SHA-256 is `d58bcaa735f2dde7eac132e38c8726882166ea00589f1fa45581469ee8fa2f73`. The `best.pt` inside it has SHA-256 `8a56bad2e1d585c68de42ff841f061e5469f76792750d8b4993e500294f19f27`, matching [`results/analysis_manifest.json`](results/analysis_manifest.json). The source snapshot used for that run was commit `747166e627e514842f5c5be531f4e0f73612cc90`.
 
+The shareable download URL for this ZIP belongs in the [external artifact
+index](../../../artifacts/README.md) under `PENDING_URL_B0_ZIP`.
+
 The notebook's saved outputs and exported inventory retain their original
 `reproduce/` paths as historical evidence. Its current input cell accepts the
 extracted ZIP in `outputs/B0_VGG16_GeM_Evaluation/` or an explicit

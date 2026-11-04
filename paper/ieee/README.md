@@ -13,6 +13,10 @@ Bản paper tiếng Anh dựa trên kết quả đã có, không training hay ch
 - `template/`: ZIP template tải về, bản gốc và thông tin nguồn/SHA256.
 - `evidence_manifest.json`, `validation.json`: nguồn số liệu và kết quả kiểm tra.
 
+Đường dẫn chia sẻ cho ZIP nguồn B0/R1/R2 cần điền tại
+[`artifacts/README.md`](../../artifacts/README.md); các hash gốc nằm trong
+`data/source_manifest.json`.
+
 `evidence_manifest.json` giữ đường dẫn artefact gốc để truy xuất provenance và
 trường `snapshot` trỏ tới bản CSV/JSON tương ứng trong `data/`. Khi clone repo,
 không cần các thư mục `artifacts/results-consolidated` hoặc

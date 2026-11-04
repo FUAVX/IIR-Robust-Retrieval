@@ -1,2 +1,7 @@
-torch==1.0.0
-torchvision==0.2.1
+# First install a compatible torch/torchvision pair for your CPU or CUDA
+# platform using https://pytorch.org/get-started/locally/ .
+# Then install this project and the notebook-analysis dependencies below.
+-e .
+pandas
+matplotlib
+ipython

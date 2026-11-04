@@ -1,5 +1,11 @@
 # SfM100: tách data preparation và tối ưu training pipeline
 
+Lưu ý khi đọc gói `public-handoff/`: đây là snapshot đã xuất bản ngày
+29/10/2026. Câu nhắc về `requirements.txt` cũ trong HANDOFF.md nói về phiên
+bản repo tại thời điểm bàn giao; [requirements hiện tại](../../docs/installation.md)
+đã bỏ ghim PyTorch 1.0. Trên Kaggle vẫn dùng môi trường và preflight của notebook,
+không cài lại dependencies local vào session training.
+
 Dùng hai notebook **01 và 02** cho luồng mới. Notebook `notebookc025fac755_optimized.ipynb` là bản v1 chỉ cải thiện logging/vận hành, giữ lại để đối chiếu. File gốc trong Downloads không bị sửa.
 
 Gói bàn giao cho Codex trên máy/tài khoản khác: [IIR B0 Training Handoff](https://www.kaggle.com/datasets/ndhoang2310/iir-b0-training-handoff). Đọc `public-handoff/HANDOFF.md`; dùng `02_train_fresh.ipynb` trong gói để chạy mới không cần checkpoint lịch sử. Ba input public đã được xác minh; checkpoint `linh2709/seg-ep7` hiện không truy cập được qua API và không nằm trong gói. Receipt xuất bản/kiểm tra gói nằm ở `kaggle-api/handoff-public-verification.json` sau khi xác minh hoàn tất.

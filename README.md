@@ -45,6 +45,8 @@ The repository builds upon the original [CNN Image Retrieval in PyTorch](https:/
 
 For implementation details and reproducibility notes:
 
+- [`docs/installation.md`](docs/installation.md): install a platform-compatible PyTorch pair and the repository dependencies.
+- [`artifacts/README.md`](artifacts/README.md): external datasets, weights, and run archives; fill in the pending access URLs here before sharing a fully reproducible submission.
 - [`configs/B0/`](configs/B0/) and [`report/B0/`](report/B0/): baseline specification, data audit, and methodology.
 - [`docs/B0/`](docs/B0/) and [`docs/project/`](docs/project/): B0 plan, evaluation presentation, and project brief.
 - [`docs/B1/`](docs/B1/): B1 robustness and retrieval handoff. This is a dated experiment specification, not a record of completed results.

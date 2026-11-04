@@ -1,0 +1,27 @@
+{
+  "dataset": "ndhoang2310/iir-b0-training-handoff",
+  "url": "https://www.kaggle.com/datasets/ndhoang2310/iir-b0-training-handoff",
+  "ready": true,
+  "public": true,
+  "anonymous_metadata": true,
+  "version": 1,
+  "files": [
+    "01_prepare_sfm100_cpu.ipynb",
+    "02_train_fresh.ipynb",
+    "02_train_sfm100_pipeline.ipynb",
+    "HANDOFF.md",
+    "LICENSE",
+    "build_pipeline_notebooks.py",
+    "bundle-manifest.json",
+    "kernel-metadata.template.json",
+    "notebook-compatibility.json",
+    "notebookc025fac755_optimized.ipynb",
+    "pipeline_runtime.py",
+    "portable-dependencies.json",
+    "public-verification.json",
+    "validation-report.json",
+    "verify_bundle.py",
+    "verify_pipeline.py"
+  ],
+  "all_published_file_hashes_match": true
+}

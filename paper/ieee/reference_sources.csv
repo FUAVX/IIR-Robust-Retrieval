@@ -1,0 +1,13 @@
+bibtex_key,primary_source_url,verification_note
+vgg,https://arxiv.org/abs/1409.1556,"Author paper; title, authors, architecture background"
+gem,https://ieeexplore.ieee.org/document/8382272/,IEEE metadata; DOI; author manuscript at https://arxiv.org/abs/1711.02512
+cbam,https://arxiv.org/abs/1807.06521,Author paper; distinguishes full CBAM from our spatial-only scaled gate
+totalrecall,https://www.robots.ox.ac.uk/~vgg/publications/2007/Chum07b/chum07b.pdf,Author paper; verified feedback background
+rootsift,https://ora.ox.ac.uk/objects/uuid:423bf16b-4ac6-4e41-bf34-bb7c20ba1b99,"Oxford archive; title, authors, pages, RootSIFT"
+ransac,https://www.sri.com/publication/artificial-intelligence-pubs/random-sample-consensus-a-paradigm-for-model-fitting-with-applications-to-image-analysis-and-automated-cartography-2/,Original institution record; authors/year/volume/pages
+rrf,https://cormack.uwaterloo.ca/cormack/cormacksigir09-rrf.pdf,"Author-hosted paper; exact RRF formula, authors/title"
+diffusion,https://arxiv.org/abs/1611.05113,Author paper; regional diffusion distinction
+oxford,https://robots.ox.ac.uk/~vgg/publications/2007/Philbin07/,Author publication record and bibliography
+paris,https://robots.ox.ac.uk/~vgg/publications/2008/Philbin08/,Author publication record and bibliography
+revisited,https://arxiv.org/abs/1803.11285,Author paper; distinction from legacy protocols
+adam,https://arxiv.org/abs/1412.6980,Author paper; optimizer citation

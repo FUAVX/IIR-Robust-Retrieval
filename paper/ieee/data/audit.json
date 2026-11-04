@@ -1,0 +1,397 @@
+{
+  "protocol": "post100_v1",
+  "precision": "FP32",
+  "exploratory": true,
+  "environment": {
+    "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+    "numpy": "2.1.3",
+    "torch": "2.11.0+cpu",
+    "opencv": "4.14.0",
+    "pillow": "13.0.0",
+    "scipy": "1.16.3",
+    "platform": "Linux-6.18.55+-x86_64-with-glibc2.39"
+  },
+  "models": [
+    {
+      "id": "run1_aug_epoch100",
+      "epoch": 100,
+      "selection": "final_epoch_100",
+      "checkpoint_sha256": "f47ab857d4c98b134bcb55c2b83c78eb701e87a6dbf7a7be65b1ca306c4184b0",
+      "archive": "run1_vgg16_gem_augmentation_v2-20261030T082558Z-1-002.zip",
+      "archive_sha256": "76c52b0d73eaa2e87df97f3b3fadfe9ad7726a93031c9eb75a81ad8abac760a8",
+      "weights_file": "run1_aug_epoch100.pth",
+      "weights_sha256": "951e1dc826b340a3b9ed933cf935ceacee46670b597b5ccafc0681a9a93e1fdf",
+      "config": {
+        "attention": false,
+        "attention_lr": 0.0001,
+        "seed": 42,
+        "image_size": 1024,
+        "query_size": 2000,
+        "pool_size": 20000,
+        "batch_size": 5,
+        "lr": 1e-06,
+        "weight_decay": 1e-06,
+        "margin": 0.7,
+        "workers": 4,
+        "microbatch": 8,
+        "max_batch_pixels": 8388608,
+        "extraction_window": 8,
+        "prefetch_factor": 2,
+        "cache_mode": "off",
+        "cache_gib": 0.0,
+        "tuple_fusion": 1,
+        "augmentation_version": "mild_photo_blur_jpeg_erase_v1",
+        "precision": "BF16"
+      },
+      "training_identity": {
+        "version": "colab_b0_robust_v1",
+        "config": {
+          "attention": false,
+          "attention_lr": 0.0001,
+          "seed": 42,
+          "image_size": 1024,
+          "query_size": 2000,
+          "pool_size": 20000,
+          "batch_size": 5,
+          "lr": 1e-06,
+          "weight_decay": 1e-06,
+          "margin": 0.7,
+          "workers": 4,
+          "microbatch": 8,
+          "max_batch_pixels": 8388608,
+          "extraction_window": 8,
+          "prefetch_factor": 2,
+          "cache_mode": "off",
+          "cache_gib": 0.0,
+          "tuple_fusion": 1,
+          "augmentation_version": "mild_photo_blur_jpeg_erase_v1",
+          "precision": "BF16"
+        },
+        "data": {
+          "metadata_sha256": "caf44c8c57fe1615eef9661f49f529e70d8bab097b18d085cea2b90ca4490309",
+          "manifest_sha256": "d38e302a38d32fb58a5b75370c327b9c5024bbe1422b09ba3dc9657d799f3f04"
+        },
+        "runtime_sha256": "9724c31d9f48d5be27192aa5761006e28b3977caa71c76b69ec899d3ae821ccc",
+        "weights_sha256": "d369c8e593250e421eda192512263dccd35edb5c4b57e97312651bac10a51b7d",
+        "run_id": "run1_vgg16_gem_augmentation_v2",
+        "evaluator_sha256": "ced1d110dd19f3f887e75f18ac9120aaff8900f5d6b52dc8c45c66c823141fd0"
+      }
+    },
+    {
+      "id": "run2_aug_attention_epoch100",
+      "epoch": 100,
+      "selection": "final_epoch_100",
+      "checkpoint_sha256": "50072cecfcda32f800d65057b6684ab02c64d8b736334a2b5ac7b87799da785f",
+      "archive": "run2_attention_bf16_100ep_v1-20261030T082559Z-1-001.zip",
+      "archive_sha256": "1b89fb9dcdff9caa9b589e069e497602d55fe39f1d435b0ec911791bd74321fb",
+      "weights_file": "run2_aug_attention_epoch100.pth",
+      "weights_sha256": "424a542916df77f72896d0f24d82016f5cf1eb91fe4fef1e2b2e3058daf83ff1",
+      "config": {
+        "attention": true,
+        "attention_lr": 0.0001,
+        "seed": 42,
+        "image_size": 1024,
+        "query_size": 2000,
+        "pool_size": 20000,
+        "batch_size": 5,
+        "lr": 1e-06,
+        "weight_decay": 1e-06,
+        "margin": 0.7,
+        "workers": 4,
+        "microbatch": 8,
+        "max_batch_pixels": 8388608,
+        "extraction_window": 8,
+        "prefetch_factor": 2,
+        "cache_mode": "off",
+        "cache_gib": 0.0,
+        "tuple_fusion": 1,
+        "augmentation_version": "mild_photo_blur_jpeg_erase_v1",
+        "precision": "BF16"
+      },
+      "training_identity": {
+        "version": "colab_b0_robust_v1",
+        "config": {
+          "attention": true,
+          "attention_lr": 0.0001,
+          "seed": 42,
+          "image_size": 1024,
+          "query_size": 2000,
+          "pool_size": 20000,
+          "batch_size": 5,
+          "lr": 1e-06,
+          "weight_decay": 1e-06,
+          "margin": 0.7,
+          "workers": 4,
+          "microbatch": 8,
+          "max_batch_pixels": 8388608,
+          "extraction_window": 8,
+          "prefetch_factor": 2,
+          "cache_mode": "off",
+          "cache_gib": 0.0,
+          "tuple_fusion": 1,
+          "augmentation_version": "mild_photo_blur_jpeg_erase_v1",
+          "precision": "BF16"
+        },
+        "data": {
+          "metadata_sha256": "caf44c8c57fe1615eef9661f49f529e70d8bab097b18d085cea2b90ca4490309",
+          "manifest_sha256": "d38e302a38d32fb58a5b75370c327b9c5024bbe1422b09ba3dc9657d799f3f04"
+        },
+        "runtime_sha256": "9724c31d9f48d5be27192aa5761006e28b3977caa71c76b69ec899d3ae821ccc",
+        "weights_sha256": "d369c8e593250e421eda192512263dccd35edb5c4b57e97312651bac10a51b7d",
+        "run_id": "run2_attention_bf16_100ep_v1",
+        "evaluator_sha256": "ced1d110dd19f3f887e75f18ac9120aaff8900f5d6b52dc8c45c66c823141fd0"
+      }
+    }
+  ],
+  "corruption_checks": [
+    {
+      "name": "clean",
+      "family": "clean",
+      "severity": 0,
+      "realization": 0,
+      "value": null,
+      "pixel_hash": "2e382681dc32e3913cb217f39cfd106d87ea145c2d943f407f1f1176d75d11a1"
+    },
+    {
+      "name": "darkening_s1_r0",
+      "family": "darkening",
+      "severity": 1,
+      "realization": 0,
+      "value": 0.8,
+      "pixel_hash": "aa36d60e0760dcc4290c70f07f8d17731d75fda5930530d3ed1eb591efbc3597"
+    },
+    {
+      "name": "darkening_s2_r0",
+      "family": "darkening",
+      "severity": 2,
+      "realization": 0,
+      "value": 0.6,
+      "pixel_hash": "c32eda8067d356fa0f17d1cb39f994449ddf315aa0e12b7f180b855620da0335"
+    },
+    {
+      "name": "darkening_s3_r0",
+      "family": "darkening",
+      "severity": 3,
+      "realization": 0,
+      "value": 0.4,
+      "pixel_hash": "2c77e74a6636f422e997806a423c52febc2c550c8b9cf8a4d25e303defe0ceab"
+    },
+    {
+      "name": "contrast_s1_r0",
+      "family": "contrast",
+      "severity": 1,
+      "realization": 0,
+      "value": 0.8,
+      "pixel_hash": "bc29dddfaa70b15f7cbca8427f9d83a27aa323c2aaf7ccbbbf7aeaba163d6d4d"
+    },
+    {
+      "name": "contrast_s2_r0",
+      "family": "contrast",
+      "severity": 2,
+      "realization": 0,
+      "value": 0.6,
+      "pixel_hash": "9b4df6cf7aa5da6d2b4b7e1eae5c5f0dab8c8e4ca10e03f21f33057c44a04a9c"
+    },
+    {
+      "name": "contrast_s3_r0",
+      "family": "contrast",
+      "severity": 3,
+      "realization": 0,
+      "value": 0.4,
+      "pixel_hash": "8f49b76fc68aacfc5f158e793800c82922ca7d65320cd105254f27894aa50c06"
+    },
+    {
+      "name": "blur_s1_r0",
+      "family": "blur",
+      "severity": 1,
+      "realization": 0,
+      "value": 0.001,
+      "pixel_hash": "615a4795debc639cf162391763690074fe5b5b55dcaba2bfa344048bbb2ef8a2"
+    },
+    {
+      "name": "blur_s2_r0",
+      "family": "blur",
+      "severity": 2,
+      "realization": 0,
+      "value": 0.002,
+      "pixel_hash": "7d27c09026185b1592af7902eaf97b50e0739baa1f0eb88254cf667272e4f7b0"
+    },
+    {
+      "name": "blur_s3_r0",
+      "family": "blur",
+      "severity": 3,
+      "realization": 0,
+      "value": 0.004,
+      "pixel_hash": "bbc3ed869f456126fdc9a86dfbb6fe3f382161f65d728f6fcdd2f0f1d0d2321a"
+    },
+    {
+      "name": "noise_s1_r0",
+      "family": "noise",
+      "severity": 1,
+      "realization": 0,
+      "value": 0.02,
+      "pixel_hash": "8569a2a1c05249860c1847e67f4d2f53fbb72a04b0d85af8f039d3782275de63"
+    },
+    {
+      "name": "noise_s1_r1",
+      "family": "noise",
+      "severity": 1,
+      "realization": 1,
+      "value": 0.02,
+      "pixel_hash": "1cd16bced43eabcb108a60db28871d6c9a205ff9cccf0c014b7e62a0ca4934d9"
+    },
+    {
+      "name": "noise_s1_r2",
+      "family": "noise",
+      "severity": 1,
+      "realization": 2,
+      "value": 0.02,
+      "pixel_hash": "8261ff2e9a67645dc989c9fb326c4854692eb53e68a7e23efcd93c70ecaffec2"
+    },
+    {
+      "name": "noise_s2_r0",
+      "family": "noise",
+      "severity": 2,
+      "realization": 0,
+      "value": 0.05,
+      "pixel_hash": "7da1ca99a5ac65056abb2d72d8c9a398682a4e0ea3fc084bd555a392a6db2a16"
+    },
+    {
+      "name": "noise_s2_r1",
+      "family": "noise",
+      "severity": 2,
+      "realization": 1,
+      "value": 0.05,
+      "pixel_hash": "823ae1e9a1fc3fe97f2529d9a957a639ba107c23c16f36b84aa57e56cf08bf24"
+    },
+    {
+      "name": "noise_s2_r2",
+      "family": "noise",
+      "severity": 2,
+      "realization": 2,
+      "value": 0.05,
+      "pixel_hash": "ad7ec8dbd6ff2ff67b0068f7db9b4ceb1ee604ebf5ffe12d0c106e1bdd0c0d11"
+    },
+    {
+      "name": "noise_s3_r0",
+      "family": "noise",
+      "severity": 3,
+      "realization": 0,
+      "value": 0.08,
+      "pixel_hash": "a72ebf7c37dacf3630744ec907353c503a7d80b33b88fd2a4149b3bb93218413"
+    },
+    {
+      "name": "noise_s3_r1",
+      "family": "noise",
+      "severity": 3,
+      "realization": 1,
+      "value": 0.08,
+      "pixel_hash": "62a2d7ace335977a0d9a4d2c967cd41f180966ed7a3a093d12be61c8379fafa2"
+    },
+    {
+      "name": "noise_s3_r2",
+      "family": "noise",
+      "severity": 3,
+      "realization": 2,
+      "value": 0.08,
+      "pixel_hash": "a10322fe5be7450a348ee036c165090e53208e9cfad7f1d7672c671e1f2bad4a"
+    },
+    {
+      "name": "jpeg_s1_r0",
+      "family": "jpeg",
+      "severity": 1,
+      "realization": 0,
+      "value": 80,
+      "pixel_hash": "f38ec426d638e892695a4643558366710b6014bfff74de4c33b35e1234314a19"
+    },
+    {
+      "name": "jpeg_s2_r0",
+      "family": "jpeg",
+      "severity": 2,
+      "realization": 0,
+      "value": 50,
+      "pixel_hash": "07955e1f1a57cbda3683b7f0f23e2ea8c0ff7aa47fdcd9017dd29f2d7fcd0869"
+    },
+    {
+      "name": "jpeg_s3_r0",
+      "family": "jpeg",
+      "severity": 3,
+      "realization": 0,
+      "value": 25,
+      "pixel_hash": "4515e9de58ef941245c91ef1bdd7674b8eff1493160c789224a8f13dd0384b58"
+    },
+    {
+      "name": "occlusion_s1_r0",
+      "family": "occlusion",
+      "severity": 1,
+      "realization": 0,
+      "value": 0.05,
+      "pixel_hash": "fc76744959c46dff15e3f5d58454fa45aaea8ce174a808ee237ca59105b01ea0"
+    },
+    {
+      "name": "occlusion_s1_r1",
+      "family": "occlusion",
+      "severity": 1,
+      "realization": 1,
+      "value": 0.05,
+      "pixel_hash": "9ec3cc67f1dfcba3222c9b7a00065886ae37455211a0d9ebff7808c62dfbcb7c"
+    },
+    {
+      "name": "occlusion_s1_r2",
+      "family": "occlusion",
+      "severity": 1,
+      "realization": 2,
+      "value": 0.05,
+      "pixel_hash": "43da0107c6b42a37b7cf6e38ada304ed449e2dfdd1b893a75463e6fa94424d69"
+    },
+    {
+      "name": "occlusion_s2_r0",
+      "family": "occlusion",
+      "severity": 2,
+      "realization": 0,
+      "value": 0.1,
+      "pixel_hash": "7999817ba492fe0bfe014361fcb8915957d2c8731b3bd70006f56bd391c78946"
+    },
+    {
+      "name": "occlusion_s2_r1",
+      "family": "occlusion",
+      "severity": 2,
+      "realization": 1,
+      "value": 0.1,
+      "pixel_hash": "34a011d64ce47e436932a2261692b29e5093c5feb9835965d09b86416f07e4c7"
+    },
+    {
+      "name": "occlusion_s2_r2",
+      "family": "occlusion",
+      "severity": 2,
+      "realization": 2,
+      "value": 0.1,
+      "pixel_hash": "b2a435699fe8824bd82a66e71b33643bf828e0f68c643be0680f7197f6c29d0a"
+    },
+    {
+      "name": "occlusion_s3_r0",
+      "family": "occlusion",
+      "severity": 3,
+      "realization": 0,
+      "value": 0.2,
+      "pixel_hash": "856aa9d4e15316a79fb4a1db8cf0d3041cef5d9405597cb39d7285e65986edd8"
+    },
+    {
+      "name": "occlusion_s3_r1",
+      "family": "occlusion",
+      "severity": 3,
+      "realization": 1,
+      "value": 0.2,
+      "pixel_hash": "857b44fc9502f8b3e4cd1da6a028e3d5c0c47834bf31a8c259fde88b96aa8ac0"
+    },
+    {
+      "name": "occlusion_s3_r2",
+      "family": "occlusion",
+      "severity": 3,
+      "realization": 2,
+      "value": 0.2,
+      "pixel_hash": "0ee94c8e987985f35ca08d26eae6f5b015485f0c85004aad34f1b4f8b7b52bb3"
+    }
+  ],
+  "status": "PASS"
+}

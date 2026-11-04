@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "main_summary_rows": 40,
+  "sensitivity_rows": 100,
+  "secondary_rows": 40,
+  "history_rows": 214,
+  "verified_references": 12,
+  "class_unmodified": true,
+  "checks": [
+    "All 40 aggregate rows recomputed from 19 condition rows",
+    "Corrupted mAP uses 18 conditions; secondary summary uses 19 including clean",
+    "All 72 main post-training table cells match CSV",
+    "Best epochs match validation-loss minima",
+    "Frozen config, macro gains, bibliography keys and original class checked"
+  ],
+  "pdf": {
+    "seg301_ieee_paper": {
+      "pages": 7,
+      "sha256": "1bfd8eeba287f89585113975383498c790bc1e97d3e0c862d2d88c3b97e67a43",
+      "bytes": 156143
+    },
+    "supplement": {
+      "pages": 4,
+      "sha256": "369b0f74e9d5baf48d8a8b09909fae1fa7a841943ba8cf91d5f6fb0f9e834936",
+      "bytes": 226893
+    }
+  },
+  "visual_review": "All final main/supplement pages rendered and inspected; final plot labels checked separately."
+}

@@ -1,0 +1,4 @@
+model,completed_epochs,best_epoch,best_val_loss,final_val_loss,first_train_loss,final_train_loss,mean_train_val_minutes,sum_train_val_hours,training_precision,note
+B0,14,12,0.10384737236632241,0.10415311207373937,0.14836226504761726,0.08000169717369135,75.46686406220596,17.608934947848056,FP32,train+val timing only; different hardware/runtime/precision; not an algorithm-only speed comparison
+run1,100,27,0.10076378418339624,0.1231076795193884,0.1504872324159369,0.028760338068270358,5.571993508611667,9.286655847686113,BF16_autocast_FP32_GeM_loss,train+val timing only; different hardware/runtime/precision; not an algorithm-only speed comparison
+run2,100,28,0.10051902416679594,0.11967331866423289,0.14882208128273486,0.028024407695687842,5.468966401556665,9.114944002594443,BF16_autocast_FP32_GeM_loss,train+val timing only; different hardware/runtime/precision; not an algorithm-only speed comparison

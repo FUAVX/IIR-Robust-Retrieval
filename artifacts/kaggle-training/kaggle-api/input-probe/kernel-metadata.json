@@ -1,0 +1,18 @@
+{
+  "id": "ndhoang2310/iir-b0-cpu-input-probe",
+  "title": "IIR B0 CPU Input Probe",
+  "code_file": "probe.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "ndhoang2310/iir-b0-sfm-full",
+    "ndhoang2310/iir-b0-benchmarks",
+    "ndhoang2310/iir-b0-vgg16-weights"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "query_id": "pitt_rivers_000087",
+    "condition": {
+      "name": "blur_s3_r0",
+      "family": "blur",
+      "severity": 3,
+      "realization": 0,
+      "value": 0.004
+    },
+    "pixel_hash": "4ff87e422bcd16786bc2e97f6707a76569563d9b03406eb3729093a8d20f1c50",
+    "cosine": 0.454507992007992,
+    "verified_QE": 0.9742063492063491,
+    "delta": 0.5196983571983571,
+    "cosine_top3": [
+      "pitt_rivers_000087",
+      "keble_000227",
+      "keble_000014"
+    ],
+    "verified_top3": [
+      "pitt_rivers_000087",
+      "pitt_rivers_000119",
+      "pitt_rivers_000033"
+    ]
+  },
+  {
+    "query_id": "all_souls_000013",
+    "condition": {
+      "name": "blur_s3_r0",
+      "family": "blur",
+      "severity": 3,
+      "realization": 0,
+      "value": 0.004
+    },
+    "pixel_hash": "bbc3ed869f456126fdc9a86dfbb6fe3f382161f65d728f6fcdd2f0f1d0d2321a",
+    "cosine": 0.4199980042413717,
+    "verified_QE": 0.4199980042413717,
+    "delta": 0.0,
+    "cosine_top3": [
+      "all_souls_000013",
+      "radcliffe_camera_000293",
+      "magdalen_000524"
+    ],
+    "verified_top3": [
+      "all_souls_000013",
+      "radcliffe_camera_000293",
+      "magdalen_000524"
+    ]
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "id": "YOUR_KAGGLE_USERNAME/iir-b0-sfm100-training",
+  "title": "IIR B0 SfM100 Training",
+  "code_file": "02_train_fresh.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "ndhoang2310/iir-b0-sfm100-prepared",
+    "ndhoang2310/iir-b0-benchmarks",
+    "ndhoang2310/iir-b0-vgg16-weights"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

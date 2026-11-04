@@ -1,0 +1,19 @@
+{
+  "id": "ndhoang2310/iir-b0-sfm100-cpu-preparation",
+  "title": "IIR B0 SfM100 CPU Preparation",
+  "code_file": "prepare.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "ndhoang2310/iir-b0-sfm-full",
+    "ndhoang2310/iir-b0-benchmarks",
+    "ndhoang2310/iir-b0-vgg16-weights"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

@@ -1,0 +1,24 @@
+{
+  "ndhoang2310/iir-b0-sfm100-prepared": {
+    "public": true,
+    "anonymous": true,
+    "version": 1,
+    "url": "https://www.kaggle.com/datasets/ndhoang2310/iir-b0-sfm100-prepared"
+  },
+  "ndhoang2310/iir-b0-benchmarks": {
+    "public": true,
+    "anonymous": true,
+    "version": 1,
+    "url": "https://www.kaggle.com/datasets/ndhoang2310/iir-b0-benchmarks"
+  },
+  "ndhoang2310/iir-b0-vgg16-weights": {
+    "public": true,
+    "anonymous": true,
+    "version": 1,
+    "url": "https://www.kaggle.com/datasets/ndhoang2310/iir-b0-vgg16-weights"
+  },
+  "checkpoint_model": {
+    "accessible": false,
+    "error_type": "HTTPError"
+  }
+}

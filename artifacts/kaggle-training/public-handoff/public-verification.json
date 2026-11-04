@@ -1,0 +1,11 @@
+{
+  "dataset": "ndhoang2310/iir-b0-sfm100-prepared",
+  "url": "https://www.kaggle.com/datasets/ndhoang2310/iir-b0-sfm100-prepared",
+  "status": "ready",
+  "is_private": false,
+  "anonymous_visibility": true,
+  "images": 16692,
+  "files": 16696,
+  "prepared_prefix": "",
+  "current_version": 1
+}

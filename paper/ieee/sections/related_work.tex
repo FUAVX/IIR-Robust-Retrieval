@@ -1,0 +1,13 @@
+\section{Related Work}
+\subsection{Learned Global Representations}
+Radenovi\'{c} \emph{et al.} use SfM reconstructions to obtain matching and non-matching training examples without manual retrieval labels, and introduce trainable GeM pooling~\cite{gem}. We adopt this descriptor-learning framework on a prepared subset, retaining a single global descriptor and disabling whitening and multi-scale inference. Our results therefore should not be interpreted as a reproduction of every component or headline score of the original system.
+
+Spatial attention is another way to alter feature aggregation. CBAM combines channel and spatial attention~\cite{cbam}. Our second run uses only a small spatial gate inspired by channel-mean and channel-max aggregation, with identity-preserving initialization and a scaled sigmoid. It is not a full CBAM implementation.
+
+\subsection{Feedback, Geometry, and Ranking}
+Visual query expansion uses initially retrieved images to refine the query. Chum \emph{et al.} combine feedback with spatial verification to limit false-positive expansion~\cite{totalrecall}. We evaluate descriptor-level averaging, similarity weighting, a cosine gate, and a geometry-filtered feedback pipeline. RootSIFT applies a normalization and square-root transformation to local SIFT descriptors~\cite{rootsift}; it supplies the local evidence in our re-ranking and verification stages. Homographies are estimated using RANSAC~\cite{ransac}.
+
+Reciprocal rank fusion (RRF) combines rank positions rather than requiring matching score scales~\cite{rrf}. Diffusion can exploit neighborhood structure; Iscen \emph{et al.} study propagation over regional CNN representations~\cite{diffusion}. Our graph is built from one global descriptor per gallery image, so a failure here is not evidence against their regional method.
+
+\subsection{Benchmark Protocols}
+Oxford and Paris originate from landmark-retrieval research~\cite{oxford,paris}. Revised annotations and evaluation protocols were subsequently introduced~\cite{revisited}. We use the available \emph{legacy} ground truth with 55 queries per dataset. Results are consequently not interchangeable with revisited Easy, Medium, or Hard scores. Our corruption suite is a deterministic extension of these query images, not a newly annotated independent benchmark.

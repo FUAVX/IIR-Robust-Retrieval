@@ -1,0 +1,11 @@
+{
+  "id": "ndhoang2310/iir-b0-training-handoff",
+  "title": "IIR B0 Training Handoff",
+  "licenses": [
+    {
+      "name": "other"
+    }
+  ],
+  "subtitle": "Portable notebooks, public input links and a Vietnamese Codex handoff report",
+  "description": "Start with HANDOFF.md, then use 02_train_fresh.ipynb on Kaggle T4 x2. This small bundle includes self-contained notebooks, runtime source, CPU checks, integrity manifest and verification reports. It does not include the bulk image data; attach the three public version-1 datasets linked in HANDOFF.md: ndhoang2310/iir-b0-sfm100-prepared, ndhoang2310/iir-b0-benchmarks, ndhoang2310/iir-b0-vgg16-weights.\n\nThe fresh notebook needs no historical checkpoint. The resume notebook is included separately, but its old third-party checkpoint is not available in this bundle. No GPU training or mAP result is claimed. Fresh notebook schema/compile and CPU numerical tests passed; all 16,692 prepared image hashes and the actual training metadata contract were checked. No credentials, raw execution logs or trained checkpoints are published here.\n\nCode copyright/license notices are preserved in LICENSE (MIT). Input data/weights retain their source license category Other. See HANDOFF.md for exact scope, limitations, setup and commands."
+}

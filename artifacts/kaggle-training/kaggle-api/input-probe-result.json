@@ -1,0 +1,301 @@
+{
+  "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+  "pillow_import_seconds": 0.1536449210000228,
+  "discovery_seconds": 0.8280422650000219,
+  "metadata_seconds": 1.0243376619999935,
+  "serial_16_seconds": 4.407165477000035,
+  "parallel_16_seconds": 1.079344983999988,
+  "serial_samples": [
+    {
+      "bytes": 479920,
+      "dimensions": [
+        1024,
+        768
+      ],
+      "stat_seconds": 0.1853673829999707,
+      "total_seconds": 0.44366961599996557
+    },
+    {
+      "bytes": 128182,
+      "dimensions": [
+        500,
+        375
+      ],
+      "stat_seconds": 0.11156163300000799,
+      "total_seconds": 0.26147088799996254
+    },
+    {
+      "bytes": 286100,
+      "dimensions": [
+        1024,
+        768
+      ],
+      "stat_seconds": 0.11265906200003428,
+      "total_seconds": 0.25580891999999267
+    },
+    {
+      "bytes": 457218,
+      "dimensions": [
+        1024,
+        768
+      ],
+      "stat_seconds": 0.10419231800000262,
+      "total_seconds": 0.2685061399999995
+    },
+    {
+      "bytes": 140814,
+      "dimensions": [
+        375,
+        500
+      ],
+      "stat_seconds": 0.1309472469999946,
+      "total_seconds": 0.27875944300001265
+    },
+    {
+      "bytes": 590372,
+      "dimensions": [
+        1024,
+        768
+      ],
+      "stat_seconds": 0.15277714899997363,
+      "total_seconds": 0.31708421700000144
+    },
+    {
+      "bytes": 169482,
+      "dimensions": [
+        500,
+        375
+      ],
+      "stat_seconds": 0.12185823799995887,
+      "total_seconds": 0.2421155229999954
+    },
+    {
+      "bytes": 389460,
+      "dimensions": [
+        1024,
+        683
+      ],
+      "stat_seconds": 0.10203877200001443,
+      "total_seconds": 0.2804366670000036
+    },
+    {
+      "bytes": 366946,
+      "dimensions": [
+        1024,
+        679
+      ],
+      "stat_seconds": 0.10729382099998475,
+      "total_seconds": 0.24550448399998004
+    },
+    {
+      "bytes": 133561,
+      "dimensions": [
+        800,
+        600
+      ],
+      "stat_seconds": 0.11671456599998464,
+      "total_seconds": 0.2555982629999676
+    },
+    {
+      "bytes": 177246,
+      "dimensions": [
+        1024,
+        768
+      ],
+      "stat_seconds": 0.1093815390000259,
+      "total_seconds": 0.24662742999998954
+    },
+    {
+      "bytes": 355073,
+      "dimensions": [
+        1024,
+        768
+      ],
+      "stat_seconds": 0.10309729899995546,
+      "total_seconds": 0.25694391099995073
+    },
+    {
+      "bytes": 282480,
+      "dimensions": [
+        681,
+        1024
+      ],
+      "stat_seconds": 0.11420833399995445,
+      "total_seconds": 0.2633506450000027
+    },
+    {
+      "bytes": 489896,
+      "dimensions": [
+        1024,
+        768
+      ],
+      "stat_seconds": 0.11993972599998415,
+      "total_seconds": 0.2849580269999592
+    },
+    {
+      "bytes": 526933,
+      "dimensions": [
+        1024,
+        768
+      ],
+      "stat_seconds": 0.11381219599996939,
+      "total_seconds": 0.27346283399998583
+    },
+    {
+      "bytes": 116148,
+      "dimensions": [
+        333,
+        500
+      ],
+      "stat_seconds": 0.09636327700002312,
+      "total_seconds": 0.22860345500004087
+    }
+  ],
+  "parallel_samples": [
+    {
+      "bytes": 266677,
+      "dimensions": [
+        1024,
+        685
+      ],
+      "stat_seconds": 0.12343930299999784,
+      "total_seconds": 0.26357278299997233
+    },
+    {
+      "bytes": 78412,
+      "dimensions": [
+        800,
+        600
+      ],
+      "stat_seconds": 0.1182810399999994,
+      "total_seconds": 0.2825019969999971
+    },
+    {
+      "bytes": 79879,
+      "dimensions": [
+        600,
+        800
+      ],
+      "stat_seconds": 0.1507503440000164,
+      "total_seconds": 0.3290510479999966
+    },
+    {
+      "bytes": 158382,
+      "dimensions": [
+        640,
+        480
+      ],
+      "stat_seconds": 0.188196339000001,
+      "total_seconds": 0.34601143399999046
+    },
+    {
+      "bytes": 491587,
+      "dimensions": [
+        1024,
+        768
+      ],
+      "stat_seconds": 0.09530036600000358,
+      "total_seconds": 0.2707047829999851
+    },
+    {
+      "bytes": 389251,
+      "dimensions": [
+        1024,
+        683
+      ],
+      "stat_seconds": 0.10868383300004325,
+      "total_seconds": 0.2509450080000306
+    },
+    {
+      "bytes": 281063,
+      "dimensions": [
+        1024,
+        682
+      ],
+      "stat_seconds": 0.10818669900004352,
+      "total_seconds": 0.2450353440000299
+    },
+    {
+      "bytes": 491303,
+      "dimensions": [
+        1024,
+        683
+      ],
+      "stat_seconds": 0.09456681799997568,
+      "total_seconds": 0.2461642249999727
+    },
+    {
+      "bytes": 300246,
+      "dimensions": [
+        1024,
+        683
+      ],
+      "stat_seconds": 0.10613016799999286,
+      "total_seconds": 0.2870314940000185
+    },
+    {
+      "bytes": 315709,
+      "dimensions": [
+        1280,
+        960
+      ],
+      "stat_seconds": 0.09698140000000421,
+      "total_seconds": 0.2922049539999989
+    },
+    {
+      "bytes": 127123,
+      "dimensions": [
+        500,
+        375
+      ],
+      "stat_seconds": 0.10408098199997085,
+      "total_seconds": 0.24186084199999414
+    },
+    {
+      "bytes": 75373,
+      "dimensions": [
+        360,
+        480
+      ],
+      "stat_seconds": 0.09966755800002147,
+      "total_seconds": 0.20753966300003412
+    },
+    {
+      "bytes": 93368,
+      "dimensions": [
+        500,
+        375
+      ],
+      "stat_seconds": 0.12079413700001851,
+      "total_seconds": 0.2737647530000231
+    },
+    {
+      "bytes": 302082,
+      "dimensions": [
+        685,
+        1024
+      ],
+      "stat_seconds": 0.1101378230000023,
+      "total_seconds": 0.2536079580000319
+    },
+    {
+      "bytes": 279033,
+      "dimensions": [
+        960,
+        1280
+      ],
+      "stat_seconds": 0.10065379600001734,
+      "total_seconds": 0.2330042570000046
+    },
+    {
+      "bytes": 90761,
+      "dimensions": [
+        800,
+        450
+      ],
+      "stat_seconds": 0.10323120199996083,
+      "total_seconds": 0.2020808129999523
+    }
+  ],
+  "total_seconds": 6.510971231999974
+}

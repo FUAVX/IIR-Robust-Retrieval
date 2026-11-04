@@ -1,12 +1,14 @@
 # B0: VGG16-GeM baseline specification
 
-Status: agreed method and documentation skeleton only. No training run or result
-is recorded here, and no retrieval implementation change is part of this step.
+Status at the time this specification was written: agreed method and documentation
+skeleton only. Later B0 evidence is indexed in [B0_results.md](B0_results.md).
 
 ## Traceability
 
-- `main` represents the clean imported upstream `cnnImageRetrieval-pytorch` source.
-- `B0` contains the constrained baseline reproduction and its project records.
+- At skeleton initialization, `main` represented the imported upstream source;
+  current `main` also contains the team's subsequent research materials.
+- The historical `B0` branch contained the constrained baseline reproduction
+  structure before the later branches were merged.
 - At skeleton initialization, both branches point to imported baseline commit
   `886c117070f72cd3d0a91fad30097143233f86e8`.
 - The separate untouched reference repository is
@@ -103,8 +105,8 @@ configuration is implied by this document.
 
 ## Records and artifacts
 
-Use [B0_results.md](B0_results.md) as a blank run-record template and keep
-lightweight records in `experiments/B0/`. Record the exact commit, configuration,
+Use the [experiment template](../../experiments/B0/experiment_template.md) for
+new lightweight records in `experiments/B0/`. Record the exact commit, configuration,
 data identity, compatibility changes, and methodological deviations for each run.
 Large datasets, checkpoints, weights, descriptors, and generated outputs belong
 outside Git; record their external/local locations in the run record.

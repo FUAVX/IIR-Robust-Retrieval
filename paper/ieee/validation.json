@@ -11,6 +11,7 @@
     "Corrupted mAP uses 18 conditions; secondary summary uses 19 including clean",
     "All 72 main post-training table cells match CSV",
     "Best epochs match validation-loss minima",
+    "Seven source evidence hashes match committed snapshots",
     "Frozen config, macro gains, bibliography keys and original class checked"
   ],
   "pdf": {
@@ -25,5 +26,9 @@
       "bytes": 226893
     }
   },
-  "visual_review": "All final main/supplement pages rendered and inspected; final plot labels checked separately."
+  "build_log_checks": {
+    "seg301_ieee_paper": "SKIPPED: build log not committed; compile the LaTeX source to check layout warnings",
+    "supplement": "SKIPPED: build log not committed; compile the LaTeX source to check layout warnings"
+  },
+  "visual_review": "Historical manual review was recorded for the committed PDFs; this script checks their text and structure, not visual layout."
 }

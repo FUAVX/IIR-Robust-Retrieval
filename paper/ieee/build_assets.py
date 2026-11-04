@@ -89,8 +89,19 @@ axes[0].set_ylabel('Corrupted mAP (%)');fig.tight_layout();fig.savefig(F/'qualit
 # Evidence copies used by the portable source package.
 for path in [R/'clean_model_comparison.csv',R/'all_posttraining_results.csv',R/'all_clean_sensitivity.csv',R/'all_training_history.csv',R/'training_summary.csv',CONFIG,P/'conditions.csv',P/'end_to_end_summary.csv',P/'diagnostics.csv',P/'paired_deltas.csv',P/'query_improvement_rates.csv']:
  if path.resolve()!=(D/path.name).resolve(): shutil.copy2(path,D/path.name)
-manifest={str(p.relative_to(ROOT)):{'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size} for p in [R/'clean_model_comparison.csv',R/'all_posttraining_results.csv',R/'all_clean_sensitivity.csv',R/'all_training_history.csv',CONFIG,P/'conditions.csv',P/'end_to_end_summary.csv']}
-(HERE/'evidence_manifest.json').write_text(json.dumps(manifest,indent=2))
+evidence_inputs=[
+ ('artifacts/results-consolidated/clean_model_comparison.csv',R/'clean_model_comparison.csv'),
+ ('artifacts/results-consolidated/all_posttraining_results.csv',R/'all_posttraining_results.csv'),
+ ('artifacts/results-consolidated/all_clean_sensitivity.csv',R/'all_clean_sensitivity.csv'),
+ ('artifacts/results-consolidated/all_training_history.csv',R/'all_training_history.csv'),
+ ('artifacts/results-consolidated/report/training_data_config_audit.json',CONFIG),
+ ('artifacts/kaggle-posttraining/outputs/iir-post100-report/unpacked/conditions.csv',P/'conditions.csv'),
+ ('artifacts/kaggle-posttraining/outputs/iir-post100-report/unpacked/end_to_end_summary.csv',P/'end_to_end_summary.csv'),
+]
+manifest={label:{'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),
+                 'bytes':p.stat().st_size,
+                 'snapshot':'data/'+p.name} for label,p in evidence_inputs}
+(HERE/'evidence_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 # Supplemental tables retain complete sensitivity and secondary metrics.
 sens=read(R/'all_clean_sensitivity.csv');assert len(sens)==100
 sl=[]

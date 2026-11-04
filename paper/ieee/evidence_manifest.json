@@ -1,30 +1,37 @@
 {
   "artifacts/results-consolidated/clean_model_comparison.csv": {
     "sha256": "620207bd662436a9913add49e22a937a576bdec91ab3a41c355926fb8b1d1aa4",
-    "bytes": 2907
+    "bytes": 2907,
+    "snapshot": "data/clean_model_comparison.csv"
   },
   "artifacts/results-consolidated/all_posttraining_results.csv": {
     "sha256": "ebf8e45bfea88b28bbe6a7e37e1c7c8d7fe1a6c5c486b4fc4014dbf022c0f8f0",
-    "bytes": 16189
+    "bytes": 16189,
+    "snapshot": "data/all_posttraining_results.csv"
   },
   "artifacts/results-consolidated/all_clean_sensitivity.csv": {
     "sha256": "ede06a3e650fba3d3554934f516256bd8d63197950c2fabbe8221b099508579c",
-    "bytes": 26497
+    "bytes": 26497,
+    "snapshot": "data/all_clean_sensitivity.csv"
   },
   "artifacts/results-consolidated/all_training_history.csv": {
     "sha256": "2487c31aa318a961341d90d3a94f29d0bcb98aa27a8113d938689a700bbc9fc1",
-    "bytes": 44599
+    "bytes": 44599,
+    "snapshot": "data/all_training_history.csv"
   },
   "artifacts/results-consolidated/report/training_data_config_audit.json": {
     "sha256": "97e87566d5822a17c8b11db210837981c200b08f6484c89db2747c7406b10b7a",
-    "bytes": 1851
+    "bytes": 1851,
+    "snapshot": "data/training_data_config_audit.json"
   },
   "artifacts/kaggle-posttraining/outputs/iir-post100-report/unpacked/conditions.csv": {
     "sha256": "add71296d7608997f3960365d4047f0b5e9190e72a89c8655cb5ef38e656e812",
-    "bytes": 160937
+    "bytes": 160937,
+    "snapshot": "data/conditions.csv"
   },
   "artifacts/kaggle-posttraining/outputs/iir-post100-report/unpacked/end_to_end_summary.csv": {
     "sha256": "e57f3bead0e26414086e7d83571891b2bbe44aa47a50aa3ab654a9794378259c",
-    "bytes": 3318
+    "bytes": 3318,
+    "snapshot": "data/end_to_end_summary.csv"
   }
 }

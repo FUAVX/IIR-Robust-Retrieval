@@ -13,6 +13,18 @@ Bản paper tiếng Anh dựa trên kết quả đã có, không training hay ch
 - `template/`: ZIP template tải về, bản gốc và thông tin nguồn/SHA256.
 - `evidence_manifest.json`, `validation.json`: nguồn số liệu và kết quả kiểm tra.
 
+`evidence_manifest.json` giữ đường dẫn artefact gốc để truy xuất provenance và
+trường `snapshot` trỏ tới bản CSV/JSON tương ứng trong `data/`. Khi clone repo,
+không cần các thư mục `artifacts/results-consolidated` hoặc
+`artifacts/kaggle-posttraining` để kiểm tra bảng số liệu đã công bố.
+
+Chạy `python validate_paper.py` từ thư mục này để kiểm tra bảng, hash của bảy
+snapshot, tài liệu tham khảo và cấu trúc/text của hai PDF. Build log `.log` không
+được commit: script chỉ kiểm tra cảnh báo LaTeX khi log có mặt và ghi `SKIPPED`
+nếu không có. Muốn kiểm tra cảnh báo layout trên một clone mới, biên dịch lại
+paper và supplement trước khi chạy validator. Kiểm tra này không thay thế việc
+xem PDF bằng mắt.
+
 ## Template đã tải trước khi viết
 
 Dùng `IEEEtran.cls` nguyên bản V1.8b và `\documentclass[conference]{IEEEtran}` từ gói IEEE conference `conference-latex-template_10-17-19.zip`. Trang nguồn IEEE Author Center dẫn tới trang template IEEE. Các ZIP trực tiếp trên ieee.org trả về response rỗng ở môi trường này; gói thực tế được tải từ bản mirror của hội nghị ICPEA:

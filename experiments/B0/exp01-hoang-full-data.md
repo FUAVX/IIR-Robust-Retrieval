@@ -1,7 +1,7 @@
 # exp01 — Hoang: full B0 data preparation (verified 4/4 PASS)
 
 Data-preparation record (no training in this experiment).
-Template: `report/B0/B0_results.md`. `TBD` = training-side, owned by Phuong/Nguyen.
+Template for future runs: [`experiment_template.md`](experiment_template.md). `TBD` here refers to training-side fields that were outside this data-preparation run.
 
 | Field | Value |
 | --- | --- |

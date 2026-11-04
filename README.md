@@ -49,6 +49,7 @@ For implementation details and reproducibility notes:
 - [`docs/B0/`](docs/B0/) and [`docs/project/`](docs/project/): B0 plan, evaluation presentation, and project brief.
 - [`docs/B1/`](docs/B1/): B1 robustness and retrieval handoff. This is a dated experiment specification, not a record of completed results.
 - [`reproduction/B0/epoch_012/`](reproduction/B0/epoch_012/): saved B0 evaluation and compact evidence; model files and raw logs remain outside Git.
+- [`notebooks/`](notebooks/): notebook entrypoint guide, including the historical B0 smoke notebook.
 - [`artifacts/kaggle-training/`](artifacts/kaggle-training/) and [`paper/ieee/`](paper/ieee/): portable training handoff and later paper draft, respectively.
 
 ## References and Attribution

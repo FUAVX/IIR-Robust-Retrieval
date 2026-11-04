@@ -1,0 +1,21 @@
+dataset,query_index_0based,query_name,AP_percent,group
+oxford5k,15,query_015,36.93502523026624,5 lowest AP
+oxford5k,16,query_016,44.422670878339126,5 lowest AP
+oxford5k,44,query_044,54.476984950067866,5 lowest AP
+oxford5k,40,query_040,54.83895668250645,5 lowest AP
+oxford5k,42,query_042,55.28660992449591,5 lowest AP
+oxford5k,45,query_045,99.99999999999999,5 highest AP
+oxford5k,46,query_046,99.99999999999999,5 highest AP
+oxford5k,47,query_047,99.99999999999999,5 highest AP
+oxford5k,48,query_048,99.99999999999999,5 highest AP
+oxford5k,49,query_049,99.99999999999999,5 highest AP
+paris6k,17,query_017,31.053738187633574,5 lowest AP
+paris6k,18,query_018,36.3618042210763,5 lowest AP
+paris6k,8,query_008,52.80242245004487,5 lowest AP
+paris6k,28,query_028,52.929206292158106,5 lowest AP
+paris6k,24,query_024,54.33147540487268,5 lowest AP
+paris6k,46,query_046,94.15268984942345,5 highest AP
+paris6k,48,query_048,94.05989045845709,5 highest AP
+paris6k,44,query_044,93.87497299201182,5 highest AP
+paris6k,47,query_047,93.02935688700882,5 highest AP
+paris6k,42,query_042,91.2437538580984,5 highest AP

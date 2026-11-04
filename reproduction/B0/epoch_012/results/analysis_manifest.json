@@ -1,0 +1,19 @@
+{
+  "evidence": "saved Kaggle evaluation JSON; inference not rerun in sections 1\u20136",
+  "selected_epoch": 12,
+  "selection": "validation_loss",
+  "completed_epochs": 14,
+  "planned_epochs": 100,
+  "source_commit": "747166e627e514842f5c5be531f4e0f73612cc90",
+  "best_checkpoint_sha256": "8a56bad2e1d585c68de42ff841f061e5469f76792750d8b4993e500294f19f27",
+  "history_sha256": "133f0151b9604d4524d05164cac0eeb2e00c01268f66d2784fbffe9e97c71edc",
+  "evaluation_sha256": "0c0dcc4ceadee7fc74d85a62df1095fb5f529e078a7e3c453251fcdb04d550fa",
+  "protocol": "legacy_ok_junk",
+  "scale": [
+    1
+  ],
+  "whitening": false,
+  "query_expansion": false,
+  "train_images": 15953,
+  "train_clusters": 100
+}

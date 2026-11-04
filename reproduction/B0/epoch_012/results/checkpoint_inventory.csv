@@ -1,0 +1,4 @@
+file,epoch,MB
+reproduce/output_kaggle/b0_sfm100_notebook/runs/b0_sfm100_vgg16_gem/best.pt,12,176.631073
+reproduce/output_kaggle/b0_sfm100_notebook/runs/b0_sfm100_vgg16_gem/latest.pt,14,176.632203
+reproduce/output_kaggle/latest_resume.pt,7,176.621437

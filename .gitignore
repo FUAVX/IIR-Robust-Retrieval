@@ -31,6 +31,26 @@ descriptor_dumps/
 # All generated outputs are local artifacts, not experiment records.
 outputs/
 
+# Large reproduction bundles and raw execution logs stay outside Git.
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.log
+logs/
+
+# Keep only the final PDF for LaTeX-authored reproduction documents.
+reproduction/**/LaTeX/
+reproduction/**/*.tex
+reproduction/**/*.bib
+reproduction/**/*.cls
+reproduction/**/*.sty
+reproduction/**/*.aux
+reproduction/**/*.blg
+reproduction/**/*.bbl
+reproduction/**/*.out
+reproduction/**/*.synctex.gz
+
 # Python and notebook caches.
 __pycache__/
 *.py[cod]

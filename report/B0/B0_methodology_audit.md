@@ -27,6 +27,39 @@ Tài liệu này hỗ trợ review, không thay thế việc đọc paper của 
 - [ ] So sánh short run không gián đoạn với run resume tương đương theo seed policy đã chọn.
 - [ ] Ghi checkpoint path/checksum, commit, command/configuration, environment và các giới hạn đã biết, bao gồm RNG state.
 
+### Resume và tính liên tục của scheduler
+
+Checkpoint `model_epoch*.pth.tar` của source hiện tại được lưu sau khi một epoch
+kết thúc. Nó có `epoch`, model state, `min_loss` và optimizer state; **không**
+lưu `scheduler.state_dict()`, configuration hoặc RNG state. Khi resume, source
+dựng lại `ExponentialLR(gamma=exp(-0.01))` từ `checkpoint['epoch'] - 1`, sau đó
+gọi `scheduler.step()` ở đầu epoch tiếp theo. Ý đồ là tiếp tục learning-rate
+(LR) decay thay vì quay lại LR ban đầu.
+
+Điều này chưa đủ để khẳng định resume đúng trên PyTorch hiện đại: cách xử lý
+`last_epoch` và thời điểm `scheduler.step()` có thể gây lệch một bước LR. C2
+phải so sánh hai run cùng seed/configuration:
+
+```text
+Run A: epoch 1 → epoch 2 → epoch 3 liên tục
+Run B: epoch 1 → epoch 2 → save → process mới → resume → epoch 3
+```
+
+Tại epoch 3, mọi optimizer parameter group phải có cùng LR ở hai run; epoch
+number phải liên tục, optimizer state hợp lệ và loss không bất thường. Nếu LR
+khác nhau thì không được chấp nhận resume cho B0.
+
+Thiết kế checkpoint robust cho C2 nên lưu `next_epoch`, model state, optimizer
+state, `scheduler_state_dict`, configuration và (nếu cần tái lập chặt) RNG/sampling
+state. Khi resume, load scheduler state trực tiếp, không dựng lại scheduler bằng
+suy đoán từ epoch. Đây là hướng cải tiến cần nhóm duyệt, không phải thay đổi
+methodology tự động.
+
+Nếu Kaggle ngắt giữa epoch, checkpoint hiện tại chỉ cho phép quay lại checkpoint
+ở cuối epoch trước; phần batch đã chạy trong epoch bị ngắt sẽ mất. Đây vẫn là
+resume theo epoch chấp nhận được nếu được ghi rõ, nhưng không phải resume chính
+xác đến từng batch.
+
 ## Checklist review C3: training stability
 
 - [ ] Kiểm tra data metadata và paths trước khi mining bắt đầu.

@@ -21,11 +21,16 @@ and [per-query results](../../reproduction/B0/epoch_012/results/query_AP_epoch_0
 | Oxford5k | 5,063 gallery images; **81.060% mAP** |
 | Paris6k | 6,392 evaluated gallery images; **77.124% mAP** |
 
-The earlier [dataset manifest](dataset_manifest.md) counts 6,412 Paris JPEGs on
-disk, while the saved evaluation records 6,392 ranked gallery IDs. This record
-reports the actual evaluation count; the 20-image difference should be resolved
-against the exact ground-truth `imlist` before claiming that every downloaded
-JPEG entered the ranking.
+The earlier [dataset manifest](dataset_manifest.md) counts 6,412 supplied Paris
+JPEGs. The [dataset owner's page](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/)
+states that 20 supplied images are corrupt. The official
+`gnd_paris6k.pkl` used by this project has SHA-256
+`def916cf4f197a182d9a7840cdb6294489fa57c2121f9742a1bcc6f2209bb345`
+and an `imlist` of 6,392 images. The archived B0 `run_record.json` records that
+same ground-truth hash and gallery count. Thus, 6,412 is the supplied JPEG
+count and 6,392 is the evaluated gallery count for this ground-truth file; the
+run did not silently lose 20 gallery IDs. We have not individually matched the
+excluded filenames to the owner's corrupt-image list.
 
 The selected `best.pt` has SHA-256
 `8a56bad2e1d585c68de42ff841f061e5469f76792750d8b4993e500294f19f27`.

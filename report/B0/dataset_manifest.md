@@ -83,6 +83,13 @@ Dictionary with keys:
 | **Image Count** | 6,412 images (55 query landmarks across 11 Paris buildings) |
 | **Target Directory** | `<DATA_ROOT>/test/paris6k/jpg/` |
 
+The 6,412 count refers to supplied JPEGs. The [dataset owner](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/)
+notes 20 corrupt supplied images. The official `gnd_paris6k.pkl` used by the
+saved B0 run has 6,392 entries in `imlist` and 55 queries; its SHA-256 is
+`def916cf4f197a182d9a7840cdb6294489fa57c2121f9742a1bcc6f2209bb345`.
+The B0 run record reports the same ground-truth hash and gallery size. Count
+gallery descriptors from `imlist`, not from all JPEGs on disk.
+
 #### Ground Truth Schema (`gnd_paris6k.pkl`):
 Structure identical to `gnd_oxford5k.pkl` (`imlist`, `qimlist`, `gnd` with `bbx`, `ok`, `junk`).
 

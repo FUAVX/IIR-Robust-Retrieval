@@ -1,0 +1,14 @@
+setting,value
+Backbone / pooling / descriptor,VGG16 / GeM shared trainable p / L2 512-D
+Train subset,"100 clusters; 15,953 images; seed 42"
+Validation subset,20 clusters; 739 images
+Epoch hoàn tất / kế hoạch,14 / 100
+Selection,validation_loss
+Optimizer / initial LR,adam / 1e-06
+Contrastive margin,0.7
+Mining pool thực tế,15953
+Tuples train / val mỗi epoch,2000 / 180
+Eval image size / scale,1024 / [1]
+Protocol / whitening / QE,Oxford5k & Paris6k legacy / OFF / OFF
+GPU / precision,Tesla T4 / FP32
+Source commit,747166e627e514842f5c5be531f4e0f73612cc90

@@ -1,0 +1,5 @@
+dataset,reference_epoch,selected_epoch,delta_mAP_pp,queries_improved,queries_declined,queries_unchanged
+Oxford5k,8,12,0.5197434441419144,32,15,8
+Paris6k,8,12,-1.074266798803376,22,33,0
+Oxford5k,14,12,0.28796048610335173,26,21,8
+Paris6k,14,12,1.0387404914800524,38,17,0

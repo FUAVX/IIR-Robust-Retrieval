@@ -25,7 +25,12 @@ The research follows a baseline-first methodology:
 2. **Robustness Analysis:** Measure performance under visual variations and identify systematic failure modes.
 3. **B1 — Improvement:** Design and evaluate an evidence-driven robustness enhancement against B0.
 
-The B1 architecture or training strategy is **not predetermined**; it will be selected based on baseline analysis and related research.
+The original B1 planning documents describe proposed experiments. The later paper draft reports exploratory augmentation, attention-gate, and post-training retrieval experiments; read their evidence and limitations before treating a planned ablation as completed.
+
+## Current evidence
+
+- The saved B0 subset-100 run completed 14 of 100 planned epochs. Its validation-selected checkpoint at epoch 12 reached **81.06% Oxford5k mAP** and **77.12% Paris6k mAP** under the legacy single-scale protocol, without whitening or query expansion. The [B0 reproduction record](reproduction/B0/epoch_012/README.md) links the notebook, per-query tables, figures, and checkpoint provenance.
+- The [IEEE paper draft](paper/ieee/README.md) reports additional training and search experiments. It is a draft for team review, with provisional author names and explicit limits on cross-run comparisons. The team intends to update it.
 
 ## Datasets and Evaluation
 
@@ -38,7 +43,13 @@ Retrieval performance is evaluated using **mean Average Precision (mAP)** under 
 
 The repository builds upon the original [CNN Image Retrieval in PyTorch](https://github.com/filipradenovic/cnnimageretrieval-pytorch) implementation. Research code, configurations, and experiments are organized around the GeM baseline and subsequent robustness investigations.
 
-For implementation details and reproducibility notes, see the documentation in [`configs/`](configs/) and [`report/`](report/).
+For implementation details and reproducibility notes:
+
+- [`configs/B0/`](configs/B0/) and [`report/B0/`](report/B0/): baseline specification, data audit, and methodology.
+- [`docs/B0/`](docs/B0/) and [`docs/project/`](docs/project/): B0 plan, evaluation presentation, and project brief.
+- [`docs/B1/`](docs/B1/): B1 robustness and retrieval handoff. This is a dated experiment specification, not a record of completed results.
+- [`reproduction/B0/epoch_012/`](reproduction/B0/epoch_012/): saved B0 evaluation and compact evidence; model files and raw logs remain outside Git.
+- [`artifacts/kaggle-training/`](artifacts/kaggle-training/) and [`paper/ieee/`](paper/ieee/): portable training handoff and later paper draft, respectively.
 
 ## References and Attribution
 

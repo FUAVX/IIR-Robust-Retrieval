@@ -26,6 +26,7 @@ The histories show late-training deterioration (Fig.~\ref{fig:training}). \Rone{
 The archived B0 best epoch is 12, selected by validation, not by taking the best score separately on each benchmark. For example, B0's Paris score at epoch 8 is higher than at epoch 12, but substituting it would mix selection criteria. We preserve the declared checkpoint rule. Similarly, a lower validation loss across two runs is not automatically a calibrated estimate of better retrieval, particularly with changing mined negatives.
 
 \subsection{RQ2: Search Improvements for Fixed Encoders}
+\IfFileExists{tables/b0_clean_table.tex}{\input{tables/b0_clean_table}}{}
 \begin{table*}[t]
 \caption{Archived post-training results, mAP (\%). C denotes clean and R the mean over 18 corrupted-query conditions. Both encoders are fixed at epoch 100 and use FP32 extraction. Each method uses its encoder's own cosine baseline; diffusion here uses the original dense seeds.}
 \label{tab:post}
@@ -101,12 +102,12 @@ Figure~\ref{fig:robustness} shows that severe blur is particularly damaging to \
 
 The suite partially overlaps training augmentation but is not identical. In particular, Gaussian noise is not included in the saved augmentation policy. Occlusion includes cases where identifying content is removed; this stress test covers the prescribed transformations.
 
-Clean sensitivity contains 100 additional grouped evaluations, representing 5,500 per-query AP values. For instance, \Rone{} weighted QE with $\lambda=1$ reaches 77.30\% Oxford and 66.56\% Paris clean, above the frozen $\lambda=0.5$ setting. Local re-ranking with $K=100$ and $\eta=0.5$ reaches 78.85\% and 66.94\%. The supplement retains all settings and outcomes; the main corruption experiment keeps its frozen configuration.
+The supplement preserves all 100 clean sensitivity evaluations and their 5,500 per-query AP values for traceability. The main experiments use the fixed settings described in Section~IV; sensitivity maxima do not select the reported configuration.
 
 \subsection{RQ3: Quality--Latency Trade-offs}
 \begin{figure*}[t]
 \centering\includegraphics[width=0.96\textwidth]{quality_latency.pdf}
-\caption{R1 corrupted mAP versus measured direct end-to-end median query latency (logarithmic horizontal axis). Quality uses the complete corruption suite; latency uses the predefined 28-sample subset. Offline gallery preparation is excluded.}
+\caption{Archived R1 corrupted mAP versus direct end-to-end median query latency (logarithmic axis). Quality uses the complete corruption suite; latency uses the predefined 28-sample subset. Diffusion points retain the original dense seeds. Revised sparse diffusion has no new direct timing and is omitted. Offline gallery preparation is excluded.}
 \label{fig:latency}
 \end{figure*}
 
@@ -120,4 +121,4 @@ Offline computation also matters. The shared local-feature cache reports approxi
 The main grid has 20 ranking configurations per dataset: nine per encoder and two fusion rules. Across 110 queries and 31 views this yields 68,200 main AP records, with no missing cells in the saved coverage audit. Together with sensitivity, the saved per-query records total 73,700. Descriptors, rankings, image IDs, pixel checksums, checkpoint hashes, graph diagnostics, and job completion states identify the evaluated artifacts. Smoke checks cover export/reload consistency, finite descriptors, perfect/junk evaluator cases, QE identity and closed-gate behavior, single-ranker fusion, prefix-preserving re-ranking, and graph numerical behavior.
 
 \section{Limitations}
-Only one training seed is available. Corrupted views of the same query and related landmark queries are not independent training replications. Training histories differ in budget, precision and runtime, and R1's validation-selected weights are absent from the supplied archive. These constraints limit attribution of differences to augmentation or attention. Evaluation uses legacy Oxford/Paris annotations; comparison with modern systems requires ROxford/RParis Medium/Hard under a shared protocol. The sparse-seed audit is a post-review implementation diagnosis on the existing benchmarks, rather than an independent validation set. Search sensitivity is descriptive: no test-set maximum replaces the frozen main settings. A separately labeled retrieval development set is still needed for parameter selection. The original B0 record lacks a matched corruption study, and direct latency samples are small. Revised sparse diffusion has no new end-to-end timing measurement.
+Only one training seed is available. Corrupted views of the same query and related landmark queries are not independent training replications. Training histories differ in budget, precision and runtime, and R1's validation-selected weights are absent from the supplied archive. These constraints limit attribution of differences to augmentation or attention. Evaluation uses legacy Oxford/Paris annotations; comparison with modern systems requires ROxford/RParis Medium/Hard under a shared protocol. The sparse-seed audit is a post-review implementation diagnosis on the existing benchmarks, rather than an independent validation set. Search sensitivity is descriptive: no test-set maximum replaces the frozen main settings. A separately labeled retrieval development set is still needed for parameter selection. The B0 rerun completes clean Oxford only; Paris was interrupted by the extraction budget. B0 still lacks a matched corruption study, and direct latency samples are small. Revised sparse diffusion has no new end-to-end timing measurement.

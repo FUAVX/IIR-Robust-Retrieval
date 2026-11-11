@@ -1,0 +1,13 @@
+\begin{table}[t]
+\caption{Clean Oxford5k evaluation of the validation-selected B0 epoch-12 checkpoint. All values are percentages; fixed settings and FP32 inference are used.}
+\label{tab:b0clean}
+\centering\footnotesize
+\begin{tabular}{lrr}
+\toprule
+Method & mAP & P@10 \\
+\midrule
+\revisionbaselinerows
+\bottomrule
+\end{tabular}
+\end{table}
+Table~\ref{tab:b0clean} reports all 55 Oxford queries for the B0 checkpoint selected by validation loss at epoch 12. AQE improves mAP from 81.06\% to 83.77\%, whereas sparse diffusion gives 78.35\%. Thus, correcting seed support does not guarantee a gain for every encoder. The same fixed inference, crop/resize and junk-handling rules apply to all five methods. A 30-minute extraction limit interrupted Paris; only the complete Oxford descriptor and ranking files are recovered, hash-checked and rescored locally. No new Paris result is reported.

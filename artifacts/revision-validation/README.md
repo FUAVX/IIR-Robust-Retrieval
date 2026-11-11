@@ -68,6 +68,33 @@ run sensitivity or local geometry, or change the historical epoch-100 notebooks.
 Settings are fixed before the new run: QE k=10/lambda=.5; alpha=0/3; cosine gate
 tau=.5; mutual diffusion graph k=20, query seed k=20, beta=.9.
 
+Run `python artifacts/revision-validation/collect_b0.py --account hoang1` to
+check once. Once the remote job is complete it downloads the outputs, verifies
+the input manifest, requires all ten model/dataset/method groups and 550 unique
+per-query records, and recomputes each mean AP before exporting compact results.
+It never resubmits the job.
+
+### Actual bounded-run outcome
+
+Version 1 reached the 30-minute extraction limit partway through Paris. The
+remote job is **ERROR**, not a successful two-dataset evaluation. Oxford's
+5,063 gallery descriptors, 55 query descriptors and all five complete rankings
+had already been saved. `collect_b0.py --recover-completed` can recover only
+that known timeout case: it verifies checkpoint and image IDs, checks every
+ranking as a full gallery permutation, and recomputes 275 per-query AP records.
+The accepted record is `results/b0_clean/recovery_manifest.json`, with status
+`PARTIAL_BUDGET_LIMIT`; no Paris result or runtime environment is invented.
+
+Oxford mAP: cosine **81.060%**, AQE **83.774%**, alpha/gated QE **83.761%**,
+mutual/top-20 diffusion **78.348%**. This confirms a practical QE gain on the
+validation-selected B0, while the same sparse diffusion settings do not improve
+this encoder. No additional GPU job is launched in this revision.
+
+The [Oxford numerical outputs are public](https://www.kaggle.com/datasets/ndhoang2310/iir-revision-b0-oxford-numerical-v1).
+All 12 payloads were downloaded without credentials and hash-checked. The release
+includes descriptors, every full ranking, per-query metrics and the original
+failed job status; `verify_public_b0.py` reproduces the download checks.
+
 ## Raw numerical outputs
 
 `package_raw_outputs.py` creates and verifies a checksummed archive of every

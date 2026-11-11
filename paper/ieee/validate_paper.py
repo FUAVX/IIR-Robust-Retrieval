@@ -34,6 +34,16 @@ for r in revision:
  condition_maps=[sum(float(v['map']) for v in rr if v['family']==family and int(v['severity'])==severity)/len([v for v in rr if v['family']==family and int(v['severity'])==severity]) for family in ['darkening','contrast','blur','noise','jpeg','occlusion'] for severity in [1,2,3]]
  assert abs(float(r['clean_map'])-clean)<1e-12
  assert abs(float(r['corrupted_map'])-sum(condition_maps)/18)<1e-12
+b0=rows('b0_clean_summary.csv');b0_query=rows('b0_clean_per_query.csv')
+assert len(b0)==5 and len(b0_query)==275
+assert {r['dataset'] for r in b0}=={'oxford5k'}
+for r in b0:
+ rr=[q for q in b0_query if q['method']==r['method']]
+ assert len(rr)==55 and len({q['query_id'] for q in rr})==55
+ assert abs(sum(float(q['ap']) for q in rr)/55-float(r['map']))<1e-12
+recovery=json.loads((D/'b0_clean_recovery_manifest.json').read_text())
+assert recovery['status']=='PARTIAL_BUDGET_LIMIT'
+assert recovery['completed_datasets']==['oxford5k'] and recovery['incomplete_datasets']==['paris6k']
 assert len(rows('all_clean_sensitivity.csv'))==100
 assert len((H/'tables/sensitivity_rows.tex').read_text().splitlines())==100
 assert len((H/'tables/secondary_rows.tex').read_text().splitlines())==40
@@ -66,7 +76,7 @@ cites=set(k for group in re.findall(r'\\cite\{([^}]+)\}',source) for k in group.
 bibkeys=set(re.findall(r'@\w+\{([^,]+),',(H/'references.bib').read_text()))
 assert cites==bibkeys and len(cites)==16
 assert len(rows('reference_sources.csv'))==16 if (D/'reference_sources.csv').exists() else True
-report={'status':'PASS','main_summary_rows':40,'sensitivity_rows':100,'secondary_rows':40,'history_rows':214,'verified_references':16,'class_unmodified':True,'checks':['All 40 aggregate rows recomputed from 19 condition rows','Corrupted mAP uses 18 conditions; secondary summary uses 19 including clean','All 72 main post-training table cells match CSV','Best epochs match validation-loss minima','Seven source evidence hashes match committed snapshots','Frozen config, macro gains, bibliography keys and original class checked','Four revised diffusion summaries recomputed from 124 cached views'],'pdf':{},'build_log_checks':{}}
+report={'status':'PASS','main_summary_rows':40,'sensitivity_rows':100,'secondary_rows':40,'history_rows':214,'verified_references':16,'class_unmodified':True,'checks':['All 40 aggregate rows recomputed from 19 condition rows','Corrupted mAP uses 18 conditions; secondary summary uses 19 including clean','All 72 main post-training table cells match CSV','Best epochs match validation-loss minima','Seven source evidence hashes match committed snapshots','Frozen config, macro gains, bibliography keys and original class checked','Four revised diffusion summaries recomputed from 124 cached views','Five B0 Oxford groups recomputed from 275 AP records; Paris explicitly incomplete'],'pdf':{},'build_log_checks':{}}
 for name in ['seg301_ieee_paper','supplement']:
  log_path=H/(name+'.log')
  if log_path.is_file():
@@ -83,6 +93,6 @@ for name in ['seg301_ieee_paper','supplement']:
  assert len([p for p in text.split('\f') if p.strip()])==pages
  assert all(len(p.strip())>300 for p in text.split('\f') if p.strip())
  report['pdf'][name]={'pages':pages,'sha256':hashlib.sha256(pdf.read_bytes()).hexdigest(),'bytes':pdf.stat().st_size}
-report['visual_review']='Historical manual review was recorded for the committed PDFs; this script checks their text and structure, not visual layout.'
+report['visual_review']='This script checks text and structure, not visual layout. The revision manual-review record is under artifacts/revision-validation/results/validation.json.'
 (H/'validation.json').write_text(json.dumps(report,indent=2))
 print(json.dumps(report,indent=2))

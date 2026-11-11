@@ -1,0 +1,12 @@
+{
+  "stats": {
+    "edges": 47522,
+    "isolated_fraction": 0.037132135097768124,
+    "components": 209,
+    "build_seconds": 3.0302150549998714
+  },
+  "diagnostics": {
+    "iterations": 203,
+    "max_relative_residual": 7.017323345921895e-12
+  }
+}

@@ -11,8 +11,8 @@ ROOT = Path(__file__).resolve().parents[2]
 REF = 'ndhoang2310/iir-post100-raw-numerical-outputs-v1'
 
 
-def fetch_file(name):
-    url = 'https://www.kaggle.com/api/v1/datasets/download/'+REF+'/'+urllib.parse.quote(name, safe='')
+def fetch_file(name, ref=REF):
+    url = 'https://www.kaggle.com/api/v1/datasets/download/'+ref+'/'+urllib.parse.quote(name, safe='')
     with urllib.request.urlopen(url, timeout=60) as response:
         payload = response.read()
     # Some Kaggle endpoints wrap a single file in a ZIP.

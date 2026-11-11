@@ -32,6 +32,7 @@ The original B1 planning documents describe proposed experiments. The later pape
 - The saved B0 subset-100 run completed 14 of 100 planned epochs. Its validation-selected checkpoint at epoch 12 reached **81.06% Oxford5k mAP** and **77.12% Paris6k mAP** under the legacy single-scale protocol, without whitening or query expansion. The [B0 reproduction record](reproduction/B0/epoch_012/README.md) links the notebook, per-query tables, figures, and checkpoint provenance.
 - The [IEEE paper draft](paper/ieee/README.md) reports additional training and search experiments. It is a draft for team review, with provisional author names and explicit limits on cross-run comparisons. The team intends to update it.
 - The [short revision checks](artifacts/revision-validation/README.md) publish the historical source and diagnose the original diffusion collapse. On the same R1/Oxford cache, union diffusion changes from 23.67% to 76.75% clean mAP when query seeds are restricted to top-20. A fixed mutual/top-20 replay covers the full archived corruption suite without new GPU inference. Revised results are stored separately from historical measurements.
+- A bounded rerun of validation-selected B0 epoch 12 completes Oxford: **81.06% cosine mAP**, **83.77% AQE**, and **78.35% sparse diffusion**. Paris was interrupted by the 30-minute extraction budget. Complete Oxford rankings were recovered and rescored; the whole Kaggle job remains recorded as a budget-limited failure.
 
 ## Reproducing the training and search code
 

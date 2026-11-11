@@ -78,6 +78,7 @@ Cần Python, NumPy và Matplotlib. Script dùng CSV có sẵn trong project g�
 - Không suy luận causal ablation từ so sánh training khác budget/precision/runtime.
 - Audit diffusion mới giữ nguyên graph/descriptor: seed top-20 thay cho dense seed khắc phục mức giảm mạnh trong bảng lịch sử. Bảng riêng báo kết quả replay toàn bộ query corruption từ cache; bảng chính lịch sử vẫn giữ số gốc để truy vết. Không dùng latency của dense diffusion làm latency cho phiên bản sửa.
 - Source augmentation/gate/BF16 và toàn bộ search đã có trong `artifacts/colab-training/` và `artifacts/kaggle-posttraining/`; hướng dẫn kiểm tra mới ở `artifacts/revision-validation/`.
+- B0 rerun epoch 12 hoàn tất Oxford: cosine 81,06%, AQE 83,77%, sparse diffusion 78,35%. Job dừng ở giới hạn extraction 30 phút khi đang chạy Paris. Chỉ 5 nhóm Oxford/275 AP được phục hồi và kiểm tra từ ranking đầy đủ; không ghi job toàn phần là thành công và không có số Paris mới.
 - B0 chưa có robustness/post-training cùng giao thức; một training seed; sensitivity exploratory.
 - Precision/recall trong summary cũ trung bình **19 điều kiện: clean + 18 corrupted**; corrupted mAP và worst-condition chỉ dùng **18 corrupted**. Supplement ghi rõ sự khác nhau này.
 - Median end-to-end của QE thấp hơn cosine ở một vài nhóm do biến thiên phép đo; bài không coi đó là causal speed-up.

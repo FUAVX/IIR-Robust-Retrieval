@@ -51,6 +51,14 @@ published code and original benchmark images.
 
 ## Input datasets and source
 
+The completed **B0 epoch-12 Oxford rerun** has a separate
+[public numerical-output release](https://www.kaggle.com/datasets/ndhoang2310/iir-revision-b0-oxford-numerical-v1):
+descriptors, five full rankings, 275 per-query AP records and provenance.
+All 12 payload files were downloaded anonymously and matched their inventory
+hashes on 2026-11-11. The parent job timed out during Paris; this release is
+Oxford-only and preserves that failure status. See
+[`public_b0_verification.json`](revision-validation/results/public_b0_verification.json).
+
 | Input | Access URL |
 | --- | --- |
 | Prepared SfM subset-100 | [Kaggle dataset](https://www.kaggle.com/datasets/ndhoang2310/iir-b0-sfm100-prepared) |

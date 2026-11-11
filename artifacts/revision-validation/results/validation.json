@@ -9,11 +9,11 @@
   "gpu_b0": "COMPLETE v2: both legacy datasets, five methods, 310 view groups, 17050 AP records",
   "raw_publication": "PUBLIC: anonymous inventory and three representative numerical files downloaded; hashes match",
   "paper": "PASS: full B0 clean/corruption data, 16 references, numerical/provenance checks and current PDF layout",
-  "standalone_source": "PASS: complete B0 source ZIP rebuilds tables/figures and compiles independently; final PDF text matches repository PDF",
+  "standalone_source": "PASS: editorial revision source ZIP compiles independently; PDF text matches repository PDF. Previous full B0 asset regeneration also passed.",
   "paper_visual_review": {
     "pages": 8,
-    "sha256": "e004ae08759d1b72465c56aee343ddfce59cff461f47bff84be93716212fa796",
-    "method": "All eight final pages rendered and inspected; full B0 table and severity figure checked"
+    "sha256": "31e1b61f52f414afbc1b4b188637727eb150bd945da8b8186ff279f3e8a22458",
+    "method": "Editorial revision: all eight rendered pages inspected; no overlap or clipping; repository and both public output hyperlinks verified with pdfinfo"
   },
   "public_b0": "PASS: all 12 Oxford payloads downloaded anonymously and SHA-256 matched",
   "gpu_b0_v1": "PARTIAL_BUDGET_LIMIT: Oxford five groups/275 AP records verified; Paris incomplete; no additional GPU job",

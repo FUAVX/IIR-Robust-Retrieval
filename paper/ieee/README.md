@@ -8,6 +8,7 @@ Bản paper tiếng Anh kết hợp bằng chứng lịch sử với lượt đ�
 - `seg301_ieee_paper.tex`: entry point; nội dung nằm trong `sections/`.
 - `supplement.pdf` / `supplement.tex`: toàn bộ 100 sensitivity rows và secondary metrics.
 - `references.bib`: 16 tài liệu tham khảo, bổ sung ViT, DINOv2, DELG và SuperGlobal từ nguồn tác giả.
+- Bản sửa cách viết: Abstract/Introduction/Related Work/Results phát biểu trực tiếp; các giới hạn so sánh tập trung trong Limitations. Phần Reproducibility có link repo và hai bộ raw outputs công khai.
 - `figures/`: biểu đồ vector, dựng từ CSV; bảng nằm trong `tables/`.
 - `data/`: CSV và cấu hình dùng cho bài; không chứa weights, API keys hoặc dữ liệu ảnh benchmark.
 - `template/`: ZIP template tải về, bản gốc và thông tin nguồn/SHA256.

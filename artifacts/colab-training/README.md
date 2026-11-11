@@ -136,6 +136,6 @@ python3 artifacts/colab-training/verify_profile.py
 
 Verifier cần torch/torchvision/NumPy/Pillow; kiểm tra compile, embedded source, VGG topology/state keys/forward, gate identity, contrastive loss+gradients, mixed-shape extraction, ZIP, dữ liệu giả có đúng 16.692 file/counts, và training/resume của cả hai biến thể với CNN nhỏ trên CPU. Không tải weights hoặc dữ liệu thật.
 
-Chưa chạy VGG16 thật trên Colab GPU; chưa có số throughput, VRAM, thời gian/epoch hoặc mAP. Notebook bắt buộc smoke ở 1024 trước full training, dừng khi có OOM/lỗi và không tự hạ resolution/precision.
+Hai run VGG16 thật trên Colab đã hoàn tất 100 epoch; history, checkpoint identities và kết quả evaluation được dẫn từ `../../paper/ieee/data/models_manifest.json` và `../README.md`. Cấu hình 50 epoch ở trên là mặc định khởi tạo notebook; các lượt lịch sử đã tăng target lên 100 khi resume. Notebook bắt buộc smoke ở 1024 trước full training, dừng khi có OOM/lỗi và không tự hạ resolution/precision.
 
 Runtime và notebook có nguồn gốc từ code/pipeline của repo; MIT license gốc được giữ tại `LICENSE` trong thư mục này. Spatial attention tham khảo [CBAM, ECCV 2018](https://arxiv.org/abs/1807.06521).

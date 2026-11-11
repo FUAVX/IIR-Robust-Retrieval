@@ -140,4 +140,4 @@ SQLite caches, benchmark images, logs and checkpoint weights. The archive is
 909,081,588 bytes; SHA-256
 `f7e1bb3108977d86b986bbe5e125f107b0ff6df70286e7718d177e8f146f044d`.
 The original outputs are never removed. See `artifacts/README.md` for the
-verified download location when publication completes.
+verified public download locations.

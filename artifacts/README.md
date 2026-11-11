@@ -1,9 +1,9 @@
 # External artifact access
 
-Ba ZIP trong bảng dưới dùng chung thư mục Google Drive do chủ repo cung cấp.
-Trước khi chạy lại từ checkpoint, tải đúng tên file và đối chiếu SHA-256.
-Kiểm tra quyền truy cập bằng tài khoản mà giảng viên sẽ dùng. Không đưa API
-token, mật khẩu, checkpoint hoặc ZIP lớn vào Git.
+## Training checkpoints
+
+The three original ZIPs are in the shared Drive folder below. Match the exact
+filename and archive SHA-256 before loading a checkpoint.
 
 | Artifact ngoài Git | SHA-256 của file lưu trữ | Access URL |
 | --- | --- | --- |
@@ -11,107 +11,84 @@ token, mật khẩu, checkpoint hoặc ZIP lớn vào Git.
 | `run1_vgg16_gem_augmentation_v2-20261030T082558Z-1-002.zip` — R1 augmentation | `76c52b0d73eaa2e87df97f3b3fadfe9ad7726a93031c9eb75a81ad8abac760a8` | [Google Drive folder](https://drive.google.com/drive/folders/16lsh6PdOzAlSKRmuTt7iCcIHH0kDMTxY) |
 | `run2_attention_bf16_100ep_v1-20261030T082559Z-1-001.zip` — R2 augmentation + gate | `1b89fb9dcdff9caa9b589e069e497602d55fe39f1d435b0ec911791bd74321fb` | [Google Drive folder](https://drive.google.com/drive/folders/16lsh6PdOzAlSKRmuTt7iCcIHH0kDMTxY) |
 
-Drive access check — 2026-11-05: the supplied folder returned HTTP 200 without
-credentials or cookies, with title `SEG Result - Google Drive`. All three exact
-ZIP filenames in the table were visible. The links open the shared folder;
-select the corresponding ZIP by its full filename. ZIP downloads and SHA-256
-values have not been independently checked, and access from the instructor's
-account has not been tested. The raw-output download location remains pending.
+The Drive filenames were documented as visible on 2026-11-05; this revision
+uses the local copies and does not claim a new independent Drive download.
+See `reproduction/B0/epoch_012/README.md` for B0 checkpoint provenance and
+`paper/ieee/data/models_manifest.json` for R1/R2 identities.
 
-The [B0 evidence index](../reproduction/B0/epoch_012/README.md) describes the
-first ZIP and its checkpoint hash. The [paper source manifest](../paper/ieee/data/source_manifest.json)
-records the R1/R2 archive identities; the paper's aggregate CSV/JSON snapshots
-are already committed under [`paper/ieee/data/`](../paper/ieee/data/). To repeat
-raw post-training inference or inspect every saved ranking, the team must also
-provide the corresponding raw outputs or their own verified download location.
-Add that location here when available: **PENDING_URL_POSTTRAINING_RAW_OUTPUTS**.
+## Complete B0 v2 numerical outputs — public download
 
-## Artifact location audit — 2026-11-04
+[Download complete B0 epoch-12 results](https://www.kaggle.com/datasets/ndhoang2310/iir-b0-complete-epoch12-results-v2).
 
-Reviewed all 33 commits reachable from the available local branches,
-remote-tracking refs and reflogs, including `main`, `b0-data-preparation`,
-`b0-reproduction-evidence`, `b1-robustness-experiments` and
-`training-evaluation-report`. This included historical README files, scripts,
-notebook source/saved outputs, PDF text/hyperlinks and committed source ZIPs.
-No download URL identifying any of the four pending artifacts was found during
-that repository search. On 2026-11-05, the repository owner supplied the Drive
-folder now linked for B0/R1/R2 above; the raw-output placeholder remains pending.
-The location-evidence table below preserves the earlier repository findings.
+Both Oxford5k and Paris6k are complete: five fixed methods, 31 views/query,
+310 full rankings and **17,050 independently rescored AP records**. The release
+contains **389 numerical files** (255,482,581 payload bytes), including final
+query/gallery descriptors, rankings, corruption pixel hashes, graph matrices,
+per-query/aggregate metrics and provenance. It supersedes the historical v1
+Oxford-only recovery below.
 
-| Artifact | Location evidence | Verification / remaining gap |
-| --- | --- | --- |
-| B0 | [Evidence index](../reproduction/B0/epoch_012/README.md), [checkpoint inventory](../reproduction/B0/epoch_012/results/checkpoint_inventory.csv) and [B1 handoff](../docs/B1/00_README_BAN_GIAO.md) identify historical `reproduce/output_kaggle/` paths and local `C:\Users\DELL\Downloads\iir.zip`. | The local `iir.zip` exists; its checkpoint, history and epoch-12 evaluation match the [analysis manifest](../reproduction/B0/epoch_012/results/analysis_manifest.json). Its archive hash differs from the required B0 ZIP; no share/download URL was found. |
-| R1 | [Source manifest](../paper/ieee/data/source_manifest.json) identifies the exact ZIP name and hash; [model manifest](../paper/ieee/data/models_manifest.json) identifies the epoch-100 checkpoint. | Archive identity is documented, but its storage path, byte count and download URL were not found. |
-| R2 | [Source manifest](../paper/ieee/data/source_manifest.json) identifies the exact ZIP name and hash; [model manifest](../paper/ieee/data/models_manifest.json) identifies the epoch-100 checkpoint. | Archive identity is documented, but its storage path, byte count and download URL were not found. |
-| Raw post-training outputs | [Evidence manifest](../paper/ieee/evidence_manifest.json) and [example builder](../paper/ieee/build_examples.py) refer to `artifacts/kaggle-posttraining/outputs/`. | Historical local paths only; this directory is absent from the inspected worktrees. No raw-output archive identity or download URL was found. |
+Kaggle expands the uploaded archive into `b0-complete-v2/`. Check extracted
+files against `inventory.json`; the local upload archive SHA-256 is
+`1d0825d2d8d7a58e2e7d6cde6acdb00a725c37fec14af1f58ae5c24fbfa6f12b`.
+All archive payloads were verified locally. Anonymous downloads of the inventory,
+summary, complete per-query CSV, a Paris ranking and the Paris descriptor cache
+matched their recorded hashes; the whole remote release was not downloaded a
+second time. See
+[`public_b0_complete_verification.json`](revision-validation/results/public_b0_complete_verification.json).
+Weights, benchmark images, duplicate progress arrays and logs are excluded.
 
-The inspected `iir.zip` is 558,489,051 bytes, with SHA-256
-`75f0154dfdcfdeffef8597c86d4b6262da1689a6374f86dfc7e84f67d69d167f`.
-Its `b0_sfm100_notebook/runs/b0_sfm100_vgg16_gem/best.pt` is 176,631,073 bytes
-and has the expected checkpoint SHA-256
-`8a56bad2e1d585c68de42ff841f061e5469f76792750d8b4993e500294f19f27`.
-`history.json` and `evaluation_epoch_012.json` also match their manifest hashes.
-This verifies those B0 contents, not the identity of the ZIP requested above.
+## Raw post-training numerical outputs — public download
 
-Raw-output recovery should follow these paths relative to the historical
-`artifacts/kaggle-posttraining/outputs/` directory:
+[Download the historical numerical outputs on Kaggle](https://www.kaggle.com/datasets/ndhoang2310/iir-post100-raw-numerical-outputs-v1).
 
-- `iir-post100-report/unpacked/`: `per_query.csv`, `conditions.csv`,
-  `end_to_end_summary.csv` and `summary.csv`.
-- `iir-post100-extract/unpacked/desc_run1_aug_epoch100_oxford5k.npz`:
-  descriptors consumed by the example builder.
-- `iir-post100-geometry-oxford5k-*/unpacked/results/`: JSON results and matching
-  NPZ rankings consumed by that builder. The wildcard is a local file pattern,
-  not a Kaggle notebook identifier or URL.
+The inventory lists **5,992 original files** (1,025,514,236 payload bytes):
+per-query AP, aggregate and sensitivity CSVs, complete ranking NPZs,
+gallery/query descriptors, graph matrices, convergence diagnostics and timing
+records. These are the historical epoch-100 outputs, including dense-seed
+diffusion. Revised sparse-seed measurements are committed separately under
+`artifacts/revision-validation/results/`.
 
-These exact paths are the example builder's minimum inputs, not a complete
-inventory of the post-training suite. Its `per_query.csv` reader requires
-`model`, `dataset`, `name`, `phase`, `method`, `query_id` and `ap`; the descriptor
-NPZ reader uses `gallery_ids`, `conditions`, `gallery` and `queries`. Each result
-JSON identifies the model, method, phase and condition; its same-stem NPZ
-contains `query_ids` and `ranks`. CSV summaries cannot replace these rankings.
-The [paper's coverage description](../paper/ieee/sections/results.tex) and source
-manifest report 68,200 main per-query AP records plus 5,500 sensitivity records
-(73,700 total), covering both epoch-100 encoders, fusion and both benchmarks.
-Recover the whole historical `outputs/` directory and its job manifests;
-the checked-in example only selects R1/Oxford examples. The missing job source
-and output inventories prevent an exact enumeration of every raw-result file.
+Kaggle expanded the uploaded tar.gz. Download the dataset, then place the
+contents of `post100-numerical-outputs/` under
+`artifacts/kaggle-posttraining/outputs/`, preserving each job's `unpacked/`
+directory. `raw_inventory.json` gives the original relative paths, byte counts
+and SHA-256 values. The local upload archive was fully read back and verified:
+909,081,588 bytes, SHA-256
+`f7e1bb3108977d86b986bbe5e125f107b0ff6df70286e7718d177e8f146f044d`.
+The Kaggle download is a different container; validate its extracted files
+against the inventory rather than comparing its ZIP hash with this tar hash.
 
-An expanded local search also inspected readable files under the workspace,
-Windows Downloads, Documents/Codex and OneDrive, and the member names of 160 ZIPs
-under the workspace, Downloads and Documents/Codex. It found no additional
-matching checkpoint/raw-output bundle. Downloads contains an
-`evidence_manifest.json` with the same seven source hashes, but no download URL.
-The historical `/home/dacekey/SEG301_Fall26/research` root and the Kaggle/Colab
-mount paths are absent here. Some unrelated package/database directories were
-unreadable; the search does not establish absence outside the readable scope.
+Access checked on **2026-11-11 without credentials or cookies**: the inventory
+matches the local original byte-for-byte. A ranking NPZ, an Oxford descriptor
+NPZ and the report summary CSV were downloaded publicly and matched their
+recorded hashes. This is a sampled remote check; every remote file was not
+downloaded again. The machine-readable record is
+[`public_raw_verification.json`](revision-validation/results/public_raw_verification.json).
 
-Download the exact three ZIPs from the supplied Drive folder and compare their
-SHA-256 values with the first table. For raw outputs, obtain the complete saved
-output bundle and record its filename, byte count and SHA-256. Supply its share
-link and verify downloads using the recipient's account before replacing the
-remaining placeholder.
+The release omits duplicate tar transport, rebuildable SQLite feature/matching
+caches, example benchmark images, logs and model weights. It preserves all
+unpacked numerical CSV/JSON/NPZ/MD outputs. Rebuilding local caches uses the
+published code and original benchmark images.
 
-## Public Kaggle inputs documented by the handoff
+## Input datasets and source
+
+The historical **v1 B0 epoch-12 Oxford-only recovery** has a separate
+[public numerical-output release](https://www.kaggle.com/datasets/ndhoang2310/iir-revision-b0-oxford-numerical-v1):
+descriptors, five full rankings, 275 per-query AP records and provenance.
+All 12 payload files were downloaded anonymously and matched their inventory
+hashes on 2026-11-11. The parent job timed out during Paris; this release is
+Oxford-only and preserves that failure status. See
+[`public_b0_verification.json`](revision-validation/results/public_b0_verification.json).
 
 | Input | Access URL |
 | --- | --- |
 | Prepared SfM subset-100 | [Kaggle dataset](https://www.kaggle.com/datasets/ndhoang2310/iir-b0-sfm100-prepared) |
 | Oxford5k and Paris6k benchmarks | [Kaggle dataset](https://www.kaggle.com/datasets/ndhoang2310/iir-b0-benchmarks) |
 | Caffe VGG16 feature weights | [Kaggle dataset](https://www.kaggle.com/datasets/ndhoang2310/iir-b0-vgg16-weights) |
-| Portable B0 training handoff bundle | [Kaggle dataset](https://www.kaggle.com/datasets/ndhoang2310/iir-b0-training-handoff) |
+| Portable B0 training handoff | [Kaggle dataset](https://www.kaggle.com/datasets/ndhoang2310/iir-b0-training-handoff) |
 
-These are the locations recorded in the [Kaggle handoff](kaggle-training/public-handoff/HANDOFF.md).
-Check access from the recipient's account before submission. The Caffe weight
-file should have SHA-256
+These are the input locations recorded by the historical handoff. Caffe VGG16
+feature weights have SHA-256
 `d369c8e593250e421eda192512263dccd35edb5c4b57e97312651bac10a51b7d`.
-
-Access check on 2026-11-04: all four dataset pages and their Kaggle metadata
-endpoints returned HTTP 200 without credentials or cookies. Each metadata
-response matched the expected dataset slug and reported `isPrivate=false`.
-This verifies public page/metadata visibility; file downloads and access from
-the instructor's account were not tested. These input/code datasets do not
-establish a download location for the trained B0/R1/R2 artifacts or raw outputs.
-
-After filling a ZIP URL, download it and compare its SHA-256 with the value in
-the table. A matching filename alone does not establish artifact identity.
+The training/search source and independent diffusion checks are linked from
+[`revision-validation/README.md`](revision-validation/README.md).

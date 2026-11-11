@@ -1,0 +1,66 @@
+{
+  "status": "PARTIAL_BUDGET_LIMIT",
+  "kernel": "ndhoang2310/iir-revision-b0-clean-epoch12-v1",
+  "version": 1,
+  "completed_datasets": [
+    "oxford5k"
+  ],
+  "incomplete_datasets": [
+    "paris6k"
+  ],
+  "failed_job_status": {
+    "status": "FAILED",
+    "error": "30-minute extraction budget exceeded; no partial result claimed"
+  },
+  "input_manifest": {
+    "model": "b0_epoch12",
+    "epoch": 12,
+    "selection": "validation_loss",
+    "source_checkpoint_sha256": "8a56bad2e1d585c68de42ff841f061e5469f76792750d8b4993e500294f19f27",
+    "source_commit": "747166e627e514842f5c5be531f4e0f73612cc90",
+    "state_key_mapping": {
+      "pool.p": "p"
+    },
+    "smoke_max_abs_error": 2.9802322387695312e-08,
+    "precision": "fp32",
+    "tf32": false,
+    "image_size": 1024,
+    "search": "fixed_clean_v1",
+    "files": {
+      "LICENSE": "c31c66c3945689e8876c9bbdb360228d13e4a15d84a77452dbe2db0ab67558e7",
+      "encoder_runtime.py": "9724c31d9f48d5be27192aa5761006e28b3977caa71c76b69ec899d3ae821ccc",
+      "runtime.py": "3dbdf7d105aaba87a8c169dc28f3d3861d80afb61e0bd057acba749a9738ced3",
+      "artifacts_io.py": "69c43fe9c609d149a09631f7ea980a62b8acea282a6ffa1ef875ac0424acb8e5",
+      "b0_clean_eval.py": "ea8e8c36c43fdad1153983bbc61aaae6a147743358eeb6f3517b5c10251c0048",
+      "protocol.py": "f4d9d6be4cc9988ebf80982a961acdf771a4b2ef067378a59afe227477e6a5fd",
+      "diffusion_checks.py": "1fe176f9ceca97ac38743bb14f8025c3a25cf4ef14f36604871b046ec1d3c3eb",
+      "b0_epoch12.pth": "330bbd4faa5234d5ec2c537e3aa77914b26423976b4d93b6630678855cc0aee5",
+      "legacy_evaluate.py": "ced1d110dd19f3f887e75f18ac9120aaff8900f5d6b52dc8c45c66c823141fd0"
+    }
+  },
+  "source_descriptor_sha256": "fb52af541036c553e21778d76439cdbe909cb190c7fdd65b743565f414437015",
+  "rankings": [
+    {
+      "file": "ranks_oxford5k_AQE.npz",
+      "sha256": "ddec5cd75eaa5929b20e6131b381454a579fb5ca536d9f1b657560203837cc20"
+    },
+    {
+      "file": "ranks_oxford5k_alpha_QE.npz",
+      "sha256": "53e690ecea7bfec52ef12d44eac7f6157dc8e878938b7d3d04324abc87cd56d6"
+    },
+    {
+      "file": "ranks_oxford5k_cosine.npz",
+      "sha256": "919dae68260be0f841a687a2a0929611308c46208a21e5c7a33a57d8bae1e3a6"
+    },
+    {
+      "file": "ranks_oxford5k_diffusion_mutual_top20.npz",
+      "sha256": "ec7bc17b632585e49cd1ec6ee2237ae74d3fb1d7788983874a2152fa66280bbb"
+    },
+    {
+      "file": "ranks_oxford5k_gated_QE.npz",
+      "sha256": "53e690ecea7bfec52ef12d44eac7f6157dc8e878938b7d3d04324abc87cd56d6"
+    }
+  ],
+  "recovery": "All five complete Oxford rankings checked as full gallery permutations; AP/P@10 recomputed locally",
+  "runtime_environment": "Not recorded before timeout; no GPU type/version inferred from the request"
+}

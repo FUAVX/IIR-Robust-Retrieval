@@ -4,7 +4,9 @@
   "sensitivity_rows": 100,
   "secondary_rows": 40,
   "history_rows": 214,
-  "verified_references": 12,
+  "verified_references": 16,
+  "b0_summary_rows": 10,
+  "b0_ap_records": 17050,
   "class_unmodified": true,
   "checks": [
     "All 40 aggregate rows recomputed from 19 condition rows",
@@ -12,13 +14,17 @@
     "All 72 main post-training table cells match CSV",
     "Best epochs match validation-loss minima",
     "Seven source evidence hashes match committed snapshots",
-    "Frozen config, macro gains, bibliography keys and original class checked"
+    "Frozen config, macro gains, bibliography keys and original class checked",
+    "Four revised diffusion summaries recomputed from 124 cached views",
+    "Ten B0 groups and 310 views recomputed from 17050 AP records; both datasets complete",
+    "Complete B0 snapshot hashes and 30-row comparison verified",
+    "All 20 complete B0 table cells match the CSV"
   ],
   "pdf": {
     "seg301_ieee_paper": {
-      "pages": 7,
-      "sha256": "1bfd8eeba287f89585113975383498c790bc1e97d3e0c862d2d88c3b97e67a43",
-      "bytes": 156143
+      "pages": 8,
+      "sha256": "31e1b61f52f414afbc1b4b188637727eb150bd945da8b8186ff279f3e8a22458",
+      "bytes": 163676
     },
     "supplement": {
       "pages": 4,
@@ -27,8 +33,8 @@
     }
   },
   "build_log_checks": {
-    "seg301_ieee_paper": "SKIPPED: build log not committed; compile the LaTeX source to check layout warnings",
-    "supplement": "SKIPPED: build log not committed; compile the LaTeX source to check layout warnings"
+    "seg301_ieee_paper": "PASS",
+    "supplement": "PASS"
   },
-  "visual_review": "Historical manual review was recorded for the committed PDFs; this script checks their text and structure, not visual layout."
+  "visual_review": "This script checks text and structure, not visual layout. The revision manual-review record is under artifacts/revision-validation/results/validation.json."
 }

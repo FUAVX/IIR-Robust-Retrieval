@@ -1,0 +1,21 @@
+{
+  "dataset": "ndhoang2310/iir-revision-b0-oxford-numerical-v1",
+  "url": "https://www.kaggle.com/datasets/ndhoang2310/iir-revision-b0-oxford-numerical-v1",
+  "anonymous": true,
+  "all_payload_hashes_match": true,
+  "files": [
+    "README.md",
+    "desc_b0_epoch12_oxford5k_clean.npz",
+    "graph_oxford5k.json",
+    "original_job_status.json",
+    "per_query.csv",
+    "ranks_oxford5k_AQE.npz",
+    "ranks_oxford5k_alpha_QE.npz",
+    "ranks_oxford5k_cosine.npz",
+    "ranks_oxford5k_diffusion_mutual_top20.npz",
+    "ranks_oxford5k_gated_QE.npz",
+    "recovery_manifest.json",
+    "summary.csv"
+  ],
+  "scope": "Oxford only; the original two-dataset job hit its budget during Paris"
+}

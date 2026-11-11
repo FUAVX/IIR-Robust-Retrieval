@@ -1,0 +1,18 @@
+\begin{table}[t]
+\caption{Complete B0 epoch-12 evaluation, mAP (\%). C: clean; R: mean over 18 corrupted conditions. The checkpoint is selected by validation loss; search settings are fixed.}
+\label{tab:b0post}
+\centering\footnotesize
+\begin{tabular}{lrrrr}
+\toprule
+& \multicolumn{2}{c}{Oxford} & \multicolumn{2}{c}{Paris} \\
+Method & C & R & C & R \\
+\midrule
+\revisionbaselinerows
+\bottomrule
+\end{tabular}
+\end{table}
+Table~\ref{tab:b0post} applies all five fixed methods to the validation-selected B0 checkpoint on both benchmarks. AQE increases clean mAP from 81.06\% to 83.77\% on Oxford and from 77.13\% to 80.19\% on Paris. Its corrupted dataset-macro mAP rises from 77.20\% to 80.64\%. Weighted and cosine-gated QE give similar scores.
+
+Sparse diffusion is encoder- and dataset-dependent: Oxford clean mAP falls to 78.35\%, whereas Paris rises to 90.50\%. Its corresponding corrupted scores are 77.46\% and 89.16\%, yielding 83.31\% dataset-macro mAP. Correcting query seeding therefore resolves the earlier collapse without guaranteeing an improvement for every encoder and dataset.
+
+The completed B0 grid contains 310 method/view groups and 17,050 per-query AP records; all 3,410 query pixel checksums match the R1 inputs.

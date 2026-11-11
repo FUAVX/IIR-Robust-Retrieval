@@ -1,2 +1,3 @@
 # Preserve exact source/data bytes used by provenance hashes.
 * -text
+*.csv whitespace=cr-at-eol

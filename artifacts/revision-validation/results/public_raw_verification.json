@@ -1,0 +1,26 @@
+{
+  "dataset": "ndhoang2310/iir-post100-raw-numerical-outputs-v1",
+  "url": "https://www.kaggle.com/datasets/ndhoang2310/iir-post100-raw-numerical-outputs-v1",
+  "anonymous_inventory_verified": true,
+  "anonymous_sample_files": [
+    {
+      "path": "iir-post100-diffusion/unpacked/results/00b6882481d269c432bf.npz",
+      "bytes": 502876,
+      "sha256": "caf8adc94718f39d8807feda01dd1b55aed893bd8dc1fd31199a6565ab3b0dae"
+    },
+    {
+      "path": "iir-post100-extract/unpacked/desc_run1_aug_epoch100_oxford5k.npz",
+      "bytes": 4752812,
+      "sha256": "7f0bf721235a7bfa8b12e016b80d9de001496ce99d475b635c35d27dfcb742ec"
+    },
+    {
+      "path": "iir-post100-report/unpacked/summary.csv",
+      "bytes": 12461,
+      "sha256": "a23ba41fe8b60e88f72ae33914457a57c3bb53bda69de919834d88aed0030bea"
+    }
+  ],
+  "payload_files": 5992,
+  "payload_bytes": 1025514236,
+  "local_archive_sha256": "f7e1bb3108977d86b986bbe5e125f107b0ff6df70286e7718d177e8f146f044d",
+  "note": "Local tar archive fully verified before upload; Kaggle expanded it. Public inventory and three representative files downloaded and hash-checked; not every remote file downloaded again."
+}

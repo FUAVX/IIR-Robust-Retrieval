@@ -1,0 +1,15 @@
+{
+  "account_alias": "hoang1",
+  "owner": "ndhoang2310",
+  "kernel": "ndhoang2310/iir-revision-b0-clean-epoch12-v1",
+  "version": 1,
+  "accelerator": "NvidiaTeslaT4",
+  "timeout_seconds": 2400,
+  "extraction_budget_seconds": 1800,
+  "training": false,
+  "submitted_at_utc": "2026-11-11T03:48:59.967Z",
+  "remote_final_status": "ERROR",
+  "reason": "30-minute extraction limit interrupted Paris",
+  "accepted_scope": "Five complete Oxford groups and 275 AP records, recovered and checked",
+  "additional_gpu_jobs": 0
+}

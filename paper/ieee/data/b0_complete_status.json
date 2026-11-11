@@ -1,0 +1,9 @@
+{
+  "status": "COMPLETE",
+  "protocol": "b0_complete_clean_robust_v2",
+  "datasets": 2,
+  "methods": 5,
+  "views_per_query": 31,
+  "ap_records": 17050,
+  "seconds": 1594.454724096
+}

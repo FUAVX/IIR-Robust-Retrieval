@@ -1,6 +1,8 @@
 # Keep datasets and prepared supervision outside Git.
 # The upstream get_data_root() uses the repository's data/ directory.
 data/
+!paper/ieee/data/
+!paper/ieee/data/*
 datasets/
 
 # Checkpoints and model weights, including common upstream .pth.tar files.
@@ -63,3 +65,13 @@ dist/
 .mypy_cache/
 .ruff_cache/
 .ipynb_checkpoints/
+
+# Local execution state and duplicated Kaggle transport payloads.
+/tmp/
+*.tarpart
+*.sqlite
+artifacts/kaggle-posttraining/state/
+artifacts/kaggle-posttraining/bundle/
+artifacts/kaggle-posttraining/merged_results/
+artifacts/revision-validation/jobs/
+artifacts/revision-validation/publish/

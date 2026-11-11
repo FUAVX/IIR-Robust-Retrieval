@@ -1,0 +1,5 @@
+# Generated summaries/figures are represented by the paper's committed snapshots.
+*
+!.gitignore
+!*.py
+!report/

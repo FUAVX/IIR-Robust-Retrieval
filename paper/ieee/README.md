@@ -1,19 +1,20 @@
 # IEEE paper draft - SEG301
 
-Bản paper tiếng Anh dựa trên kết quả đã có, không training hay chạy lại GPU. Tác giả tạm thời: **Author 1, Author 2, Author 3**, theo yêu cầu. Chưa chỉ định hội nghị hay giới hạn trang chính thức.
+Bản paper tiếng Anh kết hợp bằng chứng lịch sử với lượt đánh giá B0 v2 hoàn tất trên Kaggle T4; không training lại. Tác giả tạm thời: **Author 1, Author 2, Author 3**, theo yêu cầu. Chưa chỉ định hội nghị hay giới hạn trang chính thức.
 
 ## Đọc và chỉnh sửa
 
 - `seg301_ieee_paper.pdf`: bản chính IEEE conference hai cột.
 - `seg301_ieee_paper.tex`: entry point; nội dung nằm trong `sections/`.
 - `supplement.pdf` / `supplement.tex`: toàn bộ 100 sensitivity rows và secondary metrics.
-- `references.bib`: 12 tài liệu tham khảo, kiểm tra từ nguồn tác giả/nhà xuất bản.
+- `references.bib`: 16 tài liệu tham khảo, bổ sung ViT, DINOv2, DELG và SuperGlobal từ nguồn tác giả.
+- Bản sửa cách viết: Abstract/Introduction/Related Work/Results phát biểu trực tiếp; các giới hạn so sánh tập trung trong Limitations. Phần Reproducibility có link repo và hai bộ raw outputs công khai.
 - `figures/`: biểu đồ vector, dựng từ CSV; bảng nằm trong `tables/`.
 - `data/`: CSV và cấu hình dùng cho bài; không chứa weights, API keys hoặc dữ liệu ảnh benchmark.
 - `template/`: ZIP template tải về, bản gốc và thông tin nguồn/SHA256.
-- `evidence_manifest.json`, `validation.json`: nguồn số liệu và kết quả kiểm tra.
+- `evidence_manifest.json`, `b0_complete_evidence.json`, `validation.json`: nguồn số liệu, hash snapshot B0 v2 và kết quả kiểm tra.
 
-Đường dẫn chia sẻ cho ZIP nguồn B0/R1/R2 cần điền tại
+Đường dẫn tải ZIP B0/R1/R2 và raw outputs đã được liệt kê tại
 [`artifacts/README.md`](../../artifacts/README.md); các hash gốc nằm trong
 `data/source_manifest.json`.
 
@@ -63,6 +64,7 @@ Có thể upload ZIP nguồn lên Overleaf và đặt `seg301_ieee_paper.tex` l�
 
 ```bash
 python build_assets.py
+python build_revision_assets.py
 ```
 
 Cần Python, NumPy và Matplotlib. Script dùng CSV có sẵn trong project gốc; nếu không có thư mục artifacts, dùng bản CSV đi kèm trong `data/`. Không chạy encoder hay GPU. Các bảng được sinh ra thành macro trước khi đưa vào tabular, để tránh lỗi LaTeX input trong alignment.
@@ -73,9 +75,13 @@ Cần Python, NumPy và Matplotlib. Script dùng CSV có sẵn trong project g�
 
 - Đây là nghiên cứu thực nghiệm các thành phần đã có, không tuyên bố thuật toán mới hay state of the art.
 - B0 best, R1/R2 best là bằng chứng lịch sử; best R1 không có weight file trong ZIP nhưng có evaluation/history.
-- Search study chỉ dùng R1/R2 latest epoch 100, FP32 inference và TF32 tắt.
+- Grid lịch sử dùng R1/R2 latest epoch 100; study hoàn tất mới dùng B0 validation-selected epoch 12. Cả hai dùng FP32 inference và TF32 tắt.
 - Không suy luận causal ablation từ so sánh training khác budget/precision/runtime.
-- B0 chưa có robustness/post-training cùng giao thức; một training seed; sensitivity exploratory.
+- Audit diffusion mới giữ nguyên graph/descriptor: seed top-20 thay cho dense seed khắc phục mức giảm mạnh trong bảng lịch sử. Bảng riêng báo kết quả replay toàn bộ query corruption từ cache; bảng chính lịch sử vẫn giữ số gốc để truy vết. Không dùng latency của dense diffusion làm latency cho phiên bản sửa.
+- Source augmentation/gate/BF16 và toàn bộ search đã có trong `artifacts/colab-training/` và `artifacts/kaggle-posttraining/`; hướng dẫn kiểm tra mới ở `artifacts/revision-validation/`.
+- Raw B0 v2: https://www.kaggle.com/datasets/ndhoang2310/iir-b0-complete-epoch12-results-v2 — 389 file, đủ 310 ranking đã chấm lại và 17.050 AP records.
+- B0 epoch 12 đã hoàn tất cả Oxford/Paris, 5 phương pháp, clean + 30 corrupted views/query: **17.050 AP records**. Bảng và hình robustness chính dùng kết quả v2; snapshot v1 Oxford-only được giữ riêng làm lịch sử.
+- B0 đã có clean/robustness cùng định nghĩa corruption; chưa chạy lại local/verified geometry và chưa đo direct latency mới cho B0. Chỉ có một training seed, sensitivity không chọn cấu hình chính.
 - Precision/recall trong summary cũ trung bình **19 điều kiện: clean + 18 corrupted**; corrupted mAP và worst-condition chỉ dùng **18 corrupted**. Supplement ghi rõ sự khác nhau này.
 - Median end-to-end của QE thấp hơn cosine ở một vài nhóm do biến thiên phép đo; bài không coi đó là causal speed-up.
 

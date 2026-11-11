@@ -3,7 +3,7 @@
 ## B0 completion job v2
 
 `run_b0_complete.py` and `build_b0_complete_job.py` prepare a separate inference
-job, `ndhoang2310/iir-b0-complete-epoch12-v2`, using the already published private
+job, `ndhoang2310/iir-b0-epoch12-complete-clean-and-robustness-v2`, using the already published private
 B0 input bundle, benchmark images and verified public Oxford descriptor cache.
 The original v1 source and failure record are preserved.
 

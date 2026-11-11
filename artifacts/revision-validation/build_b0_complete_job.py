@@ -32,7 +32,7 @@ def build():
     folder = HERE/'jobs/b0-complete-epoch12-v2'
     folder.mkdir(parents=True, exist_ok=True)
     (folder/'run_b0_complete.py').write_text(source)
-    metadata = dict(id='ndhoang2310/iir-b0-complete-epoch12-v2',
+    metadata = dict(id='ndhoang2310/iir-b0-epoch12-complete-clean-and-robustness-v2',
         title='IIR B0 Epoch12 Complete Clean and Robustness v2', code_file='run_b0_complete.py',
         language='python', kernel_type='script', is_private=True, enable_gpu=True,
         enable_tpu=False, enable_internet=False,

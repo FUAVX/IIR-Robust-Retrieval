@@ -1,5 +1,39 @@
 # Short revision checks
 
+## B0 completion job v2
+
+`run_b0_complete.py` and `build_b0_complete_job.py` prepare a separate inference
+job, `ndhoang2310/iir-b0-complete-epoch12-v2`, using the already published private
+B0 input bundle, benchmark images and verified public Oxford descriptor cache.
+The original v1 source and failure record are preserved.
+
+Scope: both legacy datasets, 55 queries each, clean plus the same 30 corrupted
+views used for R1/R2, cosine/AQE/alpha-QE/gated-QE/mutual-top20 diffusion. Expected
+coverage is 310 method/view groups and 17,050 AP records. No training, tuning,
+geometry stage or new latency study is included. Oxford gallery/clean query
+descriptors are reused. Paris gallery and remaining query views are extracted
+in FP32 with TF32 disabled. Frozen R1/R2 reference rows are embedded from the
+paper's versioned CSVs for a descriptive comparison table.
+
+The GPU request is T4 with a 3,600-second kernel cap and a 3,000-second soft work
+budget. Extraction saves a flushed, checksummed prefix every 64 images and on
+normal exceptions. If interrupted, attach the saved output as a future input
+to resume an identical script/environment. Results and per-query records are
+also saved after every completed condition; `status.json` is `COMPLETE` only
+after both datasets and all expected records exist. A soft-budget exit instead
+records `PARTIAL_BUDGET_LIMIT`, even if Kaggle reports the kernel as complete.
+
+Build and check locally before submitting:
+
+```sh
+python artifacts/revision-validation/build_b0_complete_job.py
+python -m unittest discover -s artifacts/revision-validation -p test_b0_complete.py
+```
+
+Submit through the existing credential bridge. Per the user's instruction,
+stop after the push acknowledgment: do not poll status, fetch logs or download
+outputs until the user requests a check.
+
 The historical training and post-training source is now under
 `artifacts/colab-training/` and `artifacts/kaggle-posttraining/`. The latter's
 five runtime files match the hashes committed with the original paper. Keep

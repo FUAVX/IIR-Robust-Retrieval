@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "kernel": "ndhoang2310/iir-b0-epoch12-complete-clean-and-robustness-v2",
+  "ap_records": 17050,
+  "view_groups": 310,
+  "summary_groups": 10,
+  "seconds": 1594.454724096,
+  "environment": {
+    "torch": "2.11.0+cu130",
+    "numpy": "2.1.3",
+    "pillow": "13.0.0",
+    "opencv": "4.14.0",
+    "gpu": "Tesla T4",
+    "precision": "FP32",
+    "tf32": false
+  },
+  "script_sha_verified": true,
+  "input_manifest_verified": true,
+  "checks": [
+    "complete Cartesian coverage and unique query IDs",
+    "finite AP/P@10/recall values",
+    "view metrics recomputed from 17050 per-query records",
+    "18-condition aggregation recomputed with equal condition weights",
+    "comparison table matches new B0 results"
+  ],
+  "files": {
+    "status.json": "bab97d21aa8500e501fc68a922f5e96eb797cfd5dda0fcc1c395eb6705df55c7",
+    "run_manifest.json": "fdae478944732c4a4a08e01a4bd1437201a7b699488e5f744578440ec920b694",
+    "summary.csv": "299ac44970238dc0a839327c5a4372cc576cfefe7b55aee17db7e676028ab690",
+    "per_query.csv": "cb8f6e0933943064f3720df445e0babb5cc6f03c511b3bfba48372e0a28aed0e",
+    "views.csv": "40e12bd922896b18623ecf12083df90612ec1d8a1e526bf5eab3553b9aebb6e0",
+    "comparison_b0_r1_r2.csv": "197a1b45ffdb7b21daba56aa44e616424061b6d03228a8f23709c8583688b54e"
+  },
+  "sample_rankings_verified": 12,
+  "sample_ap_values_verified": 660,
+  "query_pixel_checksums_matching_R1": 3410,
+  "max_diffusion_relative_residual": 7.043471180466995e-12,
+  "limits": "All 310 saved rankings independently rescored; no new direct latency measurement",
+  "rankings_verified": 310,
+  "ap_values_independently_rescored": 17050,
+  "descriptor_files_verified": 2,
+  "max_metric_recompute_error": 0.0
+}

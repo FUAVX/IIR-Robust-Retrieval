@@ -16,6 +16,27 @@ uses the local copies and does not claim a new independent Drive download.
 See `reproduction/B0/epoch_012/README.md` for B0 checkpoint provenance and
 `paper/ieee/data/models_manifest.json` for R1/R2 identities.
 
+## Complete B0 v2 numerical outputs — public download
+
+[Download complete B0 epoch-12 results](https://www.kaggle.com/datasets/ndhoang2310/iir-b0-complete-epoch12-results-v2).
+
+Both Oxford5k and Paris6k are complete: five fixed methods, 31 views/query,
+310 full rankings and **17,050 independently rescored AP records**. The release
+contains **389 numerical files** (255,482,581 payload bytes), including final
+query/gallery descriptors, rankings, corruption pixel hashes, graph matrices,
+per-query/aggregate metrics and provenance. It supersedes the historical v1
+Oxford-only recovery below.
+
+Kaggle expands the uploaded archive into `b0-complete-v2/`. Check extracted
+files against `inventory.json`; the local upload archive SHA-256 is
+`1d0825d2d8d7a58e2e7d6cde6acdb00a725c37fec14af1f58ae5c24fbfa6f12b`.
+All archive payloads were verified locally. Anonymous downloads of the inventory,
+summary, complete per-query CSV, a Paris ranking and the Paris descriptor cache
+matched their recorded hashes; the whole remote release was not downloaded a
+second time. See
+[`public_b0_complete_verification.json`](revision-validation/results/public_b0_complete_verification.json).
+Weights, benchmark images, duplicate progress arrays and logs are excluded.
+
 ## Raw post-training numerical outputs — public download
 
 [Download the historical numerical outputs on Kaggle](https://www.kaggle.com/datasets/ndhoang2310/iir-post100-raw-numerical-outputs-v1).
@@ -51,7 +72,7 @@ published code and original benchmark images.
 
 ## Input datasets and source
 
-The completed **B0 epoch-12 Oxford rerun** has a separate
+The historical **v1 B0 epoch-12 Oxford-only recovery** has a separate
 [public numerical-output release](https://www.kaggle.com/datasets/ndhoang2310/iir-revision-b0-oxford-numerical-v1):
 descriptors, five full rankings, 275 per-query AP records and provenance.
 All 12 payload files were downloaded anonymously and matched their inventory

@@ -30,9 +30,9 @@ The original B1 planning documents describe proposed experiments. The later pape
 ## Current evidence
 
 - The saved B0 subset-100 run completed 14 of 100 planned epochs. Its validation-selected checkpoint at epoch 12 reached **81.06% Oxford5k mAP** and **77.12% Paris6k mAP** under the legacy single-scale protocol, without whitening or query expansion. The [B0 reproduction record](reproduction/B0/epoch_012/README.md) links the notebook, per-query tables, figures, and checkpoint provenance.
-- The [IEEE paper draft](paper/ieee/README.md) reports additional training and search experiments. It is a draft for team review, with provisional author names and explicit limits on cross-run comparisons. The team intends to update it.
+- The [IEEE paper draft](paper/ieee/README.md) reports additional training and search experiments. It includes the completed B0 v2 clean/robustness study and revised diffusion analysis. It remains a team-review draft with provisional author names and explicit limits on cross-run comparisons.
 - The [short revision checks](artifacts/revision-validation/README.md) publish the historical source and diagnose the original diffusion collapse. On the same R1/Oxford cache, union diffusion changes from 23.67% to 76.75% clean mAP when query seeds are restricted to top-20. A fixed mutual/top-20 replay covers the full archived corruption suite without new GPU inference. Revised results are stored separately from historical measurements.
-- A bounded rerun of validation-selected B0 epoch 12 completes Oxford: **81.06% cosine mAP**, **83.77% AQE**, and **78.35% sparse diffusion**. Paris was interrupted by the 30-minute extraction budget. Complete Oxford rankings were recovered and rescored; the whole Kaggle job remains recorded as a budget-limited failure.
+- The completed B0 epoch-12 study covers **Oxford and Paris**, five methods and clean plus 30 corrupted query views (**17,050 AP records**). AQE raises corrupted dataset-macro mAP from **77.20% to 80.64%**; sparse diffusion reaches **83.31%**, with a clean Oxford loss (81.06% to 78.35%) and a Paris gain (77.13% to 90.50%). This v2 completion supersedes the archived v1 partial run; [complete numerical outputs are public](https://www.kaggle.com/datasets/ndhoang2310/iir-b0-complete-epoch12-results-v2).
 
 ## Reproducing the training and search code
 

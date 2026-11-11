@@ -6,14 +6,17 @@
   "code_hashes": "PASS: all five historical files match paper models_manifest.json",
   "b0_export": "PASS: source checkpoint SHA, validation epoch12, strict state load, upstream output parity max abs error 2.98e-8",
   "sparse_replay": "COMPLETE: 124 condition realizations, 6820 per-query AP records; fixed parameters, no new encoding",
-  "gpu_b0": "PARTIAL_BUDGET_LIMIT: Oxford five groups/275 AP records verified; Paris incomplete; no additional GPU job",
+  "gpu_b0": "COMPLETE v2: both legacy datasets, five methods, 310 view groups, 17050 AP records",
   "raw_publication": "PUBLIC: anonymous inventory and three representative numerical files downloaded; hashes match",
-  "paper": "PASS: 16 references, archived numerical checks and revised diffusion aggregation; eight-page PDF rendered and visually reviewed",
-  "standalone_source": "PASS: asset regeneration and independent LaTeX build; extracted PDF text exactly matches repository PDF",
+  "paper": "PASS: full B0 clean/corruption data, 16 references, numerical/provenance checks and current PDF layout",
+  "standalone_source": "PASS: complete B0 source ZIP rebuilds tables/figures and compiles independently; final PDF text matches repository PDF",
   "paper_visual_review": {
     "pages": 8,
-    "sha256": "556b2ef4da77383bbb39979ed785709ae5c9cac441bb8e84b72fe385049b1064",
-    "method": "All eight final pages rendered and reviewed; B0 table page inspected at higher resolution"
+    "sha256": "e004ae08759d1b72465c56aee343ddfce59cff461f47bff84be93716212fa796",
+    "method": "All eight final pages rendered and inspected; full B0 table and severity figure checked"
   },
-  "public_b0": "PASS: all 12 Oxford payloads downloaded anonymously and SHA-256 matched"
+  "public_b0": "PASS: all 12 Oxford payloads downloaded anonymously and SHA-256 matched",
+  "gpu_b0_v1": "PARTIAL_BUDGET_LIMIT: Oxford five groups/275 AP records verified; Paris incomplete; no additional GPU job",
+  "gpu_b0_v2": "PASS: both datasets, 310 saved rankings and all 17050 AP records independently rescored, 3410 pixel hashes match R1",
+  "public_b0_v2": "PASS: full local release verified; anonymous inventory and four sample payload hashes match"
 }

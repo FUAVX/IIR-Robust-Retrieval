@@ -1,0 +1,31 @@
+{
+  "dataset": "ndhoang2310/iir-b0-complete-epoch12-results-v2",
+  "url": "https://www.kaggle.com/datasets/ndhoang2310/iir-b0-complete-epoch12-results-v2",
+  "anonymous_inventory_matches": true,
+  "payload_files": 389,
+  "payload_bytes": 255482581,
+  "anonymous_samples": [
+    {
+      "path": "summary.csv",
+      "bytes": 1516,
+      "sha256": "299ac44970238dc0a839327c5a4372cc576cfefe7b55aee17db7e676028ab690"
+    },
+    {
+      "path": "per_query.csv",
+      "bytes": 2303991,
+      "sha256": "cb8f6e0933943064f3720df445e0babb5cc6f03c511b3bfba48372e0a28aed0e"
+    },
+    {
+      "path": "ranks_paris6k_clean_diffusion_mutual_top20.npz",
+      "bytes": 746448,
+      "sha256": "8364a7ed0f296b0f70d322192753144556d80c99f108d5bc2d035f47a8a3a253"
+    },
+    {
+      "path": "desc_b0_epoch12_paris6k_robust.npz",
+      "bytes": 13567490,
+      "sha256": "290eb8dfd125be095c17fb66d2f7df5c787fb33b14dd67b38a6a47b68419a293"
+    }
+  ],
+  "archive_sha256": "1d0825d2d8d7a58e2e7d6cde6acdb00a725c37fec14af1f58ae5c24fbfa6f12b",
+  "verification_scope": "Full local archive checked before upload; public inventory and four numerical payloads downloaded anonymously and hash-checked; not every remote payload downloaded again"
+}

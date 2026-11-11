@@ -2,6 +2,10 @@
 
 ## B0 completion job v2
 
+[Complete public numerical outputs](https://www.kaggle.com/datasets/ndhoang2310/iir-b0-complete-epoch12-results-v2): 389 files, including all 310 independently rescored rankings. `package_b0_complete.py` rebuilds and verifies the release; `verify_public_b0_complete.py` checks anonymous inventory and sample downloads.
+
+**Completed and verified:** both datasets, 310 method/view groups and 17,050 AP records in 1,594.45 seconds of measured work on a Tesla T4. `results/b0_complete_v2/` holds the accepted summaries, per-query metrics, source manifest and verification. The earlier Oxford-only v1 recovery below is historical.
+
 `run_b0_complete.py` and `build_b0_complete_job.py` prepare a separate inference
 job, `ndhoang2310/iir-b0-epoch12-complete-clean-and-robustness-v2`, using the already published private
 B0 input bundle, benchmark images and verified public Oxford descriptor cache.
@@ -31,8 +35,7 @@ python -m unittest discover -s artifacts/revision-validation -p test_b0_complete
 ```
 
 Submit through the existing credential bridge. Per the user's instruction,
-stop after the push acknowledgment: do not poll status, fetch logs or download
-outputs until the user requests a check.
+the initial submission stopped after its push acknowledgment. The user subsequently requested a check, which verified complete v2 outputs; no additional GPU work was launched.
 
 The historical training and post-training source is now under
 `artifacts/colab-training/` and `artifacts/kaggle-posttraining/`. The latter's
@@ -108,7 +111,7 @@ the input manifest, requires all ten model/dataset/method groups and 550 unique
 per-query records, and recomputes each mean AP before exporting compact results.
 It never resubmits the job.
 
-### Actual bounded-run outcome
+### Historical v1 bounded-run outcome
 
 Version 1 reached the 30-minute extraction limit partway through Paris. The
 remote job is **ERROR**, not a successful two-dataset evaluation. Oxford's
@@ -122,7 +125,7 @@ The accepted record is `results/b0_clean/recovery_manifest.json`, with status
 Oxford mAP: cosine **81.060%**, AQE **83.774%**, alpha/gated QE **83.761%**,
 mutual/top-20 diffusion **78.348%**. This confirms a practical QE gain on the
 validation-selected B0, while the same sparse diffusion settings do not improve
-this encoder. No additional GPU job is launched in this revision.
+this encoder in v1. The subsequent user-requested v2 run completed Paris and the full corruption suite, as recorded above.
 
 The [Oxford numerical outputs are public](https://www.kaggle.com/datasets/ndhoang2310/iir-revision-b0-oxford-numerical-v1).
 All 12 payloads were downloaded without credentials and hash-checked. The release

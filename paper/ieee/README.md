@@ -1,6 +1,6 @@
 # IEEE paper draft - SEG301
 
-Bản paper tiếng Anh dựa trên kết quả đã có, không training hay chạy lại GPU. Tác giả tạm thời: **Author 1, Author 2, Author 3**, theo yêu cầu. Chưa chỉ định hội nghị hay giới hạn trang chính thức.
+Bản paper tiếng Anh kết hợp bằng chứng lịch sử với lượt đánh giá B0 v2 hoàn tất trên Kaggle T4; không training lại. Tác giả tạm thời: **Author 1, Author 2, Author 3**, theo yêu cầu. Chưa chỉ định hội nghị hay giới hạn trang chính thức.
 
 ## Đọc và chỉnh sửa
 
@@ -11,9 +11,9 @@ Bản paper tiếng Anh dựa trên kết quả đã có, không training hay ch
 - `figures/`: biểu đồ vector, dựng từ CSV; bảng nằm trong `tables/`.
 - `data/`: CSV và cấu hình dùng cho bài; không chứa weights, API keys hoặc dữ liệu ảnh benchmark.
 - `template/`: ZIP template tải về, bản gốc và thông tin nguồn/SHA256.
-- `evidence_manifest.json`, `validation.json`: nguồn số liệu và kết quả kiểm tra.
+- `evidence_manifest.json`, `b0_complete_evidence.json`, `validation.json`: nguồn số liệu, hash snapshot B0 v2 và kết quả kiểm tra.
 
-Đường dẫn chia sẻ cho ZIP nguồn B0/R1/R2 cần điền tại
+Đường dẫn tải ZIP B0/R1/R2 và raw outputs đã được liệt kê tại
 [`artifacts/README.md`](../../artifacts/README.md); các hash gốc nằm trong
 `data/source_manifest.json`.
 
@@ -74,12 +74,13 @@ Cần Python, NumPy và Matplotlib. Script dùng CSV có sẵn trong project g�
 
 - Đây là nghiên cứu thực nghiệm các thành phần đã có, không tuyên bố thuật toán mới hay state of the art.
 - B0 best, R1/R2 best là bằng chứng lịch sử; best R1 không có weight file trong ZIP nhưng có evaluation/history.
-- Search study chỉ dùng R1/R2 latest epoch 100, FP32 inference và TF32 tắt.
+- Grid lịch sử dùng R1/R2 latest epoch 100; study hoàn tất mới dùng B0 validation-selected epoch 12. Cả hai dùng FP32 inference và TF32 tắt.
 - Không suy luận causal ablation từ so sánh training khác budget/precision/runtime.
 - Audit diffusion mới giữ nguyên graph/descriptor: seed top-20 thay cho dense seed khắc phục mức giảm mạnh trong bảng lịch sử. Bảng riêng báo kết quả replay toàn bộ query corruption từ cache; bảng chính lịch sử vẫn giữ số gốc để truy vết. Không dùng latency của dense diffusion làm latency cho phiên bản sửa.
 - Source augmentation/gate/BF16 và toàn bộ search đã có trong `artifacts/colab-training/` và `artifacts/kaggle-posttraining/`; hướng dẫn kiểm tra mới ở `artifacts/revision-validation/`.
-- B0 rerun epoch 12 hoàn tất Oxford: cosine 81,06%, AQE 83,77%, sparse diffusion 78,35%. Job dừng ở giới hạn extraction 30 phút khi đang chạy Paris. Chỉ 5 nhóm Oxford/275 AP được phục hồi và kiểm tra từ ranking đầy đủ; không ghi job toàn phần là thành công và không có số Paris mới.
-- B0 chưa có robustness/post-training cùng giao thức; một training seed; sensitivity exploratory.
+- Raw B0 v2: https://www.kaggle.com/datasets/ndhoang2310/iir-b0-complete-epoch12-results-v2 — 389 file, đủ 310 ranking đã chấm lại và 17.050 AP records.
+- B0 epoch 12 đã hoàn tất cả Oxford/Paris, 5 phương pháp, clean + 30 corrupted views/query: **17.050 AP records**. Bảng và hình robustness chính dùng kết quả v2; snapshot v1 Oxford-only được giữ riêng làm lịch sử.
+- B0 đã có clean/robustness cùng định nghĩa corruption; chưa chạy lại local/verified geometry và chưa đo direct latency mới cho B0. Chỉ có một training seed, sensitivity không chọn cấu hình chính.
 - Precision/recall trong summary cũ trung bình **19 điều kiện: clean + 18 corrupted**; corrupted mAP và worst-condition chỉ dùng **18 corrupted**. Supplement ghi rõ sự khác nhau này.
 - Median end-to-end của QE thấp hơn cosine ở một vài nhóm do biến thiên phép đo; bài không coi đó là causal speed-up.
 

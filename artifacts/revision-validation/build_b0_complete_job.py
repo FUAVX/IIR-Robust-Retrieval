@@ -13,7 +13,7 @@ def build():
     recovery = json.loads((HERE/'results/b0_clean/recovery_manifest.json').read_text())
     refs = []
     for filename in ['all_posttraining_results.csv', 'sparse_diffusion_summary.csv']:
-        with (ROOT/'paper/ieee/data'/filename).open() as f:
+        with (ROOT/'artifacts/revision-validation/evidence'/filename).open() as f:
             for row in csv.DictReader(f):
                 if row['model'] not in ['run1_aug_epoch100', 'run2_aug_attention_epoch100']:
                     continue

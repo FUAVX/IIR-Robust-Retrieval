@@ -14,7 +14,7 @@ filename and archive SHA-256 before loading a checkpoint.
 The Drive filenames were documented as visible on 2026-11-05; this revision
 uses the local copies and does not claim a new independent Drive download.
 See `reproduction/B0/epoch_012/README.md` for B0 checkpoint provenance and
-`paper/ieee/data/models_manifest.json` for R1/R2 identities.
+`artifacts/revision-validation/evidence/models_manifest.json` for R1/R2 identities.
 
 ## Complete B0 v2 numerical outputs — public download
 

@@ -55,7 +55,7 @@ def package():
                      archive_sha256=sha(archive), archive_verified=True,
                      payload_bytes=sum(row['bytes'] for row in inventory['files']))
     (folder/'raw_inventory.json').write_text(json.dumps(inventory, indent=2)+'\n')
-    source = ROOT/'paper/ieee/data/models_manifest.json'
+    source = ROOT/'artifacts/revision-validation/evidence/models_manifest.json'
     (folder/'models_manifest.json').write_bytes(source.read_bytes())
     (folder/'README.md').write_text('''# Historical post-training numerical outputs
 

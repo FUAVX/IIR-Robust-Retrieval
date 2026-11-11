@@ -83,7 +83,7 @@ historical runtime timing.
 with realization-then-condition averaging. R1's equal-dataset corrupted mAP is
 76.272%, versus 66.82% cosine and 71.05% verified QE in the archived study.
 These revised quality results have no new direct end-to-end latency estimate.
-Run `paper/ieee/build_revision_assets.py` to regenerate the new paper table.
+The final paper and supplement PDFs are under `paper/ieee/`. Numerical evidence is preserved in `evidence/`; paper build tools were removed at the user's request.
 
 ## B0 validation-selected checkpoint (one bounded T4 job)
 

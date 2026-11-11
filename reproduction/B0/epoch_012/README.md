@@ -25,5 +25,5 @@ results in Git. `OUTPUT_DIR_OVERRIDE` can select another destination.
 Sections 1–6 need NumPy, pandas, Matplotlib, and IPython plus the extracted
 artifact. Rerunning image inference also needs PyTorch, torchvision, Pillow,
 and benchmark images. No model file, raw log, ZIP bundle, or LaTeX source is
-committed here. The broader [paper draft](../../../paper/ieee/README.md)
+committed here. The broader [paper draft](../../../paper/ieee/seg301_ieee_paper.pdf)
 cites this B0 result but evaluates additional models separately.

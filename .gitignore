@@ -1,8 +1,6 @@
 # Keep datasets and prepared supervision outside Git.
 # The upstream get_data_root() uses the repository's data/ directory.
 data/
-!paper/ieee/data/
-!paper/ieee/data/*
 datasets/
 
 # Checkpoints and model weights, including common upstream .pth.tar files.
@@ -75,3 +73,8 @@ artifacts/kaggle-posttraining/bundle/
 artifacts/kaggle-posttraining/merged_results/
 artifacts/revision-validation/jobs/
 artifacts/revision-validation/publish/
+
+# Paper delivery contains final PDFs only.
+paper/ieee/*
+!paper/ieee/seg301_ieee_paper.pdf
+!paper/ieee/supplement.pdf

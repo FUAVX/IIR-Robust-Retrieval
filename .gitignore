@@ -1,6 +1,8 @@
 # Keep datasets and prepared supervision outside Git.
 # The upstream get_data_root() uses the repository's data/ directory.
 data/
+!paper/ieee/data/
+!paper/ieee/data/*
 datasets/
 
 # Checkpoints and model weights, including common upstream .pth.tar files.

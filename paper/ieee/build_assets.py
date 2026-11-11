@@ -9,7 +9,8 @@ HERE=Path(__file__).resolve().parent
 ROOT=HERE.parent.parent
 R=ROOT/'artifacts/results-consolidated'
 P=ROOT/'artifacts/kaggle-posttraining/outputs/iir-post100-report/unpacked'
-if not R.is_dir(): R=HERE/'data';P=R
+if not (R/'all_posttraining_results.csv').is_file() or not (P/'conditions.csv').is_file():
+ R=HERE/'data';P=R
 CONFIG=R/'report/training_data_config_audit.json'
 if not CONFIG.exists(): CONFIG=R/'training_data_config_audit.json'
 F=HERE/'figures';T=HERE/'tables';D=HERE/'data'

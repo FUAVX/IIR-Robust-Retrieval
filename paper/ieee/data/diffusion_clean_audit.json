@@ -1,0 +1,71 @@
+{
+  "scope": "clean epoch100 diagnostic; no parameter selection",
+  "beta": 0.9,
+  "graph_k": 20,
+  "seed_supports": [
+    "dense",
+    20
+  ],
+  "tolerance": 1e-12,
+  "solver": "fixed point versus independent scipy CG on 3 queries per graph/seed",
+  "numpy": "2.5.4",
+  "sources": [
+    {
+      "model": "run1_aug_epoch100",
+      "dataset": "oxford5k",
+      "mutual": false,
+      "descriptor_sha256": "7f0bf721235a7bfa8b12e016b80d9de001496ce99d475b635c35d27dfcb742ec",
+      "graph_sha256": "7383ae833eefcda7f73709b1aaf84cebeeca251b3b4ef64b43094a1b7b532d40"
+    },
+    {
+      "model": "run1_aug_epoch100",
+      "dataset": "oxford5k",
+      "mutual": true,
+      "descriptor_sha256": "7f0bf721235a7bfa8b12e016b80d9de001496ce99d475b635c35d27dfcb742ec",
+      "graph_sha256": "965b6d7a2e0412696119d56090e628f6306ecacdb8b625872839b5752c8457e9"
+    },
+    {
+      "model": "run1_aug_epoch100",
+      "dataset": "paris6k",
+      "mutual": false,
+      "descriptor_sha256": "553b0ce8755ec46fb4f7603d8c77b722268a4b7b833bef63ab8131e4d8b1825b",
+      "graph_sha256": "68eae2e5f89238f96b5d45f39fa1220dcc25e96d9d8be88e4404987b987faf85"
+    },
+    {
+      "model": "run1_aug_epoch100",
+      "dataset": "paris6k",
+      "mutual": true,
+      "descriptor_sha256": "553b0ce8755ec46fb4f7603d8c77b722268a4b7b833bef63ab8131e4d8b1825b",
+      "graph_sha256": "b812442b6bbab8a0c14708ae163e0a18be7362220f92929d2be2b38006a09801"
+    },
+    {
+      "model": "run2_aug_attention_epoch100",
+      "dataset": "oxford5k",
+      "mutual": false,
+      "descriptor_sha256": "ef5d92d09c91f7ab3fd2fe6dfffd24005f629edca07edc9dfd5e9daf6b50de65",
+      "graph_sha256": "76c94972470aebebb6c7368b83955e915973ced615d1caf8e647ebe83cb0d04b"
+    },
+    {
+      "model": "run2_aug_attention_epoch100",
+      "dataset": "oxford5k",
+      "mutual": true,
+      "descriptor_sha256": "ef5d92d09c91f7ab3fd2fe6dfffd24005f629edca07edc9dfd5e9daf6b50de65",
+      "graph_sha256": "9017777754882024c1ec0af7527899954aa06299b2fd2972e84b93f62a56e396"
+    },
+    {
+      "model": "run2_aug_attention_epoch100",
+      "dataset": "paris6k",
+      "mutual": false,
+      "descriptor_sha256": "b07d4ba113b5542632e6a3a9e12fad6e324f7c4f299ff515b18a5559d470ce0f",
+      "graph_sha256": "3fa99d660af69028804fc56dd970234a200705a33e4535bd93432290498c7d77"
+    },
+    {
+      "model": "run2_aug_attention_epoch100",
+      "dataset": "paris6k",
+      "mutual": true,
+      "descriptor_sha256": "b07d4ba113b5542632e6a3a9e12fad6e324f7c4f299ff515b18a5559d470ce0f",
+      "graph_sha256": "12b5a3273f3118a95ab776bce28020e5a8ce44c57f53cf1457cb6da07868d803"
+    }
+  ],
+  "rows": 20
+}

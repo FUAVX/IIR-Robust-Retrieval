@@ -58,3 +58,5 @@ Each encoder also defines a gallery graph with $k=20$, no self-edges, and direct
  \quad \beta=0.9,
 \end{equation}
 starting at $\mathbf f^{(0)}=\mathbf y$, stopping at relative L2 change below $10^{-6}$ or 100 iterations. Non-finite results or absent initial mass fall back to cosine. Labels are not used in graph construction or propagation.
+
+The archived grid above uses a dense positive-similarity seed. A subsequent implementation audit evaluates a fixed sparse alternative: retain only the first 20 query neighbors in $\mathbf y$, with graph construction, exponent and $\beta$ unchanged. For this diagnostic, both dense and sparse variants use tolerance $10^{-12}$ and at most 1,000 iterations, and an independent linear solver checks the result. The sparse seed follows the support convention in the reference implementation~\cite{diffusion}; it is evaluated separately from the archived main grid.

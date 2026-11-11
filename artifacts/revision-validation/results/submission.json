@@ -1,0 +1,10 @@
+{
+  "account_alias": "hoang1",
+  "owner": "ndhoang2310",
+  "kernel": "ndhoang2310/iir-revision-b0-clean-epoch12-v1",
+  "version": 1,
+  "accelerator": "NvidiaTeslaT4",
+  "timeout_seconds": 2400,
+  "extraction_budget_seconds": 1800,
+  "training": false
+}

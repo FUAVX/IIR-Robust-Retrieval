@@ -7,7 +7,7 @@ Bản paper tiếng Anh dựa trên kết quả đã có, không training hay ch
 - `seg301_ieee_paper.pdf`: bản chính IEEE conference hai cột.
 - `seg301_ieee_paper.tex`: entry point; nội dung nằm trong `sections/`.
 - `supplement.pdf` / `supplement.tex`: toàn bộ 100 sensitivity rows và secondary metrics.
-- `references.bib`: 12 tài liệu tham khảo, kiểm tra từ nguồn tác giả/nhà xuất bản.
+- `references.bib`: 16 tài liệu tham khảo, bổ sung ViT, DINOv2, DELG và SuperGlobal từ nguồn tác giả.
 - `figures/`: biểu đồ vector, dựng từ CSV; bảng nằm trong `tables/`.
 - `data/`: CSV và cấu hình dùng cho bài; không chứa weights, API keys hoặc dữ liệu ảnh benchmark.
 - `template/`: ZIP template tải về, bản gốc và thông tin nguồn/SHA256.
@@ -63,6 +63,7 @@ Có thể upload ZIP nguồn lên Overleaf và đặt `seg301_ieee_paper.tex` l�
 
 ```bash
 python build_assets.py
+python build_revision_assets.py
 ```
 
 Cần Python, NumPy và Matplotlib. Script dùng CSV có sẵn trong project gốc; nếu không có thư mục artifacts, dùng bản CSV đi kèm trong `data/`. Không chạy encoder hay GPU. Các bảng được sinh ra thành macro trước khi đưa vào tabular, để tránh lỗi LaTeX input trong alignment.
@@ -75,6 +76,8 @@ Cần Python, NumPy và Matplotlib. Script dùng CSV có sẵn trong project g�
 - B0 best, R1/R2 best là bằng chứng lịch sử; best R1 không có weight file trong ZIP nhưng có evaluation/history.
 - Search study chỉ dùng R1/R2 latest epoch 100, FP32 inference và TF32 tắt.
 - Không suy luận causal ablation từ so sánh training khác budget/precision/runtime.
+- Audit diffusion mới giữ nguyên graph/descriptor: seed top-20 thay cho dense seed khắc phục mức giảm mạnh trong bảng lịch sử. Bảng riêng báo kết quả replay toàn bộ query corruption từ cache; bảng chính lịch sử vẫn giữ số gốc để truy vết. Không dùng latency của dense diffusion làm latency cho phiên bản sửa.
+- Source augmentation/gate/BF16 và toàn bộ search đã có trong `artifacts/colab-training/` và `artifacts/kaggle-posttraining/`; hướng dẫn kiểm tra mới ở `artifacts/revision-validation/`.
 - B0 chưa có robustness/post-training cùng giao thức; một training seed; sensitivity exploratory.
 - Precision/recall trong summary cũ trung bình **19 điều kiện: clean + 18 corrupted**; corrupted mAP và worst-condition chỉ dùng **18 corrupted**. Supplement ghi rõ sự khác nhau này.
 - Median end-to-end của QE thấp hơn cosine ở một vài nhóm do biến thiên phép đo; bài không coi đó là causal speed-up.

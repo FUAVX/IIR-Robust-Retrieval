@@ -1,0 +1,12 @@
+{
+  "python": "3.14.4",
+  "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "torch": "2.15.0+cpu",
+  "torchvision": "0.29.2+cpu",
+  "pandas": "3.1.1",
+  "pillow": "13.0.0",
+  "opencv": "5.0.0",
+  "cuda": false
+}

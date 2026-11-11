@@ -4,7 +4,7 @@
   "sensitivity_rows": 100,
   "secondary_rows": 40,
   "history_rows": 214,
-  "verified_references": 12,
+  "verified_references": 16,
   "class_unmodified": true,
   "checks": [
     "All 40 aggregate rows recomputed from 19 condition rows",
@@ -12,13 +12,14 @@
     "All 72 main post-training table cells match CSV",
     "Best epochs match validation-loss minima",
     "Seven source evidence hashes match committed snapshots",
-    "Frozen config, macro gains, bibliography keys and original class checked"
+    "Frozen config, macro gains, bibliography keys and original class checked",
+    "Four revised diffusion summaries recomputed from 124 cached views"
   ],
   "pdf": {
     "seg301_ieee_paper": {
-      "pages": 7,
-      "sha256": "1bfd8eeba287f89585113975383498c790bc1e97d3e0c862d2d88c3b97e67a43",
-      "bytes": 156143
+      "pages": 8,
+      "sha256": "18ade2769e94fc617ee6da31652b269d0ba773863e98a21794aa8078a0278087",
+      "bytes": 161448
     },
     "supplement": {
       "pages": 4,
@@ -27,8 +28,8 @@
     }
   },
   "build_log_checks": {
-    "seg301_ieee_paper": "SKIPPED: build log not committed; compile the LaTeX source to check layout warnings",
-    "supplement": "SKIPPED: build log not committed; compile the LaTeX source to check layout warnings"
+    "seg301_ieee_paper": "PASS",
+    "supplement": "PASS"
   },
   "visual_review": "Historical manual review was recorded for the committed PDFs; this script checks their text and structure, not visual layout."
 }

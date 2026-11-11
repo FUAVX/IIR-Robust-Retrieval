@@ -1,0 +1,12 @@
+{
+  "historical_runtime_unit_tests": "PASS: 8 tests",
+  "diffusion_reference_tests": "PASS: 4 tests",
+  "historical_training_cpu": "PASS: both variants, model parity, mining, train/val, checkpoint and exact resume",
+  "historical_staged_integration": "PASS: all main/sensitivity cells, geometry shards, report; missing direct timing detected",
+  "code_hashes": "PASS: all five historical files match paper models_manifest.json",
+  "b0_export": "PASS: source checkpoint SHA, validation epoch12, strict state load, upstream output parity max abs error 2.98e-8",
+  "sparse_replay": "COMPLETE: 124 condition realizations, 6820 per-query AP records; fixed parameters, no new encoding",
+  "gpu_b0": "RUNNING: ndhoang2310/iir-revision-b0-clean-epoch12-v1",
+  "raw_publication": "PUBLIC: anonymous inventory and three representative numerical files downloaded; hashes match",
+  "paper": "PASS: 16 references, archived numerical checks and revised diffusion aggregation; eight-page PDF rendered and visually reviewed"
+}

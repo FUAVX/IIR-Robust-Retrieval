@@ -11,3 +11,7 @@ oxford,https://robots.ox.ac.uk/~vgg/publications/2007/Philbin07/,Author publicat
 paris,https://robots.ox.ac.uk/~vgg/publications/2008/Philbin08/,Author publication record and bibliography
 revisited,https://arxiv.org/abs/1803.11285,Author paper; distinction from legacy protocols
 adam,https://arxiv.org/abs/1412.6980,Author paper; optimizer citation
+vit,https://arxiv.org/abs/2010.11929,Author paper; ViT architecture and title/authors
+dinov2,https://arxiv.org/abs/2304.07193,Author paper; self-supervised visual representation scope
+delg,https://arxiv.org/abs/2001.05027,Author paper; ECCV 2020 global/local retrieval
+superglobal,https://arxiv.org/abs/2308.06954,Author paper; ICCV 2023 global retrieval and reranking

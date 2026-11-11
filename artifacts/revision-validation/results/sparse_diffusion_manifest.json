@@ -1,0 +1,45 @@
+{
+  "protocol": "revision_mutual_top20_v1",
+  "graph_k": 20,
+  "seed_k": 20,
+  "beta": 0.9,
+  "tolerance": 1e-12,
+  "max_iterations": 1000,
+  "training": false,
+  "new_encoder_inference": false,
+  "tuning": false,
+  "views": 124,
+  "per_query_records": 6820,
+  "sources": [
+    {
+      "model": "run1_aug_epoch100",
+      "dataset": "oxford5k",
+      "descriptors": "7f0bf721235a7bfa8b12e016b80d9de001496ce99d475b635c35d27dfcb742ec",
+      "graph": "965b6d7a2e0412696119d56090e628f6306ecacdb8b625872839b5752c8457e9"
+    },
+    {
+      "model": "run1_aug_epoch100",
+      "dataset": "paris6k",
+      "descriptors": "553b0ce8755ec46fb4f7603d8c77b722268a4b7b833bef63ab8131e4d8b1825b",
+      "graph": "b812442b6bbab8a0c14708ae163e0a18be7362220f92929d2be2b38006a09801"
+    },
+    {
+      "model": "run2_aug_attention_epoch100",
+      "dataset": "oxford5k",
+      "descriptors": "ef5d92d09c91f7ab3fd2fe6dfffd24005f629edca07edc9dfd5e9daf6b50de65",
+      "graph": "9017777754882024c1ec0af7527899954aa06299b2fd2972e84b93f62a56e396"
+    },
+    {
+      "model": "run2_aug_attention_epoch100",
+      "dataset": "paris6k",
+      "descriptors": "b07d4ba113b5542632e6a3a9e12fad6e324f7c4f299ff515b18a5559d470ce0f",
+      "graph": "12b5a3273f3118a95ab776bce28020e5a8ce44c57f53cf1457cb6da07868d803"
+    }
+  ],
+  "aggregation": "realizations within each of 18 family/severity conditions, then equal condition mean",
+  "limitations": [
+    "same historical epoch100 encoders",
+    "post-review implementation diagnosis",
+    "no new latency measurements"
+  ]
+}

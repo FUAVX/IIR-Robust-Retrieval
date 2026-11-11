@@ -1,0 +1,21 @@
+{
+  "id": "ndhoang2310/iir-post100-geometry-oxford5k-4",
+  "title": "IIR Post100 geometry-oxford5k-4",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "ndhoang2310/iir-post100-inputs-v1",
+    "ndhoang2310/iir-b0-benchmarks"
+  ],
+  "kernel_sources": [
+    "ndhoang2310/iir-post100-extract",
+    "ndhoang2310/iir-post100-local"
+  ],
+  "competition_sources": [],
+  "model_sources": []
+}

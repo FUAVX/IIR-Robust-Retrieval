@@ -1,0 +1,18 @@
+{
+  "id": "ndhoang2310/iir-post100-audit",
+  "title": "IIR Post100 audit",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "ndhoang2310/iir-post100-inputs-v1",
+    "ndhoang2310/iir-b0-benchmarks"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [],
+  "model_sources": []
+}

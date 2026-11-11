@@ -1,0 +1,28 @@
+{
+  "status": "PASS_CPU",
+  "checks": [
+    "8 unit contracts, including chunked artifact transport",
+    "CPU staged integration: every main cell and clean sensitivity, two geometry shards, aggregation and missing latency detection",
+    "epoch100 source vs exported weights: exact FP32 smoke output"
+  ],
+  "limits": [
+    "Full Kaggle evaluation still running; no final-epoch metrics claimed yet."
+  ],
+  "files": {
+    "test_integration.py": "9158d3d56571e0f6d4f7f39f6f2133f1b9d16b7cb51a7d169dfd40413ba5f20b",
+    "encoder_runtime.py": "9724c31d9f48d5be27192aa5761006e28b3977caa71c76b69ec899d3ae821ccc",
+    "consolidate.py": "4186b746c1887c9f9602c477d7b500c1c177a1d131dfde3af052a1f6a4cc6365",
+    "runtime.py": "3dbdf7d105aaba87a8c169dc28f3d3861d80afb61e0bd057acba749a9738ced3",
+    "test_runtime.py": "cfbc7a60ccd39807d8896e092b8a60fa43fb99720f1dd56bbc73eed15da5f835",
+    "artifacts_io.py": "69c43fe9c609d149a09631f7ea980a62b8acea282a6ffa1ef875ac0424acb8e5",
+    "build_jobs.py": "2245a9d2998539eb45531c009ce4c62dc62dd3bdfffe880d8edf6d10cd1508af",
+    "prepare.py": "284d5d3d0cc750bc859f92763ae58f12b325ef426827efe4116b757ea8550015",
+    "orchestrate.py": "f74218605ee7594c992b3243552a175d4c4ed691d32a100076eaab39f83281bb",
+    "protocol.py": "f4d9d6be4cc9988ebf80982a961acdf771a4b2ef067378a59afe227477e6a5fd",
+    "legacy_evaluate.py": "ced1d110dd19f3f887e75f18ac9120aaff8900f5d6b52dc8c45c66c823141fd0",
+    "status.py": "994896e05bf5ee0ecd76bb6c24fb1b782d11466f7ada1b73566d5ddfa3c84d08"
+  },
+  "remote_audit": "PASS",
+  "gpu_extraction": "RUNNING",
+  "historical_cache_replay_note": "Saved best-cache replay is not bit-exact to historical mAP: deterministic image-ID ties and CPU matmul differ. Paris replay mAP 0.727685861 vs saved 0.727634288; these caches are NOT used in final-epoch evaluation."
+}

@@ -1,0 +1,34 @@
+{
+  "id": "ndhoang2310/iir-post100-report",
+  "title": "IIR Post100 report",
+  "code_file": "notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "ndhoang2310/iir-post100-inputs-v1",
+    "ndhoang2310/iir-b0-benchmarks"
+  ],
+  "kernel_sources": [
+    "ndhoang2310/iir-post100-extract",
+    "ndhoang2310/iir-post100-qf",
+    "ndhoang2310/iir-post100-local",
+    "ndhoang2310/iir-post100-diffusion",
+    "ndhoang2310/iir-post100-latency",
+    "ndhoang2310/iir-post100-geometry-oxford5k-0",
+    "ndhoang2310/iir-post100-geometry-oxford5k-1",
+    "ndhoang2310/iir-post100-geometry-oxford5k-2",
+    "ndhoang2310/iir-post100-geometry-oxford5k-3",
+    "ndhoang2310/iir-post100-geometry-oxford5k-4",
+    "ndhoang2310/iir-post100-geometry-oxford5k-5",
+    "ndhoang2310/iir-post100-geometry-paris6k-0",
+    "ndhoang2310/iir-post100-geometry-paris6k-1",
+    "ndhoang2310/iir-post100-geometry-paris6k-2",
+    "ndhoang2310/iir-post100-geometry-paris6k-3"
+  ],
+  "competition_sources": [],
+  "model_sources": []
+}

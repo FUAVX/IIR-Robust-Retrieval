@@ -1,0 +1,60 @@
+{
+  "verified_at": "2026-10-29T13:52:41.561470+00:00",
+  "version": "v3 cache-isolation fix + focused retest",
+  "status": "PASS_CPU_ONLY",
+  "checks": [
+    "PASS BF16 CPU autocast path: FP32 descriptor/loss, finite gradients; numeric guard rejects reversed gradients",
+    "PASS paired-model selection excludes OOM/incomplete pairs; export/provisional and epoch budget projection",
+    "PASS profiler and training share the exact summed-gradient Adam step",
+    "PASS bytes/RGB cache pixels+augmentation unchanged, fork workers, tuple fusion gradients, repeated timing median",
+    "PASS host RAM and /dev/shm guards reject excessive worker/prefetch queues",
+    "PASS actual CPU trial data/optimizer/stress path and staged orchestration with mocked GPU metrics"
+  ],
+  "limitations": [
+    "V3 has not run on a physical A100/Colab/Google Drive.",
+    "GPU capacity/staged sweep tests mock GPU metrics; memory guards/cache/fusion also have real small CPU fixture tests.",
+    "Throughput and actual OOM boundaries of microbatch 64/128 must be measured on Colab."
+  ],
+  "files": {
+    "00_profile_a100_training.ipynb": "116403e33654b9a084c63c5ec16251b6d749b5e5a47772c8d3ebbb7d8d96d88b",
+    "00b_retest_a100_training.ipynb": "f2d5bd143595b24a77c90383fabef31566aa1148c6b6ccdbe2eb80f1c1902099",
+    "01_run1_vgg16_gem_augmentation.ipynb": "08f32d6e593208dbea6f2bff85e7ad296c44395599bbf52d7c2016b5db73bd12",
+    "02_run2_vgg16_gem_aug_attention.ipynb": "ea67510290b619d2d1d23c0aa586fa1740e34a8b3c9b1ee65de64ae989581942",
+    "build_notebooks.py": "4fbbfdf4e97d440a6b140b07423d285e19c19f37e4703081c540aeaaca54d94f",
+    "build_profile_notebook.py": "25560fee3f5abc456a0294385699b8d3e1a47e2e1c99f7d6ea50e2f93e1c9573",
+    "build_retest_notebook.py": "f8a2ef5b58e634d3f5b2557dd07a5941e670dbd8c3d0a66412616bb31e21fd92",
+    "colab_runtime.py": "9724c31d9f48d5be27192aa5761006e28b3977caa71c76b69ec899d3ae821ccc",
+    "profile_runtime.py": "db8242695cd7d86b90b09fcb34c23c6955e22a8a7ccf7cfa2b19b90294a58ed2",
+    "verify_colab.py": "4c1d4815fae6fabca71c1ea9ed837e28b1edb59ec2732a8a944d855f34284ec2",
+    "verify_profile.py": "315c52bc8b73dc53b794f9573b42346d05bebba51593155faf764b5324e45d4b"
+  },
+  "regression_fix": "Incompatible RAM cache released before resource_plan; latest failed configuration cannot win from old PASS rows.",
+  "training_config_verified_at": "2026-10-29T16:24:25.122178+00:00",
+  "training_targets": {
+    "run1": {
+      "epochs": 50,
+      "session_hours": 12
+    },
+    "run2": {
+      "epochs": 100,
+      "session_hours": 14,
+      "cu_budget": 110,
+      "resume": null,
+      "run_id": "run2_attention_bf16_100ep_v1"
+    }
+  },
+  "resume_compatibility_check": "Run 1 target 50 and auto-resume unchanged. Run 2 is fresh, target 100, separate RUN_ID, RESUME=None; runtime source unchanged.",
+  "evaluator_hash_gate_fix": {
+    "status": "PASS",
+    "cause": "Generated rstrip used literal backslash-n instead of newline",
+    "fix": "rstrip(chr(10))",
+    "checks": "All generated notebook gates accept actual terminal newlines and reject evaluator edits; runtime and evaluator expected hashes unchanged"
+  },
+  "evaluator_transport_variant": {
+    "status": "PASS",
+    "verified_variant_sha256": "b2619397085e7dfcbdc78ff31abbc02a2c5ab76014c93eef84f20f3ce251dc6d",
+    "difference": "Only trailing whitespace on each line removed",
+    "canonical_identity_preserved": true,
+    "tests": "All notebooks: terminal newlines, exact whitespace variant, actual edit rejection"
+  }
+}

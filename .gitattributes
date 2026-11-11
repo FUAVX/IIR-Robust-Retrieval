@@ -1,0 +1,2 @@
+# Preserve the archived evaluator's bytes to match the published SHA-256.
+artifacts/kaggle-posttraining/legacy_evaluate.py -text whitespace=-blank-at-eol

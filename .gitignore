@@ -63,3 +63,13 @@ dist/
 .mypy_cache/
 .ruff_cache/
 .ipynb_checkpoints/
+
+# Local execution state and duplicated Kaggle transport payloads.
+/tmp/
+*.tarpart
+*.sqlite
+artifacts/kaggle-posttraining/state/
+artifacts/kaggle-posttraining/bundle/
+artifacts/kaggle-posttraining/merged_results/
+artifacts/revision-validation/jobs/
+artifacts/revision-validation/publish/
